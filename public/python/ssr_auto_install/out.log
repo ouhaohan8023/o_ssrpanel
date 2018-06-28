@@ -1,0 +1,68 @@
+2018-06-20 08:01:48 INFO 节点192.168.137.5开始安装...
+2018-06-20 08:01:49 INFO Connected (version 2.0, client OpenSSH_6.6.1)
+2018-06-20 08:01:49 INFO Authentication (publickey) successful!
+2018-06-20 08:01:49 INFO cd ~
+2018-06-20 08:01:49 INFO 
+2018-06-20 08:02:07 INFO yum install -y git
+2018-06-20 08:02:07 INFO Loaded plugins: fastestmirror, langpacks
+Loading mirror speeds from cached hostfile
+ * base: mirror.rise.ph
+ * extras: mirror.rise.ph
+ * updates: mirror.rise.ph
+Resolving Dependencies
+--> Running transaction check
+---> Package git.x86_64 0:1.8.3.1-13.el7 will be installed
+--> Processing Dependency: perl-Git = 1.8.3.1-13.el7 for package: git-1.8.3.1-13.el7.x86_64
+--> Processing Dependency: perl(Git) for package: git-1.8.3.1-13.el7.x86_64
+--> Running transaction check
+---> Package perl-Git.noarch 0:1.8.3.1-13.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package           Arch            Version                  Repository     Size
+================================================================================
+Installing:
+ git               x86_64          1.8.3.1-13.el7           base          4.4 M
+Installing for dependencies:
+ perl-Git          noarch          1.8.3.1-13.el7           base           54 k
+
+Transaction Summary
+================================================================================
+Install  1 Package (+1 Dependent package)
+
+Total download size: 4.4 M
+Installed size: 22 M
+Downloading packages:
+--------------------------------------------------------------------------------
+Total                                              531 kB/s | 4.4 MB  00:08     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : perl-Git-1.8.3.1-13.el7.noarch                               1/2 
+  Installing : git-1.8.3.1-13.el7.x86_64                                    2/2 
+  Verifying  : git-1.8.3.1-13.el7.x86_64                                    1/2 
+  Verifying  : perl-Git-1.8.3.1-13.el7.noarch                               2/2 
+
+Installed:
+  git.x86_64 0:1.8.3.1-13.el7                                                   
+
+Dependency Installed:
+  perl-Git.noarch 0:1.8.3.1-13.el7                                              
+
+Complete!
+
+2018-06-20 08:02:26 INFO git clone https://github.com/ouhaohan8023/SSR_server.git
+2018-06-20 08:02:26 INFO Cloning into 'SSR_server'...
+
+2018-06-20 08:02:26 INFO cd SSR_server;cp config.json user-config.json;cp apiconfig.py userapiconfig.py;chmod +x run.sh
+2018-06-20 08:02:26 INFO 
+2018-06-20 08:02:26 INFO systemctl stop firewalld
+2018-06-20 08:02:26 INFO 
+2018-06-20 08:02:26 INFO Connected (version 2.0, client OpenSSH_6.6.1)
+2018-06-20 08:02:26 INFO Authentication (password) successful!
+2018-06-20 08:02:26 INFO [chan 0] Opened sftp connection (server version 3)
+2018-06-20 08:02:26 INFO cd /root/SSR_server;./run.sh
+2018-06-20 08:02:26 INFO node 192.168.137.5 deployment was successful!
