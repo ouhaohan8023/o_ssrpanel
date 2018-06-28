@@ -2230,4 +2230,30 @@ class AdminController extends Controller
 
   }
 
+  //下载软件
+  public function downloadApp(Request $request,$key) {
+    $url = '/home/wwwroot/'.env('APP_SITENAME').'/public/'.env('DOWNLOADPATH').'/';
+
+    switch ($key)
+    {
+      case 'windows':
+        $name = 'windows/'.env('DOWNLOADPATH_WINDOWS1');
+        break;
+      case 'mac':
+        $name = 'macOs/'.env('DOWNLOADPATH_MAC');
+        break;
+      case 'android':
+        $name = 'android/'.env('DOWNLOADPATH_ANDROID');
+        break;
+      case 'windowstap':
+        $name = 'windows/'.env('DOWNLOADPATH_WINDOWS2');
+        break;
+      default:
+        return redirect('front/download');
+    }
+
+    $file = $url.$name;
+    return response()->download($file);
+  }
+
 }

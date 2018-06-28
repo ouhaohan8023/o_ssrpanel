@@ -8,7 +8,6 @@
         .icon{
             font-size: 45px;
         }
-
     </style>
     <div class="row" style="border-bottom: 1px solid #f8f8f8;margin-bottom: 20px;padding-left: 18%;padding-right: 18%">
         <div class="col-md-6 col-xs-12 col-sm-12">
@@ -43,9 +42,8 @@
                             </span>
                         </div>
                         <div class="PlanCard__description">
-                            <a class="Button Button--primary" href="/download_vpn/windows/ShadowsocksR-4.7.0.7z"> 下载 </a>
+                            <a class="Button Button--primary" href="{{url('downloadApp/windows')}}"> 下载 </a>
                             <a href="/download_vpn/windows/ssr.pdf" target="_blank" class="Button" style="color: #f64f64;font-size: 14px"> 查看教程 </a>
-
                         </div>
                     </div>
                 </div>
@@ -103,7 +101,7 @@
                             </span>
                         </div>
                         <div class="PlanCard__description">
-                            <a class="Button Button--primary" href="/download_vpn/android/ShadowsocksR-v3.4.0.6.apk"> 下载 </a>
+                            <a class="Button Button--primary" href="{{url('downloadApp/android')}}"> 下载 </a>
                             <a target="_blank" href="/download_vpn/android/android.pdf"  class="Button" style="background-color: #ffffff;color: #f64f64;font-size: 14px"> 查看教程 </a>
                         </div>
                     </div>
@@ -133,7 +131,7 @@
                             </span>
                         </div>
                         <div class="PlanCard__description">
-                            <a class="Button Button--primary" href="/download_vpn/macOs/ShadowsocksX-NG-R8.dmg"> 下载 </a>
+                            <a class="Button Button--primary" href="{{url('downloadApp/mac')}}"> 下载 </a>
                             <a target="_blank" href="/download_vpn/macOs/mac.pdf" class="Button" style="color: #f64f64;font-size: 14px"> 查看教程 </a>
 
                         </div>
@@ -166,9 +164,8 @@
                             </span>
                     </div>
                     <div class="PlanCard__description">
-                        <a class="Button Button--primary" href="/download_vpn/windows/SSTap-beta-setup-1.0.9.7.exe.7z"> 下载 </a>
+                        <a class="Button Button--primary" href="{{url('downloadApp/windowstap')}}"> 下载 </a>
                         <a href="/download_vpn/windows/sstap.pdf" target="_blank" class="Button" style="color: #f64f64;font-size: 14px"> 查看教程 </a>
-
                     </div>
                 </div>
             </div>

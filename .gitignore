@@ -5,7 +5,6 @@
 /vendor
 /.idea
 /.vagrant
-/.env.example
 Homestead.json
 Homestead.yaml
 npm-debug.log
@@ -17,5 +16,4 @@ npm-debug.log
 /shadow3_cons.sql
 /readme2.md
 /sql/
-https://bandwagonhost.com/aff.php?aff=33634&a=confproduct&i=0
 /public/robots.txt

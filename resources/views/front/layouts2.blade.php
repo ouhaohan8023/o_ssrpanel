@@ -121,7 +121,7 @@
                                             role="menuitem"
                                             class="Link mb-0"
                                     >
-                                        <span>下载中心</span>
+                                        <span>教程中心</span>
                                     </a>
                                 </li>
                                 <li>
