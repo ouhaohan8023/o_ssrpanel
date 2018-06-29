@@ -47,7 +47,7 @@
                             ShadowsocksR for
                         </p>
                         <p class="t2">Windows</p>
-                        <a class="btn btn-lg red dow" href="/download_vpn/windows/ShadowsocksR-4.7.0.7z">下载</a>
+                        <a class="btn btn-lg red dow" href="{{url('downloadApp/windows')}}">下载</a>
                         <a target="_blank"  class="btn btn-lg blue dow" href="/download_vpn/windows/ssr.pdf">教程</a>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                             ShadowsocksR for
                         </p>
                         <p class="t2">Android</p>
-                        <a class="btn btn-lg red dow" href="/download_vpn/android/ShadowsocksR-v3.4.0.6.apk">下载</a>
+                        <a class="btn btn-lg red dow" href="{{url('downloadApp/android')}}">下载</a>
                         <a target="_blank"  class="btn btn-lg blue dow" href="/download_vpn/android/android.pdf">教程</a>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                             ShadowsocksX-NG for
                         </p>
                         <p class="t2">Mac</p>
-                        <a class="btn btn-lg red dow" href="/download_vpn/macOs/ShadowsocksX-NG-R8.dmg">下载</a>
+                        <a class="btn btn-lg red dow" href="{{url('downloadApp/mac')}}">下载</a>
                         <a target="_blank"  class="btn btn-lg blue dow" href="/download_vpn/macOs/mac.pdf">教程</a>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                             SSTap for
                         </p>
                         <p class="t2">Windows</p>
-                        <a class="btn btn-lg red dow" href="/download_vpn/windows/SSTap-beta-setup-1.0.9.7.exe.7z">下载</a>
+                        <a class="btn btn-lg red dow" href="{{url('downloadApp/windowstap')}}">下载</a>
                         <a target="_blank" class="btn btn-lg blue dow" href="/download_vpn/windows/sstap.pdf">教程</a>
                     </div>
                 </div>
