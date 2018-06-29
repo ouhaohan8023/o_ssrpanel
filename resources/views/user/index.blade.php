@@ -22,6 +22,18 @@
             width: 20%;
             margin-bottom: 15px;
         }
+        .ohh-well {
+            display: none;
+        }
+
+        @media screen and (max-width:1400px ) {
+            .ohh-row .col-md-2 {
+                display: none;
+            }
+            .ohh-well {
+                display: block;
+            }
+        }
         .ohh-row .col-md-2 img {
             width: 100%;
         }
@@ -41,7 +53,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="row ohh-row">
-                    <div class="col-md-2">
+                    <div class="col-md-2 ">
                         <a target="_blank" href="https://www.chuanyunti.com/download_vpn/windows/ssr.pdf"><img src="{{url('/images/jiaocheng_01.png')}}"></a>
                     </div>
                     <div class="col-md-2">
@@ -56,6 +68,9 @@
                     <div class="col-md-2">
                         <a target="_blank" href="https://www.chuanyunti.com/download_vpn/macOs/mac.pdf"><img src="{{url('/images/jiaocheng_05.png')}}"></a>
                     </div>
+                </div>
+                <div class="well ohh-well" style="background-color: #FFF;">
+                    <b><a href="{{url('/user/download')}}">点击下载客户端和查看详细使用方法</a></b>
                 </div>
                 <div class="well" style="background-color: #FFF;">
                     如有疑问，请联系客服QQ： <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2747305744&site=qq&menu=yes">{{env('CONTRACTQQ')}}</a>
