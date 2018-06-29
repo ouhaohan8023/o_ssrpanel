@@ -103,8 +103,6 @@ Route::group(['middleware' => ['forbidden', 'user', 'admin']], function () {
   Route::get('wSifGFeO5mQoCWB4/userListTodayActiveInSeven', 'AdminController@userListTodayActiveInSeven'); // 账号列表
   Route::get('wSifGFeO5mQoCWB4/userListTodayActiveOnLine', 'AdminController@userListTodayActiveOnLine'); // 账号列表
   Route::post('wSifGFeO5mQoCWB4/installNode', 'AdminController@installNode'); // 安装节点
-  Route::get('downloadApp/{key}', 'AdminController@downloadApp'); // 下载软件
-
 });
 
 Route::group(['middleware' => ['forbidden', 'user']], function () {
@@ -134,6 +132,8 @@ Route::group(['middleware' => ['forbidden', 'user']], function () {
   Route::get('payment/getStatus', 'PaymentController@getStatus'); // 获取支付单状态
   Route::get('payment/{sn}', 'PaymentController@detail'); // 支付单详情
   Route::get('user/download', 'UserController@download'); // 用户下载中心
+  Route::get('downloadApp/{key}', 'AdminController@downloadApp'); // 下载软件
+
 });
 //前台
 Route::get('/', 'FrontController@index'); //首页
