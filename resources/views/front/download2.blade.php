@@ -36,11 +36,6 @@
                                 </span>
                             </p>
                         </div>
-                        <div class="PlanCard__pricing fwb mt-2 c-bw-12">
-                            <span class="d-block small fwm mb-4 mb-md-5 mt-2">
-                                <p style="font-size: 10px">系统要求：Windows XP 及以上</p>
-                            </span>
-                        </div>
                         <div class="PlanCard__description">
                             <a class="Button Button--primary" href="{{url('downloadApp/windows')}}"> 下载 </a>
                             <a href="/download_vpn/windows/ssr.pdf" target="_blank" class="Button" style="color: #f64f64;font-size: 14px"> 查看教程 </a>
@@ -66,11 +61,6 @@
                                 </span>
                             </p>
                         </div>
-                        <div class="PlanCard__pricing fwb mt-2 c-bw-12">
-                            <span class="d-block small fwm mb-4 mb-md-5 mt-2">
-                                <p style="font-size: 10px">系统要求：IOS 8.0以上</p>
-                            </span>
-                        </div>
                         <div class="PlanCard__description">
                             <a class="Button Button--primary" target="_blank" class="btn btn-lg red dow" href="/download_vpn/iOS/ios.pdf?v=1.0">查看教程</a>
                         </div>
@@ -95,11 +85,6 @@
                                 </span>
                             </p>
                         </div>
-                        <div class="PlanCard__pricing fwb mt-2 c-bw-12">
-                            <span class="d-block small fwm mb-4 mb-md-5 mt-2">
-                                <p style="font-size: 10px">系统要求：Android 4.4 及以上</p>
-                            </span>
-                        </div>
                         <div class="PlanCard__description">
                             <a class="Button Button--primary" href="{{url('downloadApp/android')}}"> 下载 </a>
                             <a target="_blank" href="/download_vpn/android/android.pdf"  class="Button" style="background-color: #ffffff;color: #f64f64;font-size: 14px"> 查看教程 </a>
@@ -118,17 +103,12 @@
                             <p class="Text fwb c-bw-12">
                                 <span>
                                     <span>
-                                        ShadowsocksR for4
+                                        ShadowsocksX for
                                     </span>
                                     <br/>
                                     Mac
                                 </span>
                             </p>
-                        </div>
-                        <div class="PlanCard__pricing fwb mt-2 c-bw-12">
-                            <span class="d-block small fwm mb-4 mb-md-5 mt-2">
-                                <p style="font-size: 10px">系统要求：OSX Lion及以上</p>
-                            </span>
                         </div>
                         <div class="PlanCard__description">
                             <a class="Button Button--primary" href="{{url('downloadApp/mac')}}"> 下载 </a>
@@ -157,11 +137,6 @@
                                     Windows
                                 </span>
                         </p>
-                    </div>
-                    <div class="PlanCard__pricing fwb mt-2 c-bw-12">
-                            <span class="d-block small fwm mb-4 mb-md-5 mt-2">
-                                <p style="font-size: 10px">系统要求：Windows XP 及以上</p>
-                            </span>
                     </div>
                     <div class="PlanCard__description">
                         <a class="Button Button--primary" href="{{url('downloadApp/windowstap')}}"> 下载 </a>

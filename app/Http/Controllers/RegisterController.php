@@ -457,15 +457,15 @@ class RegisterController extends Controller
 //      echo url('aaa');
 
       //测试邮箱
-//      $activeUserUrl = 123;
-//      $username = '137454534@qq.com';
-//      $ret = Mail::to($username)->send(new activeUser(self::$config['website_name'], $activeUserUrl));
-//      var_dump($ret);die;
+      $activeUserUrl = 123;
+      $username = '137454534@qq.com';
+      $ret = Mail::to($username)->send(new activeUser(self::$config['website_name'], $activeUserUrl));
+      var_dump($ret);die;
       //测试 自动统计任务
-      $in = 1 ;
-      $out = 1;
-      $find = YwLog::query()->where([['l_n_id','=',$in],['l_sn_id','=',$out]])->orderBy('l_time','DESC')->first()->toArray();
-      var_dump($find);die;
+//      $in = 1 ;
+//      $out = 1;
+//      $find = YwLog::query()->where([['l_n_id','=',$in],['l_sn_id','=',$out]])->orderBy('l_time','DESC')->first()->toArray();
+//      var_dump($find);die;
     }
 
   public function sendSms(Request $request){

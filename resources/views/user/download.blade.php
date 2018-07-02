@@ -82,7 +82,7 @@
                     <div class="panel-body">
                         <img src="/images/Mac.svg" width="50px" height="50px">
                         <p class="t1">
-                            ShadowsocksX-NG for
+                            ShadowsocksX for
                         </p>
                         <p class="t2">Mac</p>
                         <a class="btn btn-lg red dow" href="{{url('downloadApp/mac')}}">下载</a>
