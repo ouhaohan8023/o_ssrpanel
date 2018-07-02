@@ -43,10 +43,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <img class="img" src="/images/window.svg" width="50px" height="50px">
-                        <p class="t1">
-                            ShadowsocksR for
-                        </p>
-                        <p class="t2">Windows</p>
+                        <p class="t2">Windows客户端1</p>
                         <a class="btn btn-lg red dow" href="{{url('downloadApp/windows')}}">下载</a>
                         <a target="_blank"  class="btn btn-lg blue dow" href="/download_vpn/windows/ssr.pdf">教程</a>
                     </div>
@@ -56,10 +53,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <img src="/images/ios.svg" width="50px" height="50px">
-                        <p class="t1">
-                            Potatso for
-                        </p>
-                        <p class="t2">IOS</p>
+                        <p class="t2">IOS客户端</p>
                         <a target="_blank" class="btn btn-lg red dow" href="/download_vpn/iOS/ios.pdf?v=1.0">查看教程</a>
                     </div>
                 </div>
@@ -68,10 +62,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <img src="/images/Android.svg" width="50px" height="50px">
-                        <p class="t1">
-                            ShadowsocksR for
-                        </p>
-                        <p class="t2">Android</p>
+                        <p class="t2">Android客户端</p>
                         <a class="btn btn-lg red dow" href="{{url('downloadApp/android')}}">下载</a>
                         <a target="_blank"  class="btn btn-lg blue dow" href="/download_vpn/android/android.pdf">教程</a>
                     </div>
@@ -81,10 +72,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <img src="/images/Mac.svg" width="50px" height="50px">
-                        <p class="t1">
-                            ShadowsocksX for
-                        </p>
-                        <p class="t2">Mac</p>
+                        <p class="t2">Mac客户端</p>
                         <a class="btn btn-lg red dow" href="{{url('downloadApp/mac')}}">下载</a>
                         <a target="_blank"  class="btn btn-lg blue dow" href="/download_vpn/macOs/mac.pdf">教程</a>
                     </div>
@@ -94,10 +82,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <img class="img" src="/images/window.svg" width="50px" height="50px">
-                        <p class="t1">
-                            SSTap for
-                        </p>
-                        <p class="t2">Windows</p>
+                        <p class="t2">Windows客户端2</p>
                         <a class="btn btn-lg red dow" href="{{url('downloadApp/windowstap')}}">下载</a>
                         <a target="_blank" class="btn btn-lg blue dow" href="/download_vpn/windows/sstap.pdf">教程</a>
                     </div>

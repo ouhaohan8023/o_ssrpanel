@@ -28,11 +28,7 @@
                             {{--<i class="icon fab fa-android" style="color: #424242"></i>--}}
                             <p class="Text fwb c-bw-12">
                                 <span>
-                                    <span>
-                                        ShadowsocksR for
-                                    </span>
-                                    <br/>
-                                    Windows
+                                    Windows客户端1
                                 </span>
                             </p>
                         </div>
@@ -53,11 +49,7 @@
                             {{--<i class="icon fab fa-android" style="color: #424242"></i>--}}
                             <p class="Text fwb c-bw-12">
                                 <span>
-                                    <span>
-                                        ShadowsocksR for
-                                    </span>
-                                    <br/>
-                                    IOS
+                                    IOS客户端
                                 </span>
                             </p>
                         </div>
@@ -78,11 +70,7 @@
                             {{--<i class="icon fab fa-android" style="color: #424242"></i>--}}
                             <p class="Text fwb c-bw-12">
                                 <span>
-                                    <span>
-                                        ShadowsocksR for
-                                    </span>
-                                    <br/>
-                                    Android
+                                    Android客户端
                                 </span>
                             </p>
                         </div>
@@ -103,11 +91,7 @@
                             {{--<i class="icon fab fa-android" style="color: #424242"></i>--}}
                             <p class="Text fwb c-bw-12">
                                 <span>
-                                    <span>
-                                        ShadowsocksX for
-                                    </span>
-                                    <br/>
-                                    Mac
+                                    Mac客户端
                                 </span>
                             </p>
                         </div>
@@ -131,11 +115,7 @@
                         {{--<i class="icon fab fa-android" style="color: #424242"></i>--}}
                         <p class="Text fwb c-bw-12">
                                 <span>
-                                    <span>
-                                        SSTap for
-                                    </span>
-                                    <br/>
-                                    Windows
+                                    Windows客户端2
                                 </span>
                         </p>
                     </div>
