@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Http\Models\YwLog;
+use App\Http\Models\YwNode;
 use App\Http\Models\YwStatus;
 use Illuminate\Console\Command;
 use App\Http\Models\SsNode;
@@ -13,7 +14,7 @@ use Log;
 class AutoStatisticsNodeHourlyTestJob extends Command
 {
     protected $signature = 'autoStatisticsNodeHourlyTestJob';
-    protected $description = '自动统计节点每小时状态';
+    protected $description = '自动统计节点每小时状态(国内节点pingSSR节点)';
 
     public function __construct()
     {
@@ -22,24 +23,35 @@ class AutoStatisticsNodeHourlyTestJob extends Command
 
     public function handle()
     {
-        $nodeList = SsNode::query()->where('status', 1)->orderBy('id', 'asc')->get();
-        foreach ($nodeList as $node) {
-            $this->statisticsByNode($node->id);
+      $InList = YwNode::query()->get()->toArray();
+      $OutList = SsNode::query()->get()->toArray();
+      foreach ($InList as $k => $v) {
+        foreach ($OutList as $z => $b) {
+          $this->statisticsByNode($v['n_id'],$b['id']);
         }
-
-        Log::info('定时任务：' . $this->description);
+      }
+      YwLog::query()->forceDelete();
+      Log::info('定时任务：' . $this->description);
     }
 
-    private function statisticsByNode($out,$in)
+  /**
+   * @param $in // 国内节点
+   * @param $out  // SSR节点
+   */
+    private function statisticsByNode($in,$out)
     {
-      $find = YwLog::query()->where([['l_n_id','=',$in],['l_sn_id','=',$out]])->orderBy('l_time','DESC')->first()->toArray();
-      $findInStatus = YwStatus::query()->where([['l_n_id','=',$in],['l_sn_id','=',$out]])->orderBy('l_time','DESC')->first();
-      if($findInStatus) {
-        YwStatus::query()->where([['l_n_id','=',$in],['l_sn_id','=',$out]])->update(['l_status'=>$find['l_status']]);
-      }else{
-        YwStatus::query()->save($find);
+//      $in = 1 ;
+//      $out = 1;
+      $find = YwLog::query()->where([['l_n_id','=',$in],['l_sn_id','=',$out]])->orderBy('l_time','DESC')->first();
+      if($find){
+        $find = $find->toArray();
+        $exist = YwStatus::query()->where([['l_n_id','=',$in],['l_sn_id','=',$out]])->exists();
+        if($exist){
+          YwStatus::query()->where([['l_n_id','=',$in],['l_sn_id','=',$out]])->update(['l_status'=>$find['l_status'],'l_time'=>date('Y-m-d H:i:s')]);
+        }else{
+          YwStatus::query()->insert($find);
+        }
       }
-
     }
 
 }

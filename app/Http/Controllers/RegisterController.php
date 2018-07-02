@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Models\Invite;
 use App\Http\Models\Smscode;
 use App\Http\Models\SsConfig;
+use App\Http\Models\SsNode;
 use App\Http\Models\User;
 use App\Http\Models\UserLabel;
 use App\Http\Models\Verify;
 use App\Http\Models\YwLog;
+use App\Http\Models\YwNode;
+use App\Http\Models\YwStatus;
 use Illuminate\Http\Request;
 use App\Mail\activeUser;
 use Captcha;
@@ -457,15 +460,42 @@ class RegisterController extends Controller
 //      echo url('aaa');
 
       //测试邮箱
-      $activeUserUrl = 123;
-      $username = '137454534@qq.com';
-      $ret = Mail::to($username)->send(new activeUser(self::$config['website_name'], $activeUserUrl));
-      var_dump($ret);die;
+//      $activeUserUrl = 123;
+//      $username = '137454534@qq.com';
+//      $ret = Mail::to($username)->send(new activeUser(self::$config['website_name'], $activeUserUrl));
+//      var_dump($ret);die;
       //测试 自动统计任务
-//      $in = 1 ;
-//      $out = 1;
+//      YwStatus::query()->forceDelete();
+//      die;
+      $InList = YwNode::query()->get()->toArray();
+//      var_dump($InList);die;
+      $OutList = SsNode::query()->get()->toArray();
+//      var_dump($OutList);die;
+      foreach ($InList as $k => $v) {
+        foreach ($OutList as $z => $b) {
+          $this->hhh($v['n_id'],$b['id']);
+        }
+      }
+//      $in=14;
+//      $out=11;
 //      $find = YwLog::query()->where([['l_n_id','=',$in],['l_sn_id','=',$out]])->orderBy('l_time','DESC')->first()->toArray();
-//      var_dump($find);die;
+//      $exist = YwStatus::query()->where([['l_n_id','=',$in],['l_sn_id','=',$out]])->exists();
+//      if($exist){
+//        $ret = YwStatus::query()->where([['l_n_id','=',$in],['l_sn_id','=',$out]])->update(['l_status'=>$find['l_status'],'l_time'=>date('Y-m-d H:i:s')]);
+//      }else{
+//        $ret = YwStatus::query()->insert(['l_n_id'=>$find['l_n_id'],'l_sn_id'=>$find['l_sn_id'],'l_status'=>$find['l_status'],'l_time'=>date('Y-m-d H:i:s')]);
+//      }
+//      var_dump($ret);
+    }
+
+    protected function hhh($in,$out){
+      $find = YwLog::query()->where([['l_n_id','=',$in],['l_sn_id','=',$out]])->orderBy('l_time','DESC')->first()->toArray();
+      $exist = YwStatus::query()->where([['l_n_id','=',$in],['l_sn_id','=',$out]])->exists();
+      if($exist){
+        $ret = YwStatus::query()->where([['l_n_id','=',$in],['l_sn_id','=',$out]])->update(['l_status'=>$find['l_status'],'l_time'=>date('Y-m-d H:i:s')]);
+      }else{
+        $ret = YwStatus::query()->insert(['l_n_id'=>$find['l_n_id'],'l_sn_id'=>$find['l_sn_id'],'l_status'=>$find['l_status'],'l_time'=>date('Y-m-d H:i:s')]);
+      }
     }
 
   public function sendSms(Request $request){

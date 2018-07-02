@@ -32,6 +32,7 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\AutoStatisticsUserHourlyTrafficJob::class,
         \App\Console\Commands\UserExpireWarningJob::class,
         \App\Console\Commands\UserTrafficWarningJob::class,
+        \App\Console\Commands\AutoStatisticsNodeHourlyTestJob::class,
     ];
 
     /**
@@ -61,6 +62,9 @@ class Kernel extends ConsoleKernel
         $schedule->command('autoStatisticsUserHourlyTrafficJob')->hourly();
         $schedule->command('userExpireWarningJob')->daily();
         $schedule->command('userTrafficWarningJob')->daily();
+        $schedule->command('autoStatisticsNodeHourlyTestJob')->hourlyAt(10);
+//      $schedule->command('autoStatisticsNodeHourlyTestJob')->everyMinute();//测试用
+
     }
 
     /**
