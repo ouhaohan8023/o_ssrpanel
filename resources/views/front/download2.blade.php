@@ -8,6 +8,9 @@
         .icon{
             font-size: 45px;
         }
+        .oh-t2 {
+            margin-top: 20px;
+        }
     </style>
     <div class="row" style="border-bottom: 1px solid #f8f8f8;margin-bottom: 20px;padding-left: 18%;padding-right: 18%">
         <div class="col-md-6 col-xs-12 col-sm-12">
@@ -26,7 +29,7 @@
                         <div class="PlanCard__name pb-3 pt-5 pt-sm-7 pt-md-5">
                             <img src="/images/window.svg" width="50px" height="50px">
                             {{--<i class="icon fab fa-android" style="color: #424242"></i>--}}
-                            <p class="Text fwb c-bw-12">
+                            <p class="Text fwb c-bw-12 oh-t2">
                                 <span>
                                     Windows客户端1
                                 </span>
@@ -47,7 +50,7 @@
                         <div class="PlanCard__name pb-3 pt-5 pt-sm-7 pt-md-5">
                             <img src="/images/ios.svg" width="50px" height="50px">
                             {{--<i class="icon fab fa-android" style="color: #424242"></i>--}}
-                            <p class="Text fwb c-bw-12">
+                            <p class="Text fwb c-bw-12 oh-t2">
                                 <span>
                                     IOS客户端
                                 </span>
@@ -68,7 +71,7 @@
                         <div class="PlanCard__name pb-3 pt-5 pt-sm-7 pt-md-5">
                             <img src="/images/Android.svg" width="50px" height="50px">
                             {{--<i class="icon fab fa-android" style="color: #424242"></i>--}}
-                            <p class="Text fwb c-bw-12">
+                            <p class="Text fwb c-bw-12 oh-t2">
                                 <span>
                                     Android客户端
                                 </span>
@@ -89,7 +92,7 @@
                         <div class="PlanCard__name pb-3 pt-5 pt-sm-7 pt-md-5">
                             <img src="/images/Mac.svg" width="50px" height="50px">
                             {{--<i class="icon fab fa-android" style="color: #424242"></i>--}}
-                            <p class="Text fwb c-bw-12">
+                            <p class="Text fwb c-bw-12 oh-t2">
                                 <span>
                                     Mac客户端
                                 </span>
@@ -113,7 +116,7 @@
                     <div class="PlanCard__name pb-3 pt-5 pt-sm-7 pt-md-5">
                         <img src="/images/window.svg" width="50px" height="50px">
                         {{--<i class="icon fab fa-android" style="color: #424242"></i>--}}
-                        <p class="Text fwb c-bw-12">
+                        <p class="Text fwb c-bw-12 oh-t2">
                                 <span>
                                     Windows客户端2
                                 </span>

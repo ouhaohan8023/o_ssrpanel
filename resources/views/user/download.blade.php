@@ -25,7 +25,7 @@
         .panel-body .t2{
             font-size: 24px;
             font-weight: 900;
-            margin-top: 0;
+            margin-top: 20px;
             margin-bottom: 20px;
         }
         .dow{
