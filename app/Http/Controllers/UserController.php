@@ -944,7 +944,7 @@ class UserController extends Controller
 
             $request->session()->flash('successMsg', '新密码设置成功，请自行登录');
 
-            return Redirect::back();
+            return Redirect::to('login');
         } else {
             if (empty($token)) {
                 return Redirect::to('login');
