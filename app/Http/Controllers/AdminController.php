@@ -2217,7 +2217,7 @@ class AdminController extends Controller
     $path = '/home/wwwroot/'.$site_name.'/public/python/ssr_auto_install';
 
     $command = 'sh '.$path.'/run_ssr_auto_install.sh '.$data_ip.' '.$data_port.' '.$data_root.' '.$data_pwd.' '.$data_data.' '.$node_id.' '.$node_trans.' '.$node_ip.' '.$node_port.' '.$node_root.' \''.$node_pwd.'\' '.$path;
-    var_dump($command);
+//    var_dump($command);
     $ret = shell_exec($command);
     $retJson = (array)json_decode($ret);
     if(!empty($retJson)){
