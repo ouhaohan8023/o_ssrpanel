@@ -10,6 +10,7 @@
         }
         .oh-t2 {
             margin-top: 20px;
+            margin-bottom: 20px;
         }
     </style>
     <div class="row" style="border-bottom: 1px solid #f8f8f8;margin-bottom: 20px;padding-left: 18%;padding-right: 18%">
