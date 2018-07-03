@@ -33,6 +33,8 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\UserExpireWarningJob::class,
         \App\Console\Commands\UserTrafficWarningJob::class,
         \App\Console\Commands\AutoStatisticsNodeHourlyTestJob::class,
+        \App\Console\Commands\AutoMysqlBackUpJob::class,
+
     ];
 
     /**
@@ -64,6 +66,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('userTrafficWarningJob')->daily();
         $schedule->command('autoStatisticsNodeHourlyTestJob')->hourlyAt(10);
 //      $schedule->command('autoStatisticsNodeHourlyTestJob')->everyMinute();//测试用
+      $schedule->command('autoMysqlBackUpJob')->dailyAt('00:00');
 
     }
 

@@ -29,6 +29,8 @@ use App\Http\Models\UserSubscribe;
 use App\Http\Models\UserTrafficDaily;
 use App\Http\Models\UserTrafficHourly;
 use App\Http\Models\UserTrafficLog;
+use App\Http\Models\YwNode;
+use App\Http\Models\YwStatus;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use Redirect;
@@ -2256,4 +2258,17 @@ class AdminController extends Controller
     return response()->download($file);
   }
 
+  // 节点状态
+  public function nodeStatus(){
+//      echo 111;die;
+//    echo '<pre>';
+    $n = YwNode::query()->count();
+    $view = YwStatus::with('SsNode')
+        ->groupBy('l_sn_id')
+        ->selectRaw('sum(l_status)/'.$n.'*100 as sum ,l_sn_id')
+        ->get()->toArray();
+//    print_r($view);die;
+    return Response::view('admin/nodeStatus', ['datas'=>$view]);
+
+  }
 }

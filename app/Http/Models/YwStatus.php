@@ -15,4 +15,9 @@ class YwStatus extends Model
     protected $table = 'yw_status';
     protected $primaryKey = 'l_id';
     public $timestamps = false;//关闭create_at,update_at
+
+  public function SsNode()
+  {
+    return $this->hasOne(SsNode::class, 'id', 'l_sn_id');
+  }
 }

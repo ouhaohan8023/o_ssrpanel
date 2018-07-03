@@ -103,6 +103,7 @@ Route::group(['middleware' => ['forbidden', 'user', 'admin']], function () {
   Route::get('wSifGFeO5mQoCWB4/userListTodayActiveInSeven', 'AdminController@userListTodayActiveInSeven'); // 账号列表
   Route::get('wSifGFeO5mQoCWB4/userListTodayActiveOnLine', 'AdminController@userListTodayActiveOnLine'); // 账号列表
   Route::post('wSifGFeO5mQoCWB4/installNode', 'AdminController@installNode'); // 安装节点
+  Route::get('wSifGFeO5mQoCWB4/nodeStatus', 'AdminController@nodeStatus'); // 节点状态
 });
 
 Route::group(['middleware' => ['forbidden', 'user']], function () {
