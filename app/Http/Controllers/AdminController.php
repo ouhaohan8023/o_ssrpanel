@@ -2267,6 +2267,15 @@ class AdminController extends Controller
         ->groupBy('l_sn_id')
         ->selectRaw('sum(l_status)/'.$n.'*100 as sum ,l_sn_id')
         ->get()->toArray();
+
+    foreach ($view as $k => $v){
+//      var_dump($v['ss_node']['status']);continue;
+      if(!$v['ss_node']['status']){
+        unset($view[$k]);
+        continue;
+      }
+    }
+//    die;
 //    print_r($view);die;
     return Response::view('admin/nodeStatus', ['datas'=>$view]);
 
