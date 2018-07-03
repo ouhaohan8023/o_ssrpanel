@@ -23,7 +23,7 @@
                 <div class="portlet light bordered">
                     <div class="portlet-title">
                         <div class="caption font-dark">
-                            <span class="caption-subject bold uppercase"> 节点状态 </span>
+                            <span class="caption-subject bold uppercase"> 节点状态 --最后更新时间：{{$time['time']}}</span>
                         </div>
                     </div>
                     <div class="portlet-body">

@@ -2268,6 +2268,9 @@ class AdminController extends Controller
         ->selectRaw('sum(l_status)/'.$n.'*100 as sum ,l_sn_id')
         ->get()->toArray();
 
+    $td = YwStatus::query()->orderBy('l_time','DESC')->first();
+    $time['time'] = $td['l_time'];
+
     foreach ($view as $k => $v){
 //      var_dump($v['ss_node']['status']);continue;
       if(!$v['ss_node']['status']){
@@ -2277,7 +2280,7 @@ class AdminController extends Controller
     }
 //    die;
 //    print_r($view);die;
-    return Response::view('admin/nodeStatus', ['datas'=>$view]);
+    return Response::view('admin/nodeStatus', ['datas'=>$view,'time'=>$time]);
 
   }
 }
