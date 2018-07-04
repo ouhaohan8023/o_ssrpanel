@@ -21,8 +21,8 @@ class AutoMysqlBackUpJob extends Command
     public function handle()
     {
       $filename = date("YmdHis").'_'.rand(0,10000).'.sql';
-      exec('echo '.$filename.' > ~/chuanYunTi/nowJob');
-      exec('mysqldump -uroot -proot shadow3 >~/chuanYunTi/'.$filename);
+      exec('echo '.$filename.' > '.\config('app.local_path').'nowJob');
+      exec('mysqldump -uroot -proot shadow3 >'.\config('app.local_path').$filename);
       Log::info('定时任务：' . $this->description.'文件名：'.$filename);
     }
 }
