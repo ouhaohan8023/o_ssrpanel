@@ -127,6 +127,14 @@ return [
     'log_level' => 'debug',
 
     'log_max_files' => 30,
+
+  /*
+   * 远程备份数据库配置
+   */
+  'remote_ip' => env('REMOTE_IP'),
+  'remote_root' => env('REMOTE_ROOT'),
+  'remote_path' => env('REMOTE_PATH'),
+  'local_path' => env('LOCAL_PATH'),
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
