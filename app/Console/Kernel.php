@@ -34,7 +34,7 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\UserTrafficWarningJob::class,
         \App\Console\Commands\AutoStatisticsNodeHourlyTestJob::class,
         \App\Console\Commands\AutoMysqlBackUpJob::class,
-        \App\Console\Commands\AutoMysqlBackUpRemoteJob::class,
+//        \App\Console\Commands\AutoMysqlBackUpRemoteJob::class,
 
 
     ];
