@@ -467,15 +467,15 @@ class RegisterController extends Controller
       //测试 自动统计任务
 //      YwStatus::query()->forceDelete();
 //      die;
-      $InList = YwNode::query()->get()->toArray();
-//      var_dump($InList);die;
-      $OutList = SsNode::query()->get()->toArray();
-//      var_dump($OutList);die;
-      foreach ($InList as $k => $v) {
-        foreach ($OutList as $z => $b) {
-          $this->hhh($v['n_id'],$b['id']);
-        }
-      }
+//      $InList = YwNode::query()->get()->toArray();
+////      var_dump($InList);die;
+//      $OutList = SsNode::query()->get()->toArray();
+////      var_dump($OutList);die;
+//      foreach ($InList as $k => $v) {
+//        foreach ($OutList as $z => $b) {
+//          $this->hhh($v['n_id'],$b['id']);
+//        }
+//      }
 //      $in=14;
 //      $out=11;
 //      $find = YwLog::query()->where([['l_n_id','=',$in],['l_sn_id','=',$out]])->orderBy('l_time','DESC')->first()->toArray();
