@@ -91,6 +91,8 @@ class AdminController extends Controller
         $enable = $request->get('enable');
         $expireWarning = $request->get('expireWarning');
         $label = $request->get('label');
+        $start_time = $request->get('start_time');
+        $end_time = $request->get('end_time');
 
       $query = User::query();
         if (!empty($username)) {
@@ -107,6 +109,14 @@ class AdminController extends Controller
 
         if (!empty($port)) {
             $query->where('port', intval($port));
+        }
+
+        if (!empty($start_time)) {
+          $query->where('created_at','>=',$start_time.' 00:00:00');
+        }
+
+        if (!empty($end_time)) {
+          $query->where('created_at','<=',$end_time.' 00:00:00');
         }
 
         if ($pay_way != '') {

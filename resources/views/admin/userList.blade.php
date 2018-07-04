@@ -3,6 +3,7 @@
 @section('css')
     <link href="/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
     <link href="/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="/css/datepicker/datepicker.css" rel="stylesheet" type="text/css" >
 @endsection
 @section('title', '控制面板')
 @section('content')
@@ -37,6 +38,12 @@
                             </div>
                             <div class="col-md-2 col-sm-2">
                                 <input type="text" class="col-md-4 form-control input-sm" name="port" value="{{Request::get('port')}}" id="port" placeholder="端口" onkeydown="if(event.keyCode==13){doSearch();}">
+                            </div>
+                            <div class="col-md-2 col-sm-2">
+                                <input type="text" class="col-md-4 form-control input-sm" name="start_time" value="{{Request::get('start_time')}}" id="dp1" placeholder="注册时间（开始）" onkeydown="if(event.keyCode==13){doSearch();}">
+                            </div>
+                            <div class="col-md-2 col-sm-2">
+                                <input type="text" class="col-md-4 form-control input-sm" name="end_time" value="{{Request::get('end_time')}}" id="dp2" placeholder="注册时间（结束）" onkeydown="if(event.keyCode==13){doSearch();}">
                             </div>
                         </div>
                         <div class="row">
@@ -175,7 +182,7 @@
 @endsection
 @section('script')
     <script src="/js/layer/layer.js" type="text/javascript"></script>
-
+    <script src="/js/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
     <script type="text/javascript">
         // 批量生成账号
         function batchAddUsers() {
@@ -227,8 +234,10 @@
             var status = $("#status option:checked").val();
             var enable = $("#enable option:checked").val();
             var label = $("#label option:checked").val();
+            var start_time = $('#dp1').val();
+            var end_time = $('#dp2').val();
 
-            window.location.href = '{{url('wSifGFeO5mQoCWB4/userList')}}' + '?username=' + username + '&wechat=' + wechat + '&qq=' + qq + '&port=' + port + '&pay_way=' + pay_way + '&status=' + status + '&enable=' + enable+ '&label=' + label;
+            window.location.href = '{{url('wSifGFeO5mQoCWB4/userList')}}' + '?username=' + username + '&wechat=' + wechat + '&qq=' + qq + '&port=' + port + '&pay_way=' + pay_way + '&status=' + status + '&enable=' + enable+ '&label=' + label + '&start_time=' + start_time + '&end_time=' + end_time;
         }
 
         // 重置
@@ -260,5 +269,15 @@
                 layer.close(index);
             });
         }
+
+        $(document).ready(function () {
+            $('#dp1,#dp2').datepicker(
+                {
+                    format : 'yyyy-mm-dd'
+                }
+            ).on('changeDate', function(ev){
+                $('#dp1,#dp2').datepicker('hide')
+            });
+        })
     </script>
 @endsection
