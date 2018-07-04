@@ -70,7 +70,7 @@ class Kernel extends ConsoleKernel
 //      $schedule->command('autoStatisticsNodeHourlyTestJob')->everyMinute();//测试用
         $schedule->command('autoMysqlBackUpJob')->dailyAt('00:00');
 //      $schedule->command('autoMysqlBackUpJob')->everyMinute();//测试用
-        $schedule->command('autoMysqlBackUpRemoteJob')->dailyAt('00:30');
+        $schedule->command('autoMysqlBackUpRemoteJob')->everyMinute();
 
     }
 
