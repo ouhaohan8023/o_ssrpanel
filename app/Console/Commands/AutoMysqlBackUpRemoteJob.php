@@ -10,7 +10,7 @@ use Log;
 
 class AutoMysqlBackUpRemoteJob extends Command
 {
-    protected $signature = 'autoMysqlBackUpJob';
+    protected $signature = 'autoMysqlBackUpRemoteJob';
     protected $description = '数据库远程备份';
 
     public function __construct()

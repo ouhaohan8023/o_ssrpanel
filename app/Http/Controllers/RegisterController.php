@@ -467,27 +467,22 @@ class RegisterController extends Controller
       //测试 自动统计任务
 //      YwStatus::query()->forceDelete();
 //      die;
-      $InList = YwNode::query()->get()->toArray();
-//      var_dump($InList);die;
-      $OutList = SsNode::query()->get()->toArray();
-//      var_dump($OutList);die;
-      foreach ($InList as $k => $v) {
-        foreach ($OutList as $z => $b) {
-          $this->hhh($v['n_id'],$b['id']);
-        }
-      }
-//      $in=14;
-//      $out=11;
-//      $find = YwLog::query()->where([['l_n_id','=',$in],['l_sn_id','=',$out]])->orderBy('l_time','DESC')->first()->toArray();
-//      $exist = YwStatus::query()->where([['l_n_id','=',$in],['l_sn_id','=',$out]])->exists();
-//      if($exist){
-//        $ret = YwStatus::query()->where([['l_n_id','=',$in],['l_sn_id','=',$out]])->update(['l_status'=>$find['l_status'],'l_time'=>date('Y-m-d H:i:s')]);
-//      }else{
-//        $ret = YwStatus::query()->insert(['l_n_id'=>$find['l_n_id'],'l_sn_id'=>$find['l_sn_id'],'l_status'=>$find['l_status'],'l_time'=>date('Y-m-d H:i:s')]);
+//      $InList = YwNode::query()->get()->toArray();
+////      var_dump($InList);die;
+//      $OutList = SsNode::query()->get()->toArray();
+////      var_dump($OutList);die;
+//      foreach ($InList as $k => $v) {
+//        foreach ($OutList as $z => $b) {
+//          $this->hhh($v['n_id'],$b['id']);
+//        }
 //      }
-//      var_dump($ret);
     }
 
+  /**
+   * 用于yw_status表测试
+   * @param $in
+   * @param $out
+   */
     protected function hhh($in,$out){
       $find = YwLog::query()->where([['l_n_id','=',$in],['l_sn_id','=',$out]])->orderBy('l_time','DESC')->first()->toArray();
       $exist = YwStatus::query()->where([['l_n_id','=',$in],['l_sn_id','=',$out]])->exists();
