@@ -209,3 +209,24 @@ pip install paramiko
 ```angular2html
 再数据库删除用户的时候，记得清空对应的工单，不然会报错
 ```
+```angular2html
+php版本问题
+亲测7.2.6有问题，只能用7.1
+```
+```angular2html
+异地备份(用不上)
+#生成公钥
+ssh-keygen -t rsa
+#将公钥传到存储备份文件的服务器上指定（默认都是root用户，如果是a用户，将root改成a即可）
+例如：root@ip
+scp id_rsa.pub root@154.85.192.90:/root/.ssh/authorized_keys_01
+#输入密码
+#登陆备份机，进行公钥导入（这一步的目的是，防止覆盖了你现有的公钥，如果现在没有，可以直接覆盖）
+cat authorized_keys_01 >> authorized_keys
+#ssh，scp就不需要输入密码了
+```
+```angular2html
+加入定时任务
+sh -x /home/wwwroot/shadow3.com/backUpDatabase.sh
+
+```
