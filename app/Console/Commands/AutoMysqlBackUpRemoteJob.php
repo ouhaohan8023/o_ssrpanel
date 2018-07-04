@@ -28,6 +28,6 @@ class AutoMysqlBackUpRemoteJob extends Command
       $localPath=\config('local_path');
       exec('scp '.$localPath.$file_name.' '.$root.'@'.$ip_addr.':'.$path.'');
 
-      Log::info('定时任务：' . $this->description);
+      Log::info('定时任务：' . $this->description.'pppp:'.'scp '.$localPath.$file_name.' '.$root.'@'.$ip_addr.':'.$path.'');
     }
 }
