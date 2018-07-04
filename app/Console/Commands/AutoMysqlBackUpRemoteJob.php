@@ -8,7 +8,7 @@ use App\Http\Models\UserSubscribe;
 use App\Http\Models\UserSubscribeLog;
 use Log;
 
-class AutoMysqlBackUpJob extends Command
+class AutoMysqlBackUpRemoteJob extends Command
 {
     protected $signature = 'autoMysqlBackUpJob';
     protected $description = '数据库远程备份';
@@ -20,10 +20,10 @@ class AutoMysqlBackUpJob extends Command
 
     public function handle()
     {
-      $file_name=exec(cat /home/www/nowJob);
+      $file_name=exec('cat ~/chuanYunTi/nowJob');
       $ip_addr='154.85.192.90';
       $path='/home/www/chuanYunTiBackUp';
-      $ex = exec('scp ~/'.$file_name.' root@'.$ip_addr.':'.$path.'');
+      $ex = exec('scp ~/chuanYunTi/'.$file_name.' root@'.$ip_addr.':'.$path.'');
 
       Log::info('定时任务：' . $this->description.'exec:'.$ex);
     }

@@ -22,7 +22,7 @@ class AutoMysqlBackUpJob extends Command
     {
       $filename = date("YmdHis").'_'.rand(0,10000).'.sql';
       exec('echo '.$filename.' > ~/nowJob');
-      exec('mysqldump -uroot -proot shadow3 >~/'.$filename);
+      exec('mysqldump -uroot -proot shadow3 >~/chuanYunTi/'.$filename);
       Log::info('定时任务：' . $this->description.'文件名：'.$filename);
     }
 }
