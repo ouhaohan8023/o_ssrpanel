@@ -241,5 +241,51 @@ make install
 安装predis
 composer require predis/predis
 
+# 不需要执行
 php artisan make:job MailQueue
+#需要执行
+php artisan queue:work
+#更改程序后
+php artisan queue:restart
+php artisan queue:work
+#只运行某个队列
+php artisan queue:work redis --queue=email
+#检查进程是否运行
+ ps aux | grep  artisan
+
+```
+```angular2html
+centos7 安装supervisor
+yum install python-setuptools
+easy_install supervisor
+cd /etc/
+mkdir supervisord.d
+echo_supervisord_conf > supervisord.conf
+vim /etc/supervisord.conf
+#加入以下配置信息
+[include]
+files = /etc/supervisord.d/*.conf
+
+#创建文件
+[program:laravel-worker]
+process_name=%(program_name)s_%(process_num)02d
+command=/usr/local/php7.1/bin/php  /home/wwwroot/XXX/artisan queue:work redis --queue=email
+autostart=true
+autorestart=true
+user=www
+numprocs=8
+redirect_stderr=true
+stdout_logfile=/home/wwwlogs/laravel-work.log
+
+#关闭
+/usr/bin/supervisorctl stop all    
+#先关闭supervisor启动脚本，之后再关闭supervisord服务
+ps ax | grep supervisor
+kill pid
+
+#启动
+supervisord -c /etc/supervisord.conf
+
+#查看进程
+ps ax | grep supervisor
 ```

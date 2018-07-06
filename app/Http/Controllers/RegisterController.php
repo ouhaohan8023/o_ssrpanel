@@ -482,11 +482,11 @@ class RegisterController extends Controller
 //        $ret = YwStatus::query()->insert(['l_n_id'=>$find['l_n_id'],'l_sn_id'=>$find['l_sn_id'],'l_status'=>$find['l_status'],'l_time'=>date('Y-m-d H:i:s')]);
 //      }
 //      var_dump($ret);
-      $username = 'ouhaohan@gmail.com';
-      $activeUserUrl = 'baidu.com';
+//      $username = 'ouhaohan@gmail.com';
+//      $activeUserUrl = 'baidu.com';
 ////      MailQueue::dispatch();
 //      $this->dispatch(new MailQueue($username,$activeUserUrl));
-      $this->dispatch(new MailQueue($username,$activeUserUrl));
+//      $this->dispatch(new MailQueue($username,$activeUserUrl));
     }
 
     protected function hhh($in,$out){
