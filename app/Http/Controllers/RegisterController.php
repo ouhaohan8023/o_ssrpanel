@@ -12,6 +12,7 @@ use App\Http\Models\YwStatus;
 use App\Jobs\MailQueue;
 use Illuminate\Http\Request;
 use Captcha;
+use Illuminate\Support\Facades\Redis;
 use Response;
 use Redirect;
 use Cache;
@@ -487,7 +488,8 @@ class RegisterController extends Controller
 ////      MailQueue::dispatch();
 //      $this->dispatch(new MailQueue($username,$activeUserUrl));
 //      MailQueue::dispatch('队列')->onQueue('email');
-
+      Redis::set('aaa',111);
+      var_dump(Redis::get('aaa'));
 
     }
 

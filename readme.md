@@ -232,5 +232,14 @@ sh -x /home/wwwroot/shadow3.com/backUpDatabase.sh
 ```
 ```angular2html
 将注册时候的邮件改成队列，提升响应速度
+安装redis
+cd ~
+wget http://download.redis.io/releases/redis-4.0.10.tar.gz
+tar -xzf redis-4.0.10.tar.gz
+make
+make install
+安装predis
+composer require predis/predis
+
 php artisan make:job MailQueue
 ```
