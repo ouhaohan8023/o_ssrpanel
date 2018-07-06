@@ -3,23 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Models\Invite;
-use App\Http\Models\Smscode;
 use App\Http\Models\SsConfig;
-use App\Http\Models\SsNode;
 use App\Http\Models\User;
 use App\Http\Models\UserLabel;
 use App\Http\Models\Verify;
 use App\Http\Models\YwLog;
-use App\Http\Models\YwNode;
 use App\Http\Models\YwStatus;
+use App\Jobs\MailQueue;
 use Illuminate\Http\Request;
-use App\Mail\activeUser;
 use Captcha;
 use Response;
 use Redirect;
 use Cache;
-use Mail;
-use App\Sms\REST;
 /**
  * 注册控制器
  * Class LoginController
@@ -214,7 +209,8 @@ class RegisterController extends Controller
                 $content = '请求地址：' . $activeUserUrl;
 
                 try {
-                    Mail::to($username)->send(new activeUser(self::$config['website_name'], $activeUserUrl));
+                  $this->dispatch(new MailQueue($username,$activeUserUrl));
+//                  MailQueue::dispatch(Mail::to($username)->send(new activeUser(self::$config['website_name'], $activeUserUrl)));
                     $this->sendEmailLog($user->id, $title, $content);
                 } catch (\Exception $e) {
                     $this->sendEmailLog($user->id, $title, $content, 0, $e->getMessage());
@@ -486,6 +482,13 @@ class RegisterController extends Controller
 //        $ret = YwStatus::query()->insert(['l_n_id'=>$find['l_n_id'],'l_sn_id'=>$find['l_sn_id'],'l_status'=>$find['l_status'],'l_time'=>date('Y-m-d H:i:s')]);
 //      }
 //      var_dump($ret);
+//      $username = 'ouhaohan@gmail.com';
+//      $activeUserUrl = 'baidu.com';
+////      MailQueue::dispatch();
+//      $this->dispatch(new MailQueue($username,$activeUserUrl));
+//      MailQueue::dispatch('队列')->onQueue('email');
+
+
     }
 
     protected function hhh($in,$out){

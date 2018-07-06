@@ -230,3 +230,7 @@ cat authorized_keys_01 >> authorized_keys
 sh -x /home/wwwroot/shadow3.com/backUpDatabase.sh
 
 ```
+```angular2html
+将注册时候的邮件改成队列，提升响应速度
+php artisan make:job MailQueue
+```
