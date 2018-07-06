@@ -12,7 +12,6 @@ use App\Http\Models\YwStatus;
 use App\Jobs\MailQueue;
 use Illuminate\Http\Request;
 use Captcha;
-use Illuminate\Support\Facades\Redis;
 use Response;
 use Redirect;
 use Cache;
@@ -483,14 +482,11 @@ class RegisterController extends Controller
 //        $ret = YwStatus::query()->insert(['l_n_id'=>$find['l_n_id'],'l_sn_id'=>$find['l_sn_id'],'l_status'=>$find['l_status'],'l_time'=>date('Y-m-d H:i:s')]);
 //      }
 //      var_dump($ret);
-//      $username = 'ouhaohan@gmail.com';
-//      $activeUserUrl = 'baidu.com';
+      $username = 'ouhaohan@gmail.com';
+      $activeUserUrl = 'baidu.com';
 ////      MailQueue::dispatch();
 //      $this->dispatch(new MailQueue($username,$activeUserUrl));
-//      MailQueue::dispatch('队列')->onQueue('email');
-      Redis::set('aaa',111);
-      var_dump(Redis::get('aaa'));
-
+      $this->dispatch(new MailQueue($username,$activeUserUrl));
     }
 
     protected function hhh($in,$out){
