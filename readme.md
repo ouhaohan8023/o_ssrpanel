@@ -272,9 +272,12 @@ process_name=%(program_name)s_%(process_num)02d
 command=/usr/local/php7.1/bin/php  /home/wwwroot/XXX/artisan queue:work redis --queue=email
 autostart=true
 autorestart=true
-user=www
+#注意运行的用户，可能会造成用户无权限写入日志，报错，退出进程
+user=root
+#运行几个进程
 numprocs=8
 redirect_stderr=true
+#日志记入地址
 stdout_logfile=/home/wwwlogs/laravel-work.log
 
 #关闭
@@ -288,4 +291,5 @@ supervisord -c /etc/supervisord.conf
 
 #查看进程
 ps ax | grep supervisor
+ps ax | grep artisan
 ```

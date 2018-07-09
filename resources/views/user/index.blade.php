@@ -37,6 +37,9 @@
         .ohh-row .col-md-2 img {
             width: 100%;
         }
+        .ohh-gif {
+            margin-left: 10px;
+        }
     </style>
 @endsection
 @section('title', trans('home.panel'))
@@ -153,10 +156,14 @@
 
                 <div class="list-group">
                     @if($notice)
-                        <a href="{{url('user/article?id=') . $notice->id}}" class="list-group-item"> {{$notice->title}} </a>
+                        <a href="{{url('user/article?id=') . $notice->id}}" class="list-group-item"> {{$notice->title}}</a>
                     @endif
                     @foreach($articleList as $k => $article)
-                        <a href="{{url('user/article?id=') . $article->id}}" class="list-group-item"> [{{date('m/d', strtotime($article->created_at))}}] {{str_limit($article->title, 50)}}</a>
+                        @if($k==0)
+                            <a href="{{url('user/article?id=') . $article->id}}" class="list-group-item"> [{{date('m/d', strtotime($article->created_at))}}] {{str_limit($article->title, 50)}}<img class="ohh-gif" src="/images/new.gif"/></a>
+                        @else
+                            <a href="{{url('user/article?id=') . $article->id}}" class="list-group-item"> [{{date('m/d', strtotime($article->created_at))}}] {{str_limit($article->title, 50)}}</a>
+                            @endif
                     @endforeach
                 </div>
             </div>
