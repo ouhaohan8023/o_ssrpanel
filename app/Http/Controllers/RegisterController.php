@@ -267,6 +267,10 @@ class RegisterController extends Controller
         $timeBefore = time()-1800;
         $smsData = \DB::table('smscode')->where([['c_phone','=',$username],['c_time','>=',$timeBefore],])->orderBy('c_id','DESC')->first();
 //        print_r($smsData);die;
+        if(!$smsData){
+          $request->session()->flash('errorMsg', '验证码错误，请重新获取验证码');
+          return Redirect::back()->withInput();
+        }
         if(strtolower($smscode) != $smsData->c_code){
           $request->session()->flash('errorMsg', '短信验证码错误');
           return Redirect::back()->withInput();
