@@ -31,6 +31,7 @@ use App\Http\Models\UserTrafficHourly;
 use App\Http\Models\UserTrafficLog;
 use App\Http\Models\YwNode;
 use App\Http\Models\YwStatus;
+use App\Jobs\InstallNode;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use Redirect;
@@ -2228,17 +2229,17 @@ class AdminController extends Controller
     $site_name = env('APP_SITENAME');
     $path = '/home/wwwroot/'.$site_name.'/public/python/ssr_auto_install';
 
-    $command = 'sh '.$path.'/run_ssr_auto_install.sh '.$data_ip.' '.$data_port.' '.$data_root.' '.$data_pwd.' '.$data_data.' '.$node_id.' '.$node_trans.' '.$node_ip.' '.$node_port.' '.$node_root.' \''.$node_pwd.'\' '.$path;
-//    var_dump($command);
-    $ret = shell_exec($command);
-    $retJson = (array)json_decode($ret);
-    if(!empty($retJson)){
-          return Response::json(['status' => $retJson['code'], 'data' => $retJson['msg']]);
-    }
+    $this->dispatch(new InstallNode($data_ip,$data_port,$data_root,$data_pwd,$data_data,$node_id,$node_trans,$node_ip,$node_root,$node_pwd,$node_port,$path));
+//    $retJson = (array)json_decode($ret);
+//    if(!empty($retJson)){
+//          return Response::json(['status' => $retJson['code'], 'data' => $retJson['msg']]);
+//    }
 //    echo "<pre>$ret</pre>";
 //    echo("result : $array");
 //    echo("ret is $ret");
-//    return Response::json(['status' => 'success', 'data' => $ret, 'message' => $array]);
+    $ret = '成功加入队列';
+    $array = [];
+    return Response::json(['status' => 'success', 'data' => $ret, 'message' => $array]);
 
   }
 

@@ -180,8 +180,10 @@ DB_PASSWORD=root
 #### 常见问题
 ```$xslt
 1.提示找不到 `App\Sms\REST`类
-
-    在根目录下运行`composer dumpautoload`即可
+    将Sms文件夹复制到/app/下
+    在composer.json->autoload->classmap下加入
+    "app/Sms"
+    然后在根目录下运行`composer dumpautoload`即可
     
 2.工单回复，图片上传失败
 
@@ -292,4 +294,12 @@ supervisord -c /etc/supervisord.conf
 #查看进程
 ps ax | grep supervisor
 ps ax | grep artisan
+```
+
+```angular2html
+与App对接时的一些考虑
+现状：平台启用的都是ssr服务，但是再ios上，我们只找到了支持ss服务的客户端，怎样将将两者结合，成为了一个问题。
+发现：在节点上启用的时候，会去调用数据库内的用户信息，其中包括了加密方式，协议，混淆。而在节点上配置的协议混淆是无效的。获取到参数后，在对应端口启动服务。所以说，可以给每个用户配置不同的参数。然后又了解到了_compatible。
+解决：修改创建用户时候的默认协议，混淆参数，例如协议：auth_sha1_v4_compatible，混淆：tls1.2_ticket_auth_compatible；或者采用无协议：origin，无混淆：plain
+
 ```
