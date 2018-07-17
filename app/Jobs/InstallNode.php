@@ -57,6 +57,6 @@ class InstallNode implements ShouldQueue
       $command = 'sh '.$this->path.'/run_ssr_auto_install.sh '.$this->data_ip.' '.$this->data_port.' '.$this->data_root.' '.$this->data_pwd.' '.$this->data_data.' '.$this->node_id.' '.$this->node_trans.' '.$this->node_ip.' '.$this->node_port.' '.$this->node_root.' \''.$this->node_pwd.'\' '.$this->path;
 //    var_dump($command);
       $ret = shell_exec($command);
-      Log::info('安装新节点：'.$ret);
+      \Log::info('安装新节点：'.$ret);
     }
 }
