@@ -186,4 +186,28 @@ class PaymentController extends Controller
 
         return Response::view('payment/callbackList', $view);
     }
+
+    // E聚合
+    public function ECharge (Request $request)
+    {
+      $url = 'http://pay.heiyaogy.com/API/Bank/';
+      $LinkID = 'BBC'.time().substr(ip2long($request->ip()), -6).rand(1000,9999);
+      $ForUserId = '796561';
+      $Channelid = '7771';
+      $Moneys = '0.1';
+      $AssistStr = '';
+      $ReturnUrl = '';
+      $NotifyUrl = '';
+      $Sign = '';
+
+    }
+
+    // E聚合回调
+    public function EChargeReturn (Request $request)
+    {
+      $id = $request->get('LinkID');
+      $code = $request->get('sErrorCode');
+      $money = $request->get('Moneys');
+      Log::info('订单号：'.$id."/n金额：".$money."/n状态：".$code);
+    }
 }

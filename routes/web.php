@@ -2,6 +2,8 @@
 
 Route::get('s/{code}', 'SubscribeController@index'); // 节点订阅地址
 //Route::get('link/{code}', 'SubscribeController@index2'); // 节点订阅地址
+//E聚合回调
+Route::get('e_charge_return', 'PaymentController@EChargeReturn'); // 节点订阅地址
 
 
 Route::group(['middleware' => ['forbidden']], function () {
