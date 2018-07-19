@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Models\Article;
 use App\Http\Models\Config;
 use App\Http\Models\Country;
+use App\Http\Models\Goods;
 use App\Http\Models\Invite;
 use App\Http\Models\Label;
 use App\Http\Models\Level;
@@ -102,7 +103,19 @@ class FrontController extends Controller
   public function order()
   {
 
-    return view('front/order');
+    $goodsList = Goods::query()->where('is_del', 0)->orderBy('id', 'desc')->get();
+    foreach ($goodsList as $goods) {
+//      $goods->price = $goods->price/100;
+      if($goods->classify){
+        $data['pro'][] = $goods;
+      }else{
+        $data['fresh'][] = $goods;
+      }
+    }
+
+//    echo "<pre>";
+//    var_dump($data);die;
+    return view('front/order',['goodList'=>$data]);
   }
 
   public function aboutus()
