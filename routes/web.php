@@ -4,6 +4,10 @@ Route::get('s/{code}', 'SubscribeController@index'); // 节点订阅地址
 //Route::get('link/{code}', 'SubscribeController@index2'); // 节点订阅地址
 //E聚合回调
 Route::get('e_charge_return', 'PaymentController@EChargeReturn'); // 节点订阅地址
+Route::get('e_charge', 'PaymentController@ECharge'); //
+Route::post('payment/yq_charge', 'PaymentController@YQCharge'); //
+Route::get('payment/yq_charge_return', 'PaymentController@YQChargeReturn'); //
+
 
 
 Route::group(['middleware' => ['forbidden']], function () {
@@ -132,8 +136,12 @@ Route::group(['middleware' => ['forbidden', 'user']], function () {
   Route::post("user/switchToAdmin", "UserController@switchToAdmin"); // 转换成管理员的身份
   Route::post("user/charge", "UserController@charge"); // 卡券余额充值
   Route::post('payment/create', 'PaymentController@create'); // 创建支付
+  Route::post('payment/createByOhh', 'PaymentController@createByOhh'); // 创建支付
+
   Route::get('payment/getStatus', 'PaymentController@getStatus'); // 获取支付单状态
   Route::get('payment/{sn}', 'PaymentController@detail'); // 支付单详情
+  Route::get('payment/{sn}/{yq}', 'PaymentController@detail'); // 支付单详情
+
   Route::get('user/download', 'UserController@download'); // 用户下载中心
   Route::get('downloadApp/{key}', 'AdminController@downloadApp'); // 下载软件
 

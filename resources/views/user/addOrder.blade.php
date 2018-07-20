@@ -60,6 +60,9 @@
                     @if($is_youzan)
                         <a class="btn btn-lg red hidden-print" onclick="onlinePay()"> {{trans('home.online_pay')}} </a>
                     @endif
+                    @if(1)
+                        <a class="btn btn-lg red hidden-print" onclick="eqZFB_scan()"> 支付宝扫码 </a>
+                    @endif
                     <a class="btn btn-lg blue hidden-print uppercase" onclick="pay()"> {{trans('home.service_pay_button')}} </a>
                 </div>
             </div>
@@ -117,6 +120,42 @@
             });
         }
 
+        // EQ支付宝扫码
+        function eqZFB_scan() {
+            var goods_id = '{{$goods->id}}';
+            var coupon_sn = $('#coupon_sn').val();
+            var goods_price = '{{$goods->price}}';
+
+            index = layer.load(1, {
+                shade: [0.7,'#CCC']
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "{{url('payment/createByOhh')}}",
+                async: false,
+                data: {_token:'{{csrf_token()}}', goods_id:goods_id, coupon_sn:coupon_sn,money:goods_price},
+                dataType: 'json',
+                beforeSend: function () {
+                    index = layer.load(1, {
+                        shade: [0.7,'#CCC']
+                    });
+                },
+                success: function (ret) {
+                    layer.msg(ret.message, {time:1300}, function() {
+                        if (ret.status == 'success') {
+                            window.location.href = '{{url('payment')}}' + "/" + ret.data + '/1';
+                        } else {
+                            layer.close(index);
+                        }
+                    });
+                }
+                //complete: function () {
+                //
+                //}
+            });
+        }
+        
         // 在线支付
         function onlinePay() {
             var goods_id = '{{$goods->id}}';
