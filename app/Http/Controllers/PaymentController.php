@@ -271,7 +271,7 @@ class PaymentController extends Controller
       DB::beginTransaction();
       try {
         $user = $request->session()->get('user');
-        $orderSn = date('ymdHis') . mt_rand(100000, 999999);
+        $orderSn = 'BBC'.time().substr(ip2long($request->ip()), -6).rand(1000,9999);
         $sn = makeRandStr(12);
 
         // 生成订单
@@ -293,14 +293,15 @@ class PaymentController extends Controller
         $token = env('YQTOKEN'); //你的Token
         $secret = env('YQSECRET'); //你的Secret
         $url = env('YQURL');
+
         $params = array(
-            'orderid' => 'BBC'.time().substr(ip2long($request->ip()), -6).rand(1000,9999), //订单号
+            'orderid' => $orderSn, //订单号
             'type' => env('YQTYPE'), //支付渠道
             'money' => $request->get('money'), //金额
             'attach' => '穿云梯加速器--'.$request->get('money').'元', //备注
             'ip' => $request->ip(), //客户端IP
-            'callbackurl' => 'https://chuanyunti.com/yq_charge_return', //回调
-            'notifyurl' => 'https://chuanyunti.com/yq_charge_return', //异步回调
+            'callbackurl' => env('CALLBACKURL'), //回调
+            'notifyurl' => env('NOTIFYURL'), //异步回调
         );
         ksort($params);
         $str = '';
@@ -335,66 +336,6 @@ class PaymentController extends Controller
         Log::error('EQ创建支付订单失败：' . $e->getMessage());
 
         return Response::json(['status' => 'fail', 'data' => '', 'message' => '创建支付单失败：' . $e->getMessage()]);
-      }
-    }
-
-
-    // 易企支付
-    public function YQCharge (Request $request)
-    {
-      $ErrorCodes = array(
-          '200' =>'请求成功',
-          '201' =>'缺少支付渠道',
-          '202' =>'支付渠道关闭',
-          '203' =>'缺少支付渠道',
-          '204' =>'支付渠道关闭',
-          '205' =>'订单金额过低',
-          '206' =>'下单失败',
-          '207' =>'产品缺少二维码',
-          '208' =>'账户资金不足',
-          '209' =>'产品未找到',
-          '210' =>'产品订单繁忙',
-          '400' =>'缺少TOKEN',
-          '401' =>'TOKEN错误',
-          '402' =>'请求错误',
-          '403' =>'缺少签名',
-          '404' =>'验证签名失败,密钥错误',
-          '405' =>'验证签名失败,缺少签名字段',
-          '406' =>'订单不存在',
-          '407' =>'渠道维护',
-      );
-      $token = env('YQTOKEN'); //你的Token
-      $secret = env('YQSECRET'); //你的Secret
-      $url = env('YQURL');
-      $params = array(
-          'orderid' => 'BBC'.time().substr(ip2long($request->ip()), -6).rand(1000,9999), //订单号
-          'type' => env('YQTYPE'), //支付渠道
-          'money' => $request->get('money'), //金额
-          'attach' => '穿云梯加速器--'.$request->get('money').'元', //备注
-          'ip' => $request->ip(), //客户端IP
-          'callbackurl' => 'https://chuanyunti.com/yq_charge_return', //回调
-          'notifyurl' => 'https://chuanyunti.com/yq_charge_return', //异步回调
-      );
-      ksort($params);
-      $str = '';
-      foreach($params as $key=>$rs)
-      {
-        $str .= $key.'='.$rs.'&';
-      }
-      $str .= 'key='.$secret; //你的密钥
-      $params['sign'] = strtolower(md5($str));
-      $paramstring = http_build_query($params);
-      $content = self::makeCurl($url,$paramstring,1,$token);
-      $result = json_decode($content,true);
-      if($result){
-        if($result['status_code'] !='200'){
-          echo $ErrorCodes[$result['status_code']];
-        }else{
-          return $result['data']['pay_url'];
-//          header('Location: '.$result['data']['pay_url']);
-        }
-      }else{
-        echo "请求失败";
       }
     }
 
