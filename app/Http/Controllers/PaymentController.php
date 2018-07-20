@@ -286,6 +286,7 @@ class PaymentController extends Controller
         $order->is_expire = 0;
         $order->pay_way = 2;
         $order->status = 0;
+        $order->p_type = 1;
         $order->save();
 
         // 生成支付单
