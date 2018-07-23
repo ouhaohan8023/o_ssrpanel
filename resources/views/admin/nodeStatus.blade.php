@@ -31,7 +31,7 @@
                             @foreach($datas as $data)
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
                                     <div class="node_status_title">
-                                        {{$data['ss_node']['name']}}
+                                        {{str_limit($data['ss_node']['name'],10,$end='...')}}
                                     </div>
                                     <div id="test-circle_{{$data['l_sn_id']}}" data-animation="1" data-animationStep="8" data-percent="{{$data['sum']}}"></div>
                                 </div>
