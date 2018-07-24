@@ -292,11 +292,11 @@
                             <div class="row">
                                 @if ($node->compatible)
                                     <div class="col-md-6">
-                                        <p class="ohh">SSR节点</p>
+                                        <p class="ohh-p">SSR节点</p>
                                         <div id="qrcode_ssr_img_{{$node->id}}" style="text-align: center;"></div>
                                     </div>
                                     <div class="col-md-6">
-                                        <p class="ohh">SS节点</p>
+                                        <p class="ohh-p">SS节点</p>
                                         <div id="qrcode_ss_img_{{$node->id}}" style="text-align: center;"></div>
                                     </div>
                                 @else
