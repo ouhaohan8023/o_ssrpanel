@@ -131,10 +131,16 @@
                         <span class="selected"></span>
                     </a>
                 </li>
-                <li class="nav-item {{in_array(Request::path(), ['user/invite']) ? 'active open' : ''}}">
+                <li class="nav-item">
                     <a href="{{url('/')}}" class="nav-link nav-toggle">
                         <i class="icon-user-follow"></i>
                         <span class="title">{{trans('home.go_index')}}</span>
+                    </a>
+                </li>
+                <li class="nav-item {{in_array(Request::path(), ['user/invite']) ? 'active open' : ''}}">
+                    <a href="{{url('user/invite')}}" class="nav-link nav-toggle">
+                        <i class="icon-user-follow"></i>
+                        <span class="title">邀请管理</span>
                     </a>
                 </li>
                 <li class="nav-item {{in_array(Request::path(), ['user/download']) ? 'active open' : ''}}">
