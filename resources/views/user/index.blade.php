@@ -40,6 +40,9 @@
         .ohh-gif {
             margin-left: 10px;
         }
+        .ohh-p {
+            text-align: center;font-size: 20px
+        }
     </style>
 @endsection
 @section('title', trans('home.panel'))
@@ -289,9 +292,11 @@
                             <div class="row">
                                 @if ($node->compatible)
                                     <div class="col-md-6">
+                                        <p class="ohh">SSR节点</p>
                                         <div id="qrcode_ssr_img_{{$node->id}}" style="text-align: center;"></div>
                                     </div>
                                     <div class="col-md-6">
+                                        <p class="ohh">SS节点</p>
                                         <div id="qrcode_ss_img_{{$node->id}}" style="text-align: center;"></div>
                                     </div>
                                 @else
