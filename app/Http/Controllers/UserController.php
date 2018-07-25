@@ -1161,7 +1161,7 @@ class UserController extends Controller
 
             $goods->traffic = flowAutoShow($goods->traffic * 1048576);
             $view['goods'] = $goods;
-            $view['is_youzan'] = self::$config['is_youzan'];
+            $view['system'] = self::$config;
             $view['website_analytics'] = self::$config['website_analytics'];
             $view['website_customer_service'] = self::$config['website_customer_service'];
 

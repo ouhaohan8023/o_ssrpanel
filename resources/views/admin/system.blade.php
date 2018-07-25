@@ -46,6 +46,9 @@
                                         <li>
                                             <a href="#tab_8" data-toggle="tab"> 客服、统计设置 </a>
                                         </li>
+                                        <li>
+                                            <a href="#tab_9" data-toggle="tab"> 其他支付 </a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="portlet-body">
@@ -651,6 +654,23 @@
                                                 </div>
                                             </form>
                                         </div>
+                                        <div class="tab-pane" id="tab_9">
+                                            <form action="{{url('wSifGFeO5mQoCWB4/openPayment')}}" method="post" class="form-horizontal" role="form" onsubmit="return submitExtend();">
+                                                <div class="form-group">
+                                                    <label for="is_youzan" class="col-md-3 control-label">易企付</label>
+                                                    <div class="col-md-9">
+                                                        <input type="checkbox" class="make-switch" @if($is_yzf) checked @endif id="is_yzf" data-on-color="success" data-off-color="danger" data-on-text="启用" data-off-text="关闭">
+                                                        <span class="help-block"> 请先配置易企付参数 </span>
+                                                    </div>
+                                                </div>
+                                                {{--<div class="form-group">--}}
+                                                    {{--<div class="col-md-offset-2 col-md-10">--}}
+                                                        {{--<button type="submit" class="btn blue">提交</button>--}}
+                                                    {{--</div>--}}
+                                                {{--</div>--}}
+                                            </form>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -1013,6 +1033,21 @@
                 var is_youzan = state ? 1 : 0;
 
                 $.post("{{url('wSifGFeO5mQoCWB4/setConfig')}}", {_token:'{{csrf_token()}}', name:'is_youzan', value:is_youzan}, function (ret) {
+                    layer.msg(ret.message, {time:1000}, function() {
+                        if (ret.status == 'fail') {
+                            window.location.reload();
+                        }
+                    });
+                });
+            }
+        });
+
+        // 启用、禁用有赞云
+        $('#is_yzf').on({
+            'switchChange.bootstrapSwitch': function(event, state) {
+                var is_yzf = state ? 1 : 0;
+
+                $.post("{{url('wSifGFeO5mQoCWB4/setConfig')}}", {_token:'{{csrf_token()}}', name:'is_yzf', value:is_yzf}, function (ret) {
                     layer.msg(ret.message, {time:1000}, function() {
                         if (ret.status == 'fail') {
                             window.location.reload();

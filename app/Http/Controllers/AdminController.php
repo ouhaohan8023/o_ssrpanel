@@ -2307,4 +2307,5 @@ class AdminController extends Controller
     return Response::view('admin/nodeStatus', ['datas'=>$view,'time'=>$time]);
 
   }
+
 }

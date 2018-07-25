@@ -307,6 +307,8 @@ class PaymentController extends Controller
             'callbackurl' => env('CALLBACKURL'), //回调
             'notifyurl' => env('NOTIFYURL'), //异步回调
         );
+
+//        var_dump($params);die;
         ksort($params);
         $str = '';
         foreach($params as $key=>$rs)

@@ -57,10 +57,10 @@
             </div>
             <div class="row">
                 <div class="col-xs-12" style="text-align: right;">
-                    @if($is_youzan)
+                    @if($system['is_youzan'])
                         <a class="btn btn-lg red hidden-print" onclick="onlinePay()"> {{trans('home.online_pay')}} </a>
                     @endif
-                    @if(1)
+                    @if($system['is_yzf'])
                         <a class="btn btn-lg red hidden-print" onclick="eqZFB_scan()"> 支付宝扫码 </a>
                     @endif
                     <a class="btn btn-lg blue hidden-print uppercase" onclick="pay()"> {{trans('home.service_pay_button')}} </a>
