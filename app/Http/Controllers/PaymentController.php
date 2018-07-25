@@ -318,6 +318,7 @@ class PaymentController extends Controller
         $paramstring = http_build_query($params);
         $content = self::makeCurl($url,$paramstring,1,$token);
         $result = json_decode($content,true);
+        Log::info('支付回調：'.$content);
 
         $payment = new Payment();
         $payment->sn = $sn;
