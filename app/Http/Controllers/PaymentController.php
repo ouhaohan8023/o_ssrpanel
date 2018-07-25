@@ -144,10 +144,14 @@ class PaymentController extends Controller
             return Response::view('payment/' . $sn);
         }
 
-        if($yq) {
+        $view['bz'] = '';
+        if($yq==1) {
           $view['ways'] = '支付宝';
-        }else{
+        }elseif($yq == 0){
           $view['ways'] = '支付宝、QQ、微信';
+        }elseif($yq == 2){
+          $view['ways'] = '支付宝';
+          $view['bz'] = '请在付款时备注您的账号，以便快速审核！';
         }
 
         $view['payment'] = $payment;
@@ -243,9 +247,9 @@ class PaymentController extends Controller
       }
 
       // 判断是否开启eq支付
-//      if (!self::$config['is_youzan']) {
-//        return Response::json(['status' => 'fail', 'data' => '', 'message' => '创建支付单失败：系统并未开启在线支付功能']);
-//      }
+      if (!self::$config['is_yzf']) {
+        return Response::json(['status' => 'fail', 'data' => '', 'message' => '创建支付单失败：系统并未开启易企付支付功能']);
+      }
 
       // 判断是否存在同个商品的未支付订单
       $existsOrder = Order::query()->where('goods_id', $goods_id)->where('status', 0)->where('user_id', $user['id'])->first();
@@ -345,6 +349,101 @@ class PaymentController extends Controller
         return Response::json(['status' => 'fail', 'data' => '', 'message' => '创建支付单失败：' . $e->getMessage()]);
       }
     }
+
+    // 创建支付单--手动支付
+    public function createByOhhBase(Request $request)
+  {
+    $goods_id = intval($request->get('goods_id'));
+    $coupon_sn = $request->get('coupon_sn');
+    $user = $request->session()->get('user');
+    $func = $request->get('func');
+    $p_type = $request->get('p_type');
+
+    $goods = Goods::query()->where('id', $goods_id)->where('status', 1)->first();
+    if (!$goods) {
+      return Response::json(['status' => 'fail', 'data' => '', 'message' => '创建支付单失败：商品或服务已下架']);
+    }
+
+    // 判断是否开启eq支付
+      if (!self::$config['is_human']) {
+        return Response::json(['status' => 'fail', 'data' => '', 'message' => '创建支付单失败：系统并未开启手动支付功能']);
+      }
+
+    // 判断是否存在同个商品的未支付订单
+    $existsOrder = Order::query()->where('goods_id', $goods_id)->where('status', 0)->where('user_id', $user['id'])->first();
+    if ($existsOrder) {
+      return Response::json(['status' => 'fail', 'data' => '', 'message' => '创建支付单失败：尚有未支付的订单，请先去支付']);
+    }
+
+    // 使用优惠券
+    if ($coupon_sn) {
+      $coupon = Coupon::query()->where('sn', $coupon_sn)->whereIn('type', [1, 2])->where('is_del', 0)->where('status', 0)->first();
+      if (!$coupon) {
+        return Response::json(['status' => 'fail', 'data' => '', 'message' => '创建支付单失败：优惠券不存在']);
+      }
+
+      // 计算实际应支付总价
+      $amount = $coupon->type == 2 ? $goods->price * $coupon->discount : $goods->price - $coupon->amount;
+      $amount = $amount > 0 ? $amount : 0;
+    } else {
+      $amount = $goods->price;
+    }
+
+    // 如果最后总价格为0，则不允许创建支付单
+    if ($amount <= 0) {
+      return Response::json(['status' => 'fail', 'data' => '', 'message' => '创建支付单失败：合计价格为0，无需使用在线支付']);
+    }
+
+    DB::beginTransaction();
+    try {
+      $user = $request->session()->get('user');
+      $orderSn = 'BBC'.time().substr(ip2long($request->ip()), -6).rand(1000,9999);
+      $sn = makeRandStr(12);
+
+      // 生成订单
+      $order = new Order();
+      $order->order_sn = $orderSn;
+      $order->user_id = $user['id'];
+      $order->goods_id = $goods_id;
+      $order->coupon_id = !empty($coupon) ? $coupon->id : 0;
+      $order->origin_amount = $goods->price;
+      $order->amount = $amount;
+      $order->expire_at = date("Y-m-d H:i:s", strtotime("+" . $goods->days . " days"));
+      $order->is_expire = 0;
+      $order->pay_way = 2;
+      $order->status = 0;
+      $order->p_type = $p_type;
+      $order->save();
+
+      $this->$func($sn,$user['id'],$order->oid,$orderSn,$amount,$goods->price);
+      DB::commit();
+
+      return Response::json(['status' => 'success', 'data' => $sn, 'message' => '创建支付单成功']);
+    } catch (\Exception $e) {
+      DB::rollBack();
+
+      Log::error('EQ创建支付订单失败：' . $e->getMessage());
+
+      return Response::json(['status' => 'fail', 'data' => '', 'message' => '创建支付单失败：' . $e->getMessage()]);
+    }
+  }
+
+  protected function handPayment($sn,$id,$oid,$orderSn,$amount,$price)
+  {
+    $url = env('HTTPTYPE').'://'.env('APP_SITENAME').'/images/payment/alipay_'.$price.'.jpg';
+    $payment = new Payment();
+    $payment->sn = $sn;
+    $payment->user_id = $id;
+    $payment->oid = $oid;
+    $payment->order_sn = $orderSn;
+    $payment->pay_way = 1;
+    $payment->amount = $amount;
+    $payment->qr_url = $url;
+    $payment->qr_local_url = $url;
+    $payment->status = 0;
+    $payment->save();
+    Log::info('手动支付：用户：'.$id.' 金额：'.$price);
+  }
 
     protected function makeCurl($url,$params=false,$ispost=0,$token){
       $httpInfo = array();

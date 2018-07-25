@@ -136,7 +136,8 @@ Route::group(['middleware' => ['forbidden', 'user']], function () {
   Route::post("user/switchToAdmin", "UserController@switchToAdmin"); // 转换成管理员的身份
   Route::post("user/charge", "UserController@charge"); // 卡券余额充值
   Route::post('payment/create', 'PaymentController@create'); // 创建支付
-  Route::post('payment/createByOhh', 'PaymentController@createByOhh'); // 创建支付
+  Route::post('payment/createByOhh', 'PaymentController@createByOhh'); // 创建易企付支付
+  Route::post('payment/createByOhhBase', 'PaymentController@createByOhhBase'); // 创建手动支付
 
   Route::get('payment/getStatus', 'PaymentController@getStatus'); // 获取支付单状态
   Route::get('payment/{sn}', 'PaymentController@detail'); // 支付单详情
