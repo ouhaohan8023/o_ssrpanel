@@ -91,7 +91,7 @@
                         @foreach($nodeList as $node)
                             <div class="col-md-6">
                                 <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 ">
-                                    <h4 class="widget-thumb-heading">{{$node->name}}</h4>
+                                    <h4 class="widget-thumb-heading">{{$node->client_name}}</h4>
                                     <div class="widget-thumb-wrap">
                                         <div style="float:left;display: inline-block;padding-right:15px;">
                                             @if($node->country_code)

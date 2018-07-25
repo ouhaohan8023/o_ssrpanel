@@ -94,6 +94,8 @@ class AdminController extends Controller
         $label = $request->get('label');
         $start_time = $request->get('start_time');
         $end_time = $request->get('end_time');
+      $last_time = $request->get('last_time');
+
 
       $query = User::query();
         if (!empty($username)) {
@@ -140,6 +142,17 @@ class AdminController extends Controller
               $dataFind[] = $u->user_id;
             }
             $query->whereIn('id', $dataFind);
+        }
+
+        if($last_time != '') {
+          if($last_time){
+            //已使用
+            $query->where('t', '!=','');
+          }else{
+            //未使用
+            $query->where('t', '=','');
+          }
+
         }
 
         // 临近过期提醒

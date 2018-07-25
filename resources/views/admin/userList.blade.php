@@ -84,6 +84,13 @@
                                 </select>
                             </div>
                             <div class="col-md-2 col-sm-2">
+                                <select class="form-control input-sm" name="last_time" id="last_time" onChange="doSearch()">
+                                    <option value="" @if(Request::get('last_time') == '') selected @endif>最后使用</option>
+                                    <option value="1" @if(Request::get('last_time') == '1') selected @endif>已使用</option>
+                                    <option value="0" @if(Request::get('last_time') == '0') selected @endif>未使用</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 col-sm-2">
                                 <button type="button" class="btn btn-sm blue" onclick="doSearch();">查询</button>
                                 <button type="button" class="btn btn-sm grey" onclick="doReset();">重置</button>
                             </div>
@@ -236,8 +243,9 @@
             var label = $("#label option:checked").val();
             var start_time = $('#dp1').val();
             var end_time = $('#dp2').val();
+            var last_time = $('#last_time').val();
 
-            window.location.href = '{{url('wSifGFeO5mQoCWB4/userList')}}' + '?username=' + username + '&wechat=' + wechat + '&qq=' + qq + '&port=' + port + '&pay_way=' + pay_way + '&status=' + status + '&enable=' + enable+ '&label=' + label + '&start_time=' + start_time + '&end_time=' + end_time;
+            window.location.href = '{{url('wSifGFeO5mQoCWB4/userList')}}' + '?username=' + username + '&wechat=' + wechat + '&qq=' + qq + '&port=' + port + '&pay_way=' + pay_way + '&status=' + status + '&enable=' + enable+ '&label=' + label + '&start_time=' + start_time + '&end_time=' + end_time + '&last_time=' + last_time;
         }
 
         // 重置
