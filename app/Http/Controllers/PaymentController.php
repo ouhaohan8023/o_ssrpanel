@@ -358,6 +358,8 @@ class PaymentController extends Controller
     $user = $request->session()->get('user');
     $func = $request->get('func');
     $p_type = $request->get('p_type');
+    $p_way = $request->get('p_way');
+
 
     $goods = Goods::query()->where('id', $goods_id)->where('status', 1)->first();
     if (!$goods) {
@@ -410,7 +412,7 @@ class PaymentController extends Controller
       $order->amount = $amount;
       $order->expire_at = date("Y-m-d H:i:s", strtotime("+" . $goods->days . " days"));
       $order->is_expire = 0;
-      $order->pay_way = 2;
+      $order->pay_way = $p_way;
       $order->status = 0;
       $order->p_type = $p_type;
       $order->save();

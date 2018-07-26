@@ -165,6 +165,7 @@
             var coupon_sn = $('#coupon_sn').val();
             var goods_price = '{{$goods->price}}';
             var pay_type = 2;
+            var pay_way = 3
 
             index = layer.load(1, {
                 shade: [0.7,'#CCC']
@@ -174,7 +175,7 @@
                 type: "POST",
                 url: "{{url('payment/createByOhhBase')}}",
                 async: false,
-                data: {_token:'{{csrf_token()}}', goods_id:goods_id, coupon_sn:coupon_sn,money:goods_price,func:'handPayment',p_type:pay_type},
+                data: {_token:'{{csrf_token()}}', goods_id:goods_id, coupon_sn:coupon_sn,money:goods_price,func:'handPayment',p_type:pay_type,p_way:pay_way},
                 dataType: 'json',
                 beforeSend: function () {
                     index = layer.load(1, {
