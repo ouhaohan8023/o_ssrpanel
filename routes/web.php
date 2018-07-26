@@ -5,8 +5,9 @@ Route::get('s/{code}', 'SubscribeController@index'); // 节点订阅地址
 //E聚合回调
 Route::get('e_charge_return', 'PaymentController@EChargeReturn'); // 节点订阅地址
 Route::get('e_charge', 'PaymentController@ECharge'); //
-Route::post('payment/yq_charge', 'PaymentController@YQCharge'); //
-Route::get('payment/yq_charge_return', 'PaymentController@YQChargeReturn'); //
+Route::post('payment/yq_charge', 'PaymentController@YQCharge'); //易企付支付
+Route::get('payment/yq_charge_return', 'PaymentController@YQChargeReturn'); //易企付回调
+Route::post('payment/hand_charge_return', 'PaymentController@handPaymentReturn'); //易企付回调
 
 
 

@@ -39,6 +39,8 @@
                                     <option value="" @if(Request::get('pay_way') == '') selected @endif>支付方式</option>
                                     <option value="1" @if(Request::get('pay_way') == '1') selected @endif>余额支付</option>
                                     <option value="2" @if(Request::get('pay_way') == '2') selected @endif>有赞云支付</option>
+                                    <option value="3" @if(Request::get('pay_way') == '3') selected @endif>手动支付</option>
+
                                 </select>
                             </div>
                             <div class="col-md-2 col-sm-2">
@@ -70,6 +72,8 @@
                                         <th> 支付方式 </th>
                                         <th> 订单状态 </th>
                                         <th> 创建时间 </th>
+                                        <th> 操作 </th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -88,7 +92,19 @@
                                                 <td> {{$order->coupon ? $order->coupon->name . ' - ' . $order->coupon->sn : ''}} </td>
                                                 <td> ￥{{$order->origin_amount}} </td>
                                                 <td> ￥{{$order->amount}} </td>
-                                                <td> {{$order->pay_way == '1' ? '余额支付' : '有赞云支付'}} </td>
+                                                <td>
+                                                    @if($order->pay_way == '1')
+                                                        余额支付
+                                                        @elseif($order->pay_way == '2')
+                                                    有赞云支付
+                                                    @elseif($order->pay_way == '3')
+                                                        手动支付
+                                                    @elseif($order->pay_way == '3')
+                                                        易企付支付
+                                                        @else
+                                                    未知支付
+                                                        @endif
+                                                </td>
                                                 <td>
                                                     @if($order->status == '-1')
                                                         已关闭
@@ -101,6 +117,12 @@
                                                     @endif
                                                 </td>
                                                 <td> {{$order->created_at}} </td>
+                                                <td>
+                                                    @if($order->pay_way == '3' && $order->status == 0)
+                                                        <button type="button" class="btn btn-sm blue btn-outline" onclick="update('{{$order->order_sn}}',1,'{{$order->amount}}')"><i class="fa fa-check"></i></button>
+                                                        <button type="button" class="btn btn-sm red btn-outline" onclick="update('{{$order->order_sn}}',0,'{{$order->amount}}')"><i class="fa fa-times"></i></button>
+                                                    @endif
+                                                </td>
                                             </tr>
                                         @endforeach
                                     @endif
@@ -143,6 +165,13 @@
         // 重置
         function doReset() {
             window.location.href = '{{url('wSifGFeO5mQoCWB4/orderList')}}';
+        }
+
+        function update(sn,status,money) {
+            $.post("{{url('payment/hand_charge_return')}}", {_token:'{{csrf_token()}}', status:status, orderid:sn,money:money}, function (ret) {
+                layer.msg('操作成功', {time:1000});
+                window.location.href = '{{url('wSifGFeO5mQoCWB4/orderList')}}';
+            });
         }
     </script>
 @endsection

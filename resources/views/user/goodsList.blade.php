@@ -40,9 +40,19 @@
                                         <tr class="odd gradeX">
                                             <td style="width: 20%;">
                                                 <!--@if($goods->logo) <a href="{{$goods->logo}}" class="fancybox"><img src="{{$goods->logo}}"/></a> @endif -->
-                                                <span style="font-size: 1.15em; color: #000;">{{$goods->name}}</span>
+                                                <span style="font-size: 1.15em; color: #000;">{{$goods->name}}
+                                                    @if($goods->classify)
+                                                        <img src="https://chuanyunti.com/images/zyj.gif" width="50px">
+                                                    @endif
+                                                </span>
                                                 <br>
-                                                <span style="color: #000;">{{trans('home.service_traffic')}}：{{$goods->traffic}}</span>
+                                                <span style="color: #000;">{{trans('home.service_traffic')}}：
+                                                    @if($goods->classify == '1')
+                                                        无限
+                                                    @else
+                                                        {{$goods->traffic}}
+                                                    @endif
+                                                </span>
                                                 <br>
                                                 <span style="color: #000;">{{trans('home.service_days')}}：{{$goods->days}} {{trans('home.day')}}</span>
                                             </td>

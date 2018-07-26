@@ -149,11 +149,13 @@
                     </li>
                     <li class="list-group-item">
                         {{trans('home.account_bandwidth_usage')}}：{{$info['usedTransfer']}}（{{$info['totalTransfer']}}）@if($info['traffic_reset_day']) &ensp;{{trans('home.account_reset_notice', ['reset_day' => $info['traffic_reset_day']])}}  @endif
+                        @if($info['totalTransfer'] != '无限')
                         <div class="progress progress-striped active" style="margin-bottom:0;" title="{{trans('home.account_total_traffic')}} {{$info['totalTransfer']}}，{{trans('home.account_usage_traffic')}} {{$info['usedTransfer']}}">
                             <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{$info['usedPercent'] * 100}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$info['usedPercent'] * 100}}%">
                                 <span class="sr-only"> {{$info['usedTransfer']}} / {{$info['totalTransfer']}} </span>
                             </div>
                         </div>
+                        @endif
                     </li>
                 </ul>
 

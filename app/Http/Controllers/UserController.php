@@ -53,7 +53,7 @@ class UserController extends Controller
         $user = $request->session()->get('user');
 
         $user = User::query()->where('id', $user['id'])->first();
-        $user->totalTransfer = flowAutoShow($user->transfer_enable);
+        $user->totalTransfer = $user->u_unlimit?'无限':flowAutoShow($user->transfer_enable);
         $user->usedTransfer = flowAutoShow($user->u + $user->d);
         $user->usedPercent = $user->transfer_enable > 0 ? round(($user->u + $user->d) / $user->transfer_enable, 2) : 1;
         $user->levelName = Level::query()->where('level', $user['level'])->first()['level_name'];
