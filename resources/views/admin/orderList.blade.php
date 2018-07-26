@@ -121,6 +121,8 @@
                                                     @if($order->pay_way == '3' && $order->status == 0)
                                                         <button type="button" class="btn btn-sm blue btn-outline" onclick="update('{{$order->order_sn}}',1,'{{$order->amount}}')"><i class="fa fa-check"></i></button>
                                                         <button type="button" class="btn btn-sm red btn-outline" onclick="update('{{$order->order_sn}}',0,'{{$order->amount}}')"><i class="fa fa-times"></i></button>
+                                                        @elseif($order->pay_way == '3' && $order->status == '-1')
+                                                        <button type="button" class="btn btn-sm green btn-outline" onclick="revert('{{$order->order_sn}}',0,'{{$order->amount}}')"><i class="fa fa-reply"></i></button>
                                                     @endif
                                                 </td>
                                             </tr>
@@ -169,6 +171,13 @@
 
         function update(sn,status,money) {
             $.post("{{url('payment/hand_charge_return')}}", {_token:'{{csrf_token()}}', status:status, orderid:sn,money:money}, function (ret) {
+                layer.msg('操作成功', {time:1000});
+                window.location.href = '{{url('wSifGFeO5mQoCWB4/orderList')}}';
+            });
+        }
+
+        function revert(sn,status,money) {
+            $.post("{{url('payment/hand_charge_revert')}}", {_token:'{{csrf_token()}}', status:status, orderid:sn,money:money}, function (ret) {
                 layer.msg('操作成功', {time:1000});
                 window.location.href = '{{url('wSifGFeO5mQoCWB4/orderList')}}';
             });

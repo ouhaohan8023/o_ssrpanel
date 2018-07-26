@@ -448,6 +448,7 @@ class PaymentController extends Controller
     Log::info('手动支付：用户：'.$id.' 金额：'.$price);
   }
 
+  // 手动支付的订单，状态更新
   public function handPaymentReturn (Request $request)
   {
     $status = $request->get('status');
@@ -508,7 +509,8 @@ class PaymentController extends Controller
 
           // 套餐就改流量重置日，流量包不改
           if ($goods->type == 2) {
-              User::query()->where('id', $order->user_id)->update(['traffic_reset_day' => $traffic_reset_day, 'expire_time' => date('Y-m-d', strtotime("+" . $goods->days . " days", strtotime($order->user->expire_time))), 'enable' => 1]);
+            $traffic_reset_day = in_array(date('d'), [29, 30, 31]) ? 28 : abs(date('d'));
+            User::query()->where('id', $order->user_id)->update(['traffic_reset_day' => $traffic_reset_day, 'expire_time' => date('Y-m-d', strtotime("+" . $goods->days . " days", strtotime($order->user->expire_time))), 'enable' => 1]);
           } else {
             if($goods->classify){
               User::query()->where('id', $order->user_id)->update(['expire_time' => date('Y-m-d', strtotime("+" . $goods->days . " days", strtotime($order->user->expire_time))), 'enable' => 1,'u_unlimit'=>1]);
@@ -565,6 +567,119 @@ class PaymentController extends Controller
 
     }else{
       Log::info('手动支付订单号(无效)：'.$status."/n金额：".$money."/n状态：".$code);
+    }
+  }
+
+  // 手动支付的订单，过期了，但是已付款，需要激活
+  public function handPaymentRevert(Request $request)
+  {
+    $status = $request->get('status');
+    $code = $request->get('orderid');
+    $money = $request->get('money');
+    $isPayment = Payment::query()->where(['order_sn'=>$code,'status'=>'-1'])->first();
+    $isOrder = Order::query()->where(['order_sn'=>$code,'status'=>'-1'])->exists();
+    if($isOrder && $isPayment){
+      // 处理订单
+      DB::beginTransaction();
+      try {
+        // 更新支付单
+        Payment::query()->where(['order_sn'=>$code,'status'=>'-1'])->update(['status'=>1]);
+
+        // 更新订单
+        $order = Order::query()->with(['user'])->where('oid', $isPayment->oid)->first();
+        $order->status = 2;
+        $order->save();
+
+        // 优惠券置为已使用
+        $coupon = Coupon::query()->where('id', $order->coupon_id)->first();
+        if ($coupon) {
+          if ($coupon->usage == 1) {
+            $coupon->status = 1;
+            $coupon->save();
+          }
+
+          // 写入日志
+          $couponLog = new CouponLog();
+          $couponLog->coupon_id = $coupon->id;
+          $couponLog->goods_id = $order->goods_id;
+          $couponLog->order_id = $order->oid;
+          $couponLog->save();
+        }
+
+        // 如果买的是套餐，则先将之前购买的所有套餐置都无效，并扣掉之前所有套餐的流量
+        $goods = Goods::query()->where('id', $order->goods_id)->first();
+        if ($goods->type == 2) {
+          $existOrderList = Order::query()
+              ->with(['goods'])
+              ->whereHas('goods', function ($q) {
+                $q->where('type', 2);
+              })
+              ->where('user_id', $order->user_id)
+              ->where('oid', '<>', $order->oid)
+              ->where('is_expire', 0)
+              ->get();
+
+          foreach ($existOrderList as $vo) {
+            Order::query()->where('oid', $vo->oid)->update(['is_expire' => 1]);
+            User::query()->where('id', $order->user_id)->decrement('transfer_enable', $vo->goods->traffic * 1048576);
+          }
+        }
+
+        // 把商品的流量加到账号上
+        User::query()->where('id', $order->user_id)->increment('transfer_enable', $goods->traffic * 1048576);
+
+        // 套餐就改流量重置日，流量包不改
+        if ($goods->type == 2) {
+          $traffic_reset_day = in_array(date('d'), [29, 30, 31]) ? 28 : abs(date('d'));
+          User::query()->where('id', $order->user_id)->update(['traffic_reset_day' => $traffic_reset_day, 'expire_time' => date('Y-m-d', strtotime("+" . $goods->days . " days", strtotime($order->user->expire_time))), 'enable' => 1]);
+        } else {
+          if($goods->classify){
+            User::query()->where('id', $order->user_id)->update(['expire_time' => date('Y-m-d', strtotime("+" . $goods->days . " days", strtotime($order->user->expire_time))), 'enable' => 1,'u_unlimit'=>1]);
+          }else{
+            User::query()->where('id', $order->user_id)->update(['expire_time' => date('Y-m-d', strtotime("+" . $goods->days . " days", strtotime($order->user->expire_time))), 'enable' => 1]);
+          }
+
+          // 将商品的有效期和流量自动重置日期加到账号上
+        }
+
+        // 写入用户标签
+        if ($goods->label) {
+          // 取出现有的标签
+          $userLabels = UserLabel::query()->where('user_id', $order->user_id)->pluck('label_id')->toArray();
+          $goodsLabels = GoodsLabel::query()->where('goods_id', $order->goods_id)->pluck('label_id')->toArray();
+          $newUserLabels = array_merge($userLabels, $goodsLabels);
+
+          // 删除用户所有标签
+          UserLabel::query()->where('user_id', $order->user_id)->delete();
+
+          // 生成标签
+          foreach ($newUserLabels as $vo) {
+            $obj = new UserLabel();
+            $obj->user_id = $order->user_id;
+            $obj->label_id = $vo;
+            $obj->save();
+          }
+        }
+
+        // 写入返利日志
+        if ($order->user->referral_uid) {
+          $referralLog = new ReferralLog();
+          $referralLog->user_id = $order->user_id;
+          $referralLog->ref_user_id = $order->user->referral_uid;
+          $referralLog->order_id = $order->oid;
+          $referralLog->amount = $order->amount;
+          $referralLog->ref_amount = $order->amount * self::$config['referral_percent'];
+          $referralLog->status = 0;
+          $referralLog->save();
+        }
+
+        DB::commit();
+        Log::info('手动支付订单号(有效)：'.$status."/n金额：".$money."/n状态：".$code);
+      } catch (\Exception $e) {
+        DB::rollBack();
+
+        Log::info('【手动支付】更新支付单和订单异常：' . $e->getMessage());
+      }
     }
   }
 

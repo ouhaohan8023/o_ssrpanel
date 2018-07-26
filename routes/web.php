@@ -7,7 +7,9 @@ Route::get('e_charge_return', 'PaymentController@EChargeReturn'); // 节点订�
 Route::get('e_charge', 'PaymentController@ECharge'); //
 Route::post('payment/yq_charge', 'PaymentController@YQCharge'); //易企付支付
 Route::get('payment/yq_charge_return', 'PaymentController@YQChargeReturn'); //易企付回调
-Route::post('payment/hand_charge_return', 'PaymentController@handPaymentReturn'); //易企付回调
+Route::post('payment/hand_charge_return', 'PaymentController@handPaymentReturn'); //手动支付
+Route::post('payment/hand_charge_revert', 'PaymentController@handPaymentRevert'); //手动支付，激活已过期的订单
+
 
 
 
