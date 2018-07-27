@@ -35,7 +35,7 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\AutoStatisticsNodeHourlyTestJob::class,
         \App\Console\Commands\AutoMysqlBackUpJob::class,
         \App\Console\Commands\AutoMysqlBackUpRemoteJob::class,
-
+        \App\Console\Commands\CpJob::class,
 
     ];
 
@@ -71,6 +71,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('autoMysqlBackUpJob')->dailyAt('00:00');
 //      $schedule->command('autoMysqlBackUpJob')->everyMinute();//测试用
         $schedule->command('autoMysqlBackUpRemoteJob')->dailyAt('00:30');
+      $schedule->command('cPJob')->everyMinute();
 
     }
 
