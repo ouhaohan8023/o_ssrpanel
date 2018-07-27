@@ -18,7 +18,7 @@ class CpJob extends Command
 
     public function handle()
     {
-        exec('cp -a /home/wwwroot/api.chuanyunti.com/public/assets/images/qrcode /home/wwwroot/hjcqns.chuanyunti.com/public/assets/images/qrcode');
+        exec('cp -rf /home/wwwroot/api.chuanyunti.com/public/assets/images/qrcode/*  /home/wwwroot/hjcqns.chuanyunti.com/public/assets/images/qrcode/');
         Log::info('定时任务：' . $this->description);
     }
 }
