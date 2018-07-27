@@ -156,7 +156,18 @@ class YzyController extends Controller
                     } else {
                         // OHH修改，专业型商品，需要更新user表中u_unlimit字段
                       if(time()>strtotime($order->user->expire_time)){
-                        // 用户已经过期的情况下，直接从今天开始算
+                        // 用户已经过期的情况下，直接从今天开始算，且已用，剩余流量都清零OHH
+                        $existOrderList = Order::query()
+                            ->with(['goods'])
+                            ->where('user_id', $order->user_id)
+                            ->where('oid', '<>', $order->oid)
+                            ->where('is_expire', 0)
+                            ->get();
+
+                        foreach ($existOrderList as $vo) {
+                          Order::query()->where('oid', $vo->oid)->update(['is_expire' => 1]);
+                          User::query()->where('id', $order->user_id)->decrement('transfer_enable', $vo->goods->traffic * 1048576);
+                        }
                         if($goods->classify) {
                           User::query()->where('id', $order->user_id)->update(['expire_time' => date('Y-m-d', strtotime("+" . $goods->days . " days")+86400), 'enable' => 1, 'u_unlimit' => 1]);
                         }else{
