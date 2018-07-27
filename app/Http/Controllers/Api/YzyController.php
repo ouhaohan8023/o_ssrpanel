@@ -164,16 +164,15 @@ class YzyController extends Controller
                             ->where('status',2)
                             ->where('is_expire', 0)
                             ->get();
-                        Log::info($existOrderList);
 
                         foreach ($existOrderList as $vo) {
                           Order::query()->where('oid', $vo->oid)->update(['is_expire' => 1]);
                           User::query()->where('id', $order->user_id)->decrement('transfer_enable', $vo->goods->traffic * 1048576);
                         }
                         if($goods->classify) {
-                          User::query()->where('id', $order->user_id)->update(['expire_time' => date('Y-m-d', strtotime("+" . $goods->days . " days")+86400), 'enable' => 1, 'u_unlimit' => 1]);
+                          User::query()->where('id', $order->user_id)->update(['expire_time' => date('Y-m-d', strtotime("+" . $goods->days . " days")+86400), 'enable' => 1,'u'=>0,'d'=>0, 'u_unlimit' => 1]);
                         }else{
-                          User::query()->where('id', $order->user_id)->update(['expire_time' => date('Y-m-d', strtotime("+" . $goods->days . " days")+86400), 'enable' => 1]);
+                          User::query()->where('id', $order->user_id)->update(['expire_time' => date('Y-m-d', strtotime("+" . $goods->days . " days")+86400), 'enable' => 1,'u'=>0,'d'=>0]);
                         }
                       }else{
                         // 用户未过期，日期进行叠加
