@@ -169,6 +169,10 @@ class YzyController extends Controller
                           Order::query()->where('oid', $vo->oid)->update(['is_expire' => 1]);
                           User::query()->where('id', $order->user_id)->decrement('transfer_enable', $vo->goods->traffic * 1048576);
                         }
+                        $system = $this->systemConfig();
+                        // 减掉创建账号时的赠送流量
+                        User::query()->where('id', $order->user_id)->decrement('transfer_enable', $system['default_traffic'] * 1048576);
+
                         if($goods->classify) {
                           User::query()->where('id', $order->user_id)->update(['expire_time' => date('Y-m-d', strtotime("+" . $goods->days . " days")+86400), 'enable' => 1,'u'=>0,'d'=>0, 'u_unlimit' => 1]);
                         }else{
