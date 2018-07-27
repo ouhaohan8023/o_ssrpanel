@@ -161,6 +161,7 @@ class YzyController extends Controller
                             ->with(['goods'])
                             ->where('user_id', $order->user_id)
                             ->where('oid', '<>', $order->oid)
+                            ->where('status',2)
                             ->where('is_expire', 0)
                             ->get();
 
