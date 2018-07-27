@@ -164,6 +164,7 @@ class YzyController extends Controller
                             ->where('status',2)
                             ->where('is_expire', 0)
                             ->get();
+                        Log::info($existOrderList);
 
                         foreach ($existOrderList as $vo) {
                           Order::query()->where('oid', $vo->oid)->update(['is_expire' => 1]);
