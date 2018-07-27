@@ -18,7 +18,12 @@ class CpJob extends Command
 
     public function handle()
     {
-        exec('cp -rf /home/wwwroot/api.chuanyunti.com/public/assets/images/qrcode/*  /home/wwwroot/hjcqns.chuanyunti.com/public/assets/images/qrcode/');
+      $data = date('Ymd');
+      $path = '/assets/images/qrcode/' . $data . '/';
+      if (!file_exists(public_path($path))) { //检查是否有该文件夹，如果没有就创建，并给予最高权限
+        mkdir(public_path($path), 0700, true);
+      }
+        exec('cp -rf /home/wwwroot/api.chuanyunti.com/public/assets/images/qrcode/'.$data.'/*  /home/wwwroot/hjcqns.chuanyunti.com/public/assets/images/qrcode/'.$data.'/');
         Log::info('定时任务：' . $this->description);
     }
 }
