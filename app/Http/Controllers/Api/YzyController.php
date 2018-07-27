@@ -155,13 +155,24 @@ class YzyController extends Controller
                         User::query()->where('id', $order->user_id)->update(['traffic_reset_day' => $traffic_reset_day, 'expire_time' => date('Y-m-d', strtotime("+" . $goods->days . " days", strtotime($order->user->expire_time))), 'enable' => 1]);
                     } else {
                         // OHH修改，专业型商品，需要更新user表中u_unlimit字段
+                      if(time()>strtotime($order->user->expire_time)){
+                        // 用户已经过期的情况下，直接从今天开始算
+                        if($goods->classify) {
+                          User::query()->where('id', $order->user_id)->update(['expire_time' => date('Y-m-d', strtotime("+" . $goods->days . " days")), 'enable' => 1, 'u_unlimit' => 1]);
+                        }else{
+                          User::query()->where('id', $order->user_id)->update(['expire_time' => date('Y-m-d', strtotime("+" . $goods->days . " days")), 'enable' => 1]);
+                        }
+                      }else{
+                        // 用户未过期，日期进行叠加
                         if($goods->classify){
                           User::query()->where('id', $order->user_id)->update(['expire_time' => date('Y-m-d', strtotime("+" . $goods->days . " days", strtotime($order->user->expire_time))), 'enable' => 1,'u_unlimit'=>1]);
                         }else{
                           User::query()->where('id', $order->user_id)->update(['expire_time' => date('Y-m-d', strtotime("+" . $goods->days . " days", strtotime($order->user->expire_time))), 'enable' => 1]);
                         }
-                        // 将商品的有效期和流量自动重置日期加到账号上
-                        User::query()->where('id', $order->user_id)->update(['expire_time' => date('Y-m-d', strtotime("+" . $goods->days . " days")), 'enable' => 1]);
+                      }
+
+                        // 将商品的有效期和流量自动重置日期加到账号上（原版）
+//                        User::query()->where('id', $order->user_id)->update(['expire_time' => date('Y-m-d', strtotime("+" . $goods->days . " days")), 'enable' => 1]);
                     }
 
                     // 写入用户标签
