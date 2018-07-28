@@ -2239,7 +2239,7 @@ class AdminController extends Controller
     $node_pwd = $request->get('n_pwd');
     $node_port = $request->get('n_port');
 
-    $site_name = env('APP_SITENAME');
+    $site_name = env('APP_SITENAME_INSTALL');
     $path = '/home/wwwroot/'.$site_name.'/public/python/ssr_auto_install';
 
     $this->dispatch(new InstallNode($data_ip,$data_port,$data_root,$data_pwd,$data_data,$node_id,$node_trans,$node_ip,$node_root,$node_pwd,$node_port,$path));
