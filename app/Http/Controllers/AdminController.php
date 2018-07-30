@@ -130,6 +130,40 @@ class AdminController extends Controller
 //      var_dump($view);die;
       return view('admin/refer',$view);
     }
+
+    //代理转化用户关系
+    public function referUser(Request $request)
+    {
+      $username = $request->get('user_id');
+      $ref_user_id = $request->get('ref_user_id');
+      $dp1 = $request->get('start_time');
+      $dp2 = $request->get('end_time');
+      $status = $request->get('status');
+//      var_dump($status);die;
+      $user = User::query();
+      if (!empty($username)) {
+        $user->where('username', 'like', '%' . $username . '%');
+      }
+      if(!empty($ref_user_id)){
+        $referUser = User::query()->where('username', 'like', '%' . $ref_user_id . '%')->first();
+        if($referUser){
+          $user->where('referral_uid','=',$referUser->id);
+        }
+      }
+      if(!empty($dp1)) {
+        $user->where('created_at','>=',$dp1.' 00:00:00');
+      }
+      if(!empty($dp2)) {
+        $user->where('created_at','<=',$dp2.' 00:00:00');
+      }
+      if($status != '') {
+        $user->where('status',intval($status));
+      }
+
+
+      $view['data'] = $user->with(['refer'])->where('referral_uid','!=','')->paginate(15);
+      return view('admin/referUser',$view);
+    }
     // 用户列表
     public function userList(Request $request)
     {

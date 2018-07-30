@@ -15,6 +15,11 @@ class User extends Model
     protected $table = 'user';
     protected $primaryKey = 'id';
 
+    function refer()
+    {
+      return $this->hasOne(User::class, 'id', 'referral_uid');
+    }
+
     function payment()
     {
         return $this->hasMany(Payment::class, 'user_id', 'id');
