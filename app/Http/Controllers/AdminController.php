@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Models\Article;
 use App\Http\Models\Config;
 use App\Http\Models\Country;
+use App\Http\Models\DownloadTimes;
 use App\Http\Models\Invite;
 use App\Http\Models\Label;
 use App\Http\Models\Level;
@@ -2264,19 +2265,25 @@ class AdminController extends Controller
     {
       case 'windows':
         $name = 'windows/'.env('DOWNLOADPATH_WINDOWS1');
+        $d['d_id'] = 1;
         break;
       case 'mac':
         $name = 'macOs/'.env('DOWNLOADPATH_MAC');
+        $d['d_id'] = 3;
         break;
       case 'android':
         $name = 'android/'.env('DOWNLOADPATH_ANDROID');
+        $d['d_id'] = 5;
         break;
       case 'windowstap':
         $name = 'windows/'.env('DOWNLOADPATH_WINDOWS2');
+        $d['d_id'] = 2;
         break;
       default:
         return redirect('front/download');
     }
+
+    DownloadTimes::query()->where($d)->increment('d_times');
 
     $file = $url.$name;
     return response()->download($file);
