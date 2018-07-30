@@ -552,6 +552,8 @@ class AdminController extends Controller
                 $ssNode->root = $request->get('root', 'root');
                 $ssNode->pwd = $request->get('pwd', 'pwd');
                 $ssNode->serverport = $request->get('serverport', '22');
+                $ssNode->client_name = $request->get('client_name');
+
 
               $ssNode->save();
 

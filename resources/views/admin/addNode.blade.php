@@ -39,6 +39,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
+                                                        <label for="name" class="col-md-3 control-label"> APP 节点名称 </label>
+                                                        <div class="col-md-8">
+                                                            <input type="text" class="form-control" name="client_name" id="client_name" placeholder="" autofocus required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label for="server" class="col-md-3 control-label"> 域名地址 </label>
                                                         <div class="col-md-8">
                                                             <input type="text" class="form-control" name="server" id="server" placeholder="服务器域名地址，填则优先取域名地址">
