@@ -2258,7 +2258,7 @@ class AdminController extends Controller
 
   //下载软件
   public function downloadApp(Request $request,$key) {
-    $url = '/home/wwwroot/'.env('APP_SITENAME').'/public/'.env('DOWNLOADPATH').'/';
+    $url = '/home/wwwroot/'.env('APP_SITENAME2').'/public/'.env('DOWNLOADPATH').'/';
 
     switch ($key)
     {
