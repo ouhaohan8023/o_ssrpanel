@@ -77,10 +77,59 @@ class AdminController extends Controller
       $view['totalRefAmount'] = ReferralApply::query()->where('status', 2)->sum('amount') / 100;
       $view['expireWarningUserCount'] = User::query()->where('expire_time', '<=', date('Y-m-d', strtotime("+" . self::$config['expire_days'] . " days")))->where('enable', 1)->count();
       $view['expireWarningUserCount_n'] = User::query()->where('expire_time', '<=', date('Y-m-d', strtotime("+" . self::$config['expire_days'] . " days")))->where('enable', 0)->count();
+      $view['userReferCount'] = User::query()->where('referral_uid','!=','0')->count();
+      $view['userReferCountPay'] = ReferralLog::query()->groupBy('user_id')->get()->count();
+      $view['userReferMoneyAll'] = ReferralLog::query()->sum('amount') / 100;
+      $view['userReferMoney'] = ReferralLog::query()->where('status',0)->sum('ref_amount') / 100;
+      $view['userReferMoneySuccess'] = ReferralLog::query()->where('status',1)->sum('ref_amount') / 100;
 
       return Response::view('admin/index', $view);
     }
 
+    // 待提现金额
+    public function referLog(Request $request)
+    {
+      $username = $request->get('user_id');
+      $ref_user_id = $request->get('ref_user_id');
+      $sn = $request->get('sn');
+      $dp1 = $request->get('start_time');
+      $dp2 = $request->get('end_time');
+      $status = $request->get('status');
+//      var_dump($status);die;
+      $refer = ReferralLog::query();
+      if (!empty($username)) {
+        $user = User::query()->where('username', 'like', '%' . $username . '%')->first();
+        if($user){
+          $refer->where('user_id','=',$user->id);
+        }
+      }
+      if(!empty($ref_user_id)){
+        $user2 = User::query()->where('username', 'like', '%' . $ref_user_id . '%')->first();
+        if($user2){
+          $refer->where('ref_user_id','=',$user2->id);
+        }
+      }
+      if(!empty($sn)){
+        $order = Order::query()->where('order_sn', '=', $sn)->first();
+        if($order){
+          $refer->where('order_id','=',$order->oid);
+        }
+      }
+      if(!empty($dp1)) {
+        $refer->where('created_at','>=',$dp1.' 00:00:00');
+      }
+      if(!empty($dp2)) {
+        $refer->where('created_at','<=',$dp2.' 00:00:00');
+      }
+      if($status != '') {
+        $refer->where('status',intval($status));
+      }
+
+
+      $view['data'] = $refer->with(['user','userRefer','order'])->paginate(15);
+//      var_dump($view);die;
+      return view('admin/refer',$view);
+    }
     // 用户列表
     public function userList(Request $request)
     {

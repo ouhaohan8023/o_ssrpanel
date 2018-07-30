@@ -217,6 +217,83 @@
                     </div>
                 </div>
             </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="dashboard-stat2 bordered" onclick="skip('wSifGFeO5mQoCWB4/refer');">
+                    <div class="display">
+                        <div class="number">
+                            <h3 class="font-green">
+                                <span data-counter="counterup" data-value="{{$userReferCount}}"></span>
+                            </h3>
+                            <small>代理转化用户总数</small>
+                        </div>
+                        <div class="icon">
+                            <i class="icon-credit-card"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="dashboard-stat2 bordered" onclick="skip('wSifGFeO5mQoCWB4/refer');">
+                    <div class="display">
+                        <div class="number">
+                            <h3 class="font-green">
+                                <span data-counter="counterup" data-value="{{$userReferCountPay}}"></span>
+                            </h3>
+                            <small>代理转化并付款用户数</small>
+                        </div>
+                        <div class="icon">
+                            <i class="icon-credit-card"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="dashboard-stat2 bordered" onclick="skip('wSifGFeO5mQoCWB4/refer');">
+                    <div class="display">
+                        <div class="number">
+                            <h3 class="font-red">
+                                <span data-counter="counterup" data-value="{{$userReferMoneyAll}}"></span>
+                            </h3>
+                            <small>代理推广总金额</small>
+                        </div>
+                        <div class="icon">
+                            <i class="icon-credit-card"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="dashboard-stat2 bordered" onclick="skip('wSifGFeO5mQoCWB4/refer?status=0');">
+                    <div class="display">
+                        <div class="number">
+                            <h3 class="font-red">
+                                <span data-counter="counterup" data-value="{{$userReferMoney}}">0</span>
+                            </h3>
+                            <small>代理待提现金额</small>
+                        </div>
+                        <div class="icon">
+                            <i class="icon-user-unfollow"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="dashboard-stat2 bordered" onclick="skip('wSifGFeO5mQoCWB4/refer?status=1');">
+                    <div class="display">
+                        <div class="number">
+                            <h3 class="font-red">
+                                <span data-counter="counterup" data-value="{{$userReferMoneySuccess}}">0</span>
+                            </h3>
+                            <small>代理已提现金额</small>
+                        </div>
+                        <div class="icon">
+                            <i class="icon-user-unfollow"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- END PAGE BASE CONTENT -->
     </div>
