@@ -234,8 +234,10 @@ class RegisterController extends Controller
             $request->session()->put('register_token', makeRandStr(16));
 
             // 如果第一次打开带返aff，则存储aff，防止再次打开无返利aff
-            if (intval($request->get('aff'))) {
-                if (!$request->session()->get('register_aff')) {
+          $affUID = intval($request->get('aff'));
+            if ($affUID) {
+                if (!$request->session('id',$affUID)->get('register_aff')) {
+                    User::query()->where('id',$affUID)->increment('u_refer_link');
                     $request->session()->put('register_aff', intval($request->get('aff')));
                 }
             }

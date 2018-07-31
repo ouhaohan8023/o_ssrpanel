@@ -7,9 +7,6 @@
             width: 75px;
             height: 75px;
         }
-        .clickSpan {
-            margin-left: 20px;
-        }
     </style>
 @endsection
 @section('title', trans('home.panel'))
@@ -31,7 +28,6 @@
                         <div class="caption">
                             <i class="icon-link font-blue"></i>
                             <span class="caption-subject font-blue bold">{{trans('home.referral_my_link')}}</span>
-                            <span class="caption-subject font-blue clickSpan">点击次数：{{$clickNums}} 次</span>
                         </div>
                     </div>
                     <div class="portlet-body form">
@@ -48,9 +44,6 @@
                     <div class="portlet-title">
                         <div class="caption font-dark">
                             <span class="caption-subject bold"> {{trans('home.referral_title')}} </span>
-                            <span class="caption-subject bold clickSpan"> 总佣金： {{$referMoneyAll or '0'}} 元</span>
-                            <span class="caption-subject bold clickSpan"> 已提现： {{$referMoneyGet or '0'}} 元</span>
-                            <span class="caption-subject bold clickSpan"> 待提现： {{$referMoneyWait or '0'}} 元</span>
                         </div>
                         <div class="actions">
                             <button type="submit" class="btn red" onclick="extractMoney()"> {{trans('home.referral_table_apply')}} </button>
@@ -110,70 +103,6 @@
                     </div>
                 </div>
                 <!-- END EXAMPLE TABLE PORTLET-->
-                <div class="portlet light bordered">
-                    <div class="portlet-title">
-                        <div class="caption font-dark">
-                            <span class="caption-subject bold"> 推广会员 </span>
-                            <span class="caption-subject bold clickSpan"> 总用户数： {{$allNum or '0'}} </span>
-                            <span class="caption-subject bold clickSpan"> 已消费用户数： {{$payNum or '0'}} </span>
-                        </div>
-                    </div>
-                    <div class="portlet-body">
-                        <div class="table-scrollable">
-                            <table class="table table-striped table-bordered table-hover table-checkable order-column">
-                                <thead>
-                                <tr>
-                                    <th> # </th>
-                                    <th> 用户名 </th>
-                                    <th> 是否消费 </th>
-                                    <th> 状态 </th>
-                                    <th> 注册时间 </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @if($referralLogList->isEmpty())
-                                    <tr>
-                                        <td colspan="6" style="text-align: center;"> {{trans('home.referral_table_none')}} </td>
-                                    </tr>
-                                @else
-                                    @foreach($refer as $key => $v)
-                                        <tr class="odd gradeX">
-                                            <td> {{$key + 1}} </td>
-                                            <td> {{$v->username}} </td>
-                                            <td>
-                                                @if($v['pay'])
-                                                    <span class="label label-sm label-danger">已消费</span>
-                                                    @else
-                                                    <span class="label label-sm label-danger">未消费</span>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if($v['status'] == '-1')
-                                                    <span class="label label-sm label-danger">禁用</span>
-                                                    @elseif($v['status'] == 0)
-                                                    <span class="label label-sm label-default">未激活</span>
-                                                @elseif($v['status'] == 1)
-                                                    <span class="label label-sm label-info">正常</span>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                {{$v['created_at']}}
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @endif
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-7 col-sm-7">
-                                <div class="dataTables_paginate paging_bootstrap_full_number pull-right">
-                                    {{ $refer->links() }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <!-- END PAGE BASE CONTENT -->
