@@ -44,8 +44,8 @@
                     <div class="panel-body">
                         <img class="img" src="/images/window.svg" width="50px" height="50px">
                         <p class="t2">Windows客户端1</p>
-                        <a class="btn btn-lg red dow" href="{{url('downloadApp/windows')}}">下载</a>
-                        <a target="_blank"  class="btn btn-lg blue dow" href="/download_vpn/windows/ssr.pdf">教程</a>
+                        <a class="btn btn-lg red dow" href="{{url('downloadApp/windowstap')}}">下载</a>
+                        <a target="_blank" class="btn btn-lg blue dow" href="/download_vpn/windows/sstap.pdf">教程</a>
                     </div>
                 </div>
             </div>
@@ -83,8 +83,8 @@
                     <div class="panel-body">
                         <img class="img" src="/images/window.svg" width="50px" height="50px">
                         <p class="t2">Windows客户端2</p>
-                        <a class="btn btn-lg red dow" href="{{url('downloadApp/windowstap')}}">下载</a>
-                        <a target="_blank" class="btn btn-lg blue dow" href="/download_vpn/windows/sstap.pdf">教程</a>
+                        <a class="btn btn-lg red dow" href="{{url('downloadApp/windows')}}">下载</a>
+                        <a target="_blank"  class="btn btn-lg blue dow" href="/download_vpn/windows/ssr.pdf">教程</a>
                     </div>
                 </div>
             </div>
