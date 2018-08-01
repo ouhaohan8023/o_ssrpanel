@@ -78,9 +78,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-12 text-center mt-6"><a class="Button Button--primary" href="http://affiliates.nordvpn.com/users/signup/" role="button" tabindex="0"><span>Sign Up Now</span></a></div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -93,7 +90,7 @@
                             {{--<p class="Text small c-bw-9"><span>Our commission rates are one of the best in the industry. What you earn depends on the subscription<br class="visible-md visible-lg"> plan ordered by each customer you refer.</span></p>--}}
                         </div>
                     </div>
-                    <div class="row py-7 py-sm-8 py-md-10">
+                    <div class="row">
                         <div class="col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-xs-10 col-sm-10 col-lg-10 py-10 py-sm-10">
                             <div class="Paper bg-bw-1 TableCard px-5 py-4 p-sm-5 p-md-6 sha-1">
                                 <p class="Text c-bw-9 fwm text-center py-4 pt-md-0"><span>入门型用户</span></p>
@@ -134,7 +131,44 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-12 text-center"><a class="Button Button--primary" href="https://affiliates.nordvpn.com/users/signup/" role="button" tabindex="0"><span>Start Earning Money</span></a></div>
+                        <div class="col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-xs-10 col-sm-10 col-lg-10 py-10 py-sm-10">
+                            <div class="Paper bg-bw-1 TableCard px-5 py-4 p-sm-5 p-md-6 sha-1">
+                                <p class="Text c-bw-9 fwm text-center py-4 pt-md-0"><span>专业型用户</span></p>
+                                <div>
+                                    <div class="TableCard__item d-flex align-items-center py-4">
+                                        <p class="Text small fwm c-bw-12 mb-sm-2 mb-md-0" style="width: 10%"><span>类型</span></p>
+                                        <p class="Text lead  fwb c-bw-12" style="width: 30%">1月计划</p>
+                                        <p class="Text lead  fwb c-bw-12" style="width: 30%">3月计划</p>
+                                        <p class="Text lead  fwb c-bw-12" style="width: 30%">12月计划</p>
+                                    </div>
+                                    <hr class="my-0">
+                                </div>
+                                <div>
+                                    <div class="TableCard__item d-flex align-items-center py-4">
+                                        <p class="Text small fwm c-bw-12 mb-sm-2 mb-md-0" style="width: 10%"><span>费用</span></p>
+                                        <p class="Text lead ml-auto fwb c-bw-12" style="width: 30%">30元</p>
+                                        <p class="Text lead ml-auto fwb c-bw-12" style="width: 30%">70元</p>
+                                        <p class="Text lead ml-auto fwb c-bw-12" style="width: 30%">228元</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="TableCard__item d-flex align-items-center py-4">
+                                        <p class="Text small fwm c-bw-12 mb-sm-2 mb-md-0" style="width: 10%"><span>首次消费</span></p>
+                                        <p class="Text lead ml-auto fwb c-bw-12" style="width: 30%">50%</p>
+                                        <p class="Text lead ml-auto fwb c-bw-12" style="width: 30%">40%</p>
+                                        <p class="Text lead ml-auto fwb c-bw-12" style="width: 30%">30%</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="TableCard__item d-flex align-items-center py-4">
+                                        <p class="Text small fwm c-bw-12 mb-sm-2 mb-md-0" style="width: 10%"><span>续费</span></p>
+                                        <p class="Text lead ml-auto fwb c-bw-12" style="width: 30%">20%</p>
+                                        <p class="Text lead ml-auto fwb c-bw-12" style="width: 30%">20%</p>
+                                        <p class="Text lead ml-auto fwb c-bw-12" style="width: 30%">20%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

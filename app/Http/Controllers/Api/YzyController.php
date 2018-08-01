@@ -216,13 +216,20 @@ class YzyController extends Controller
 
                     // 写入返利日志
                     if ($order->user->referral_uid) {
+                      $first = ReferralLog::query()->where('user_id',$order->user_id)->exists();
+                      if(!$first){
+                        $fee = $goods->first_back/100;
+                      }else{
+                        $fee = self::$config['referral_percent'];
+                      }
                         $referralLog = new ReferralLog();
                         $referralLog->user_id = $order->user_id;
                         $referralLog->ref_user_id = $order->user->referral_uid;
                         $referralLog->order_id = $order->oid;
                         $referralLog->amount = $order->amount;
-                        $referralLog->ref_amount = $order->amount * self::$config['referral_percent'];
-                        $referralLog->status = 0;
+//                        $referralLog->ref_amount = $order->amount * self::$config['referral_percent'];
+                      $referralLog->ref_amount = $order->amount * $fee;
+                      $referralLog->status = 0;
                         $referralLog->save();
                     }
 

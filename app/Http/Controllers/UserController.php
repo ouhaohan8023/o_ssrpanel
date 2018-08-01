@@ -1133,12 +1133,19 @@ class UserController extends Controller
 
                 // 写入返利日志
                 if ($user->referral_uid) {
+                  $first = ReferralLog::query()->where('user_id',$user->id)->exists();
+                  if(!$first){
+                    $fee = $goods->first_back/100;
+                  }else{
+                    $fee = self::$config['referral_percent'];
+                  }
+
                     $referralLog = new ReferralLog();
                     $referralLog->user_id = $user->id;
                     $referralLog->ref_user_id = $user->referral_uid;
                     $referralLog->order_id = $order->oid;
                     $referralLog->amount = $amount;
-                    $referralLog->ref_amount = $amount * self::$config['referral_percent'];
+                    $referralLog->ref_amount = $amount * $fee;
                     $referralLog->status = 0;
                     $referralLog->save();
                 }
