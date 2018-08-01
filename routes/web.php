@@ -168,6 +168,8 @@ Route::get('front/order', 'FrontController@order'); //VPN应用--订购
 Route::get('front/aboutus', 'FrontController@aboutus'); //VPN应用--关于我们
 Route::get('front/privacy', 'FrontController@privacy'); //VPN应用--关于我们
 Route::get('front/survice', 'FrontController@survice'); //VPN应用--关于我们
+Route::get('front/refer', 'FrontController@refer'); //代理
+
 Route::get('test', 'RegisterController@test2'); //sms测试
 Route::get('sendSms', 'RegisterController@sendSms'); //注册发送短息功能
 

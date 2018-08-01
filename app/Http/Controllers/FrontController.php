@@ -131,4 +131,9 @@ class FrontController extends Controller
   {
     return view('front/survice');
   }
+
+  public function refer()
+  {
+    return view('front/refer');
+  }
 }

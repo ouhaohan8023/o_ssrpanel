@@ -60,11 +60,12 @@ class SubscribeController extends Controller
         // 更新访问次数
         $subscribe->increment('times', 1);
 
-        $timeBefore = date('Y-m-d').' 00:00:00';
-        $linkNums = UserSubscribeLog::query()->where([['sid','=',$subscribe['id']],['request_time','>=',$timeBefore]])->count();
-        if($linkNums>self::$config['subscribe_ban_times']){
-          exit($this->noneNode());
-        }
+        // ohh封禁---取消
+//        $timeBefore = date('Y-m-d').' 00:00:00';
+//        $linkNums = UserSubscribeLog::query()->where([['sid','=',$subscribe['id']],['request_time','>=',$timeBefore]])->count();
+//        if($linkNums>self::$config['subscribe_ban_times']){
+//          exit($this->noneNode());
+//        }
 
         // 记录每次请求
         $this->log($subscribe->id, $request->getClientIp(), $request->headers);
