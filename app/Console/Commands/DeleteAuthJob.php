@@ -18,7 +18,7 @@ class DeleteAuthJob extends Command
 
     public function handle()
     {
-      $time = date("Y-m-d H:i:s",time()-15*86400);
+      $time = date("Y-m-d H:i:s",time()-env('DELETE_AUTH',180)*86400);
       \DB::table("oauth_access_tokens")->where('created_at','<=',$time)->delete();
       Log::info('定时任务：'.$this->description);
     }
