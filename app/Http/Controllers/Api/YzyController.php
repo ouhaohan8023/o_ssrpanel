@@ -147,7 +147,8 @@ class YzyController extends Controller
 
                     // 把商品的流量加到账号上
                     User::query()->where('id', $order->user_id)->increment('transfer_enable', $goods->traffic * 1048576);
-
+                    // 修改用户限制终端数
+                    User::query()->where('id', $order->user_id)->update(['u_client_num'=>$goods->able_phone]);
                     // 套餐就改流量重置日，流量包不改
                     if ($goods->type == 2) {
                         // 将商品的有效期和流量自动重置日期加到账号上
