@@ -1112,6 +1112,9 @@ class UserController extends Controller
                     }
                 }
 
+                // 修改用户限制终端数
+                User::query()->where('id', $user->id)->update(['u_client_num'=>$goods->able_phone]);
+
                 // 写入用户标签
                 if ($goods->label) {
                     // 取出现有的标签
