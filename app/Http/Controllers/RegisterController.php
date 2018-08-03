@@ -6,6 +6,7 @@ use App\Http\Models\Invite;
 use App\Http\Models\SsConfig;
 use App\Http\Models\User;
 use App\Http\Models\UserLabel;
+use App\Http\Models\UserSubscribeLog;
 use App\Http\Models\Verify;
 use App\Http\Models\YwLog;
 use App\Http\Models\YwStatus;
@@ -493,6 +494,10 @@ class RegisterController extends Controller
 ////      MailQueue::dispatch();
 //      $this->dispatch(new MailQueue($username,$activeUserUrl));
 //      $this->dispatch(new MailQueue($username,$activeUserUrl));
+
+//      $request_times = UserSubscribeLog::query()->where('sid', 157)->where('request_time', '>=', date("Y-m-d H:i:s", strtotime("-24 hours")))->distinct('request_ip')->count('request_ip');
+//      var_dump($request_times);die;
+
     }
 
     protected function hhh($in,$out){

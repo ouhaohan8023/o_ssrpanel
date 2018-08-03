@@ -24,8 +24,8 @@
 
     <div class="BaseTemplate AffiliateProgram">
         <section class="BannerWrapper text-center">
-            <div class="Background Background--hidden-sm-up" style="background-image:url('/images/refer_sm_01.jpg');background-repeat:no-repeat;background-position:center bottom;background-size:cover">
-                <div class="Background Background--hidden-xs" style="background-image:url('/images/refer_01.jpg');background-color:transparent;background-repeat:no-repeat;background-position:center;background-size:cover">
+            <div class="Background Background--hidden-sm-up" style="background-image:url('/images/refer_011.jpg');background-repeat:no-repeat;background-position:center bottom;background-size:cover">
+                <div class="Background Background--hidden-xs" style="background-image:url('/images/refer_011.jpg');background-color:transparent;background-repeat:no-repeat;background-position:center;background-size:cover">
                     <div class="container">
                         <div class="Banner">
                             <div class="row d-sm-flex">

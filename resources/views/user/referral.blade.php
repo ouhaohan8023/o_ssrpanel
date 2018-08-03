@@ -20,7 +20,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="note note-info">
-                    <p>{{trans('home.promote', ['traffic' => $referral_traffic, 'referral_percent' => $referral_percent * 100])}}</p>
+                    <p>边用边赚钱，成为穿云梯代理最高享受50%佣金待遇！
+                        <a href="/front/refer" class="btn red mt-clipboard" data-clipboard-action="copy" data-clipboard-target="#mt-target-1">
+                            立即查看代理详情！
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>
