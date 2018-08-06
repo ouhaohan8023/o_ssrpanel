@@ -69,7 +69,7 @@
                                 </h6>
                                 <p class="Text small mb-0">
                                     <span>
-                                        手机注册即送1G流量免费体验
+                                        注册即送7天免费使用期
                                     </span>
                                 </p>
                             </div>
@@ -131,7 +131,7 @@
                                             class="vertical-middle"><span>套餐选择多样性</span></span>
                                 </h6>
                                 <p class="Text small mb-0"><span>
-                                        限流量和不限流量套餐可供用户选择，并推出业内最低价格9.9元/月
+                                        对用户流量要求的不同，我们提供了入门型和专业型两种套餐
                                     </span>
                                 </p>
                             </div>
