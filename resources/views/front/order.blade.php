@@ -8,12 +8,21 @@
         .mb-sm-11{
                 margin-bottom: 10px;
         }
+        @media (min-width: 768px){
+            .mb-sm-7 {
+                margin-top: 32px;
+            }
+        }
+        .mb-5 {
+            margin-top: 16px;
+        }
+
     </style>
     <hr class="bg-bw-4 my-0">
     <main>
         <div class="bg-bw-2">
             <div class="container" style="margin-top: 10px">
-                <img src="/images/buy_center.png?v=1.0" class="img-responsive" alt="Responsive image">
+                <img src="/images/buy_center.jpg?v=1.0" class="img-responsive" alt="Responsive image">
             </div>
             <div id="plan-section" class="PlanCardsSection">
                 <div class="container">
@@ -44,8 +53,14 @@
                                                         class="Text fwb c-bw-12"><span>{{$fresh->name}}</span></p>
                                             </div>
                                             <div class="PlanCard__pricing fwb mt-2 c-bw-12"><span>¥</span>
-                                                <h2 class="Title d-inline-block pl-2 lh1">{{$fresh->price}}</h2><span
-                                                        class="d-block small fwm mb-4 mb-md-5 mt-2"><span></span></span>
+                                                <h2 class="Title d-inline-block pl-2 lh1">{{$fresh->price}} </h2>
+                                                <span class="d-block small fwm mb-4 mb-md-5 mt-2">
+                                                    @if($fresh->price != 18)
+                                                        <s style="color:#f64f64;">￥{{$fresh->p}}</s>&nbsp;{{$fresh->discount}}折
+                                                    @else
+                                                        &nbsp;
+                                                    @endif
+                                                </span>
                                             </div>
                                             <div class="PlanCard__description">
                                                 <div class="mb-6"><span
@@ -87,8 +102,14 @@
                                                         class="Text fwb c-bw-12"><span>{{$fresh->name}}</span></p>
                                             </div>
                                             <div class="PlanCard__pricing fwb mt-2 c-bw-12"><span>¥</span>
-                                                <h2 class="Title d-inline-block pl-2 lh1">{{$fresh->price}}</h2><span
-                                                        class="d-block small fwm mb-4 mb-md-5 mt-2"><span></span></span>
+                                                <h2 class="Title d-inline-block pl-2 lh1">{{$fresh->price}}</h2>
+                                                <span class="d-block small fwm mb-4 mb-md-5 mt-2">
+                                                    @if($fresh->price != 30)
+                                                        <s style="color:#f64f64;">￥{{$fresh->p}}</s>&nbsp;{{$fresh->discount}}折
+                                                    @else
+                                                        &nbsp;
+                                                    @endif
+                                                </span>
                                             </div>
                                             <div class="PlanCard__description">
                                                 <div class="mb-6"><span

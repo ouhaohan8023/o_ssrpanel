@@ -104,7 +104,6 @@ class FrontController extends Controller
 
     $goodsList = Goods::query()->where('is_del', 0)->orderBy('id', 'ASC')->get();
     foreach ($goodsList as $goods) {
-//      $goods->price = $goods->price/100;
       if($goods->classify){
         $data['pro'][] = $goods;
       }else{

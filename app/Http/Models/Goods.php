@@ -25,6 +25,11 @@ class Goods extends Model
         return $value / 100;
     }
 
+    function getPAttribute($value)
+    {
+      return $value / 100;
+    }
+
     function setPriceAttribute($value)
     {
         $this->attributes['price'] = $value * 100;
