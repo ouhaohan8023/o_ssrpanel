@@ -97,7 +97,7 @@
                                         <span>首页</span>
                                     </a>
                                 </li>
-                                <li style="display: none">
+                                <li>
                                     <a
                                             href="/front/order"
                                             role="menuitem"
