@@ -80,6 +80,7 @@
                 </div>
                 <div class="well" style="background-color: #FFF;">
                     如有疑问，请联系客服QQ： <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2747305744&site=qq&menu=yes">{{env('CONTRACTQQ')}}</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;微信：<a target="#" href="">{{env('CONTRACTWECHAT')}}</a>
                 </div>
                 <div class="well" style="background-color: #FFF;">
                     {{trans('home.ratio_tips')}}

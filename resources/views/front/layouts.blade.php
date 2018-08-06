@@ -127,6 +127,15 @@
                                     </a>
                                 </li>
                                 <li>
+                                    <a
+                                            href="/front/refer"
+                                            role="menuitem"
+                                            class="Link mb-0"
+                                    >
+                                        <span>代理中心</span>
+                                    </a>
+                                </li>
+                                <li>
                                     @if(Session::has('user'))
                                         <a class="Button Button--primary Button--small" href="/user" role="button" tabindex="0"><span>我的账户</span></a>
                                         <a class="Button Button--primary Button--small" href="{{url('logouttofront')}}" role="button" tabindex="0"><span>退出</span></a>
