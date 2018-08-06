@@ -86,7 +86,6 @@ class UserController extends Controller
             ->where('ss_node.status', 1)
             ->groupBy('ss_node.id')
             ->orderBy('sort','DESC')
-            ->orderBy('client_name','ASC')
             ->get();
 
 //        var_dump($nodeList);die;
