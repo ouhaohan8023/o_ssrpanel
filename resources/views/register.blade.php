@@ -27,6 +27,16 @@
     <!-- BEGIN THEME LAYOUT STYLES -->
     <!-- END THEME LAYOUT STYLES -->
     <link rel="shortcut icon" href="{{asset('favicon2.ico')}}" />
+    {{--百度站长统计--}}
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?08105322cddc42dc0c011d66dc7bd29c";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </head>
 
 <body class=" login">
