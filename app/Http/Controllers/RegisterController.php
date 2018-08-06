@@ -59,38 +59,7 @@ class RegisterController extends Controller
                 $request->session()->flash('errorMsg', '请输入用户名');
 
                 return Redirect::back()->withInput();
-            } else if (strstr($username,'molms')
-                ||strstr($username,'bnuis')
-                ||strstr($username,'urltc')
-                ||strstr($username,'lakqs')
-                ||strstr($username,'www.bccto.me')
-                ||strstr($username,'bccto.me')
-                ||strstr($username,'4059.com')
-                ||strstr($username,'4057.com')
-                ||strstr($username,'chaichuang.com')
-                ||strstr($username,'a7996.com')
-                ||strstr($username,'3202.com')
-                ||strstr($username,'xianbeitang.com')
-                ||strstr($username,'dawin.com')
-                ||strstr($username,'cr219.com')
-                ||strstr($username,'jnpayy.com')
-                ||strstr($username,'jiaxin8736.com')
-                ||strstr($username,'cuirushi.org')
-                ||strstr($username,'chacuo.net')
-                ||strstr($username,'027168.com')
-                ||strstr($username,'uzxia.com')
-                ||strstr($username,'10minutemail.info')
-                ||strstr($username,'emlhub.com')
-                ||strstr($username,'10mail.org')
-                ||strstr($username,'yomail.info')
-                ||strstr($username,'emltmp.com')
-                ||strstr($username,'emlpro.com')
-                ||strstr($username,'emlhub.com')
-                ||strstr($username,'10mail.org')
-                ||strstr($username,'10mail.org')
-                ||strstr($username,'lrc8.com')
-                ||strstr($username,'1otc.com')
-            ) {
+            } else if ($this->TenMinutesEmail($username)) {
               $request->session()->flash('errorMsg', '禁用此邮箱');
 
               return Redirect::back()->withInput();
@@ -613,6 +582,70 @@ class RegisterController extends Controller
     }
     $data = (array)$ip->data;
     return $data;
+  }
+
+  /**
+   * 判断是否为临时邮箱
+   */
+  protected function TenMinutesEmail($username){
+    if(strstr($username,'molms')
+        ||strstr($username,'bnuis')
+        ||strstr($username,'urltc')
+        ||strstr($username,'lakqs')
+        ||strstr($username,'www.bccto.me')
+        ||strstr($username,'bccto.me')
+        ||strstr($username,'4059.com')
+        ||strstr($username,'4057.com')
+        ||strstr($username,'chaichuang.com')
+        ||strstr($username,'a7996.com')
+        ||strstr($username,'3202.com')
+        ||strstr($username,'xianbeitang.com')
+        ||strstr($username,'dawin.com')
+        ||strstr($username,'cr219.com')
+        ||strstr($username,'jnpayy.com')
+        ||strstr($username,'jiaxin8736.com')
+        ||strstr($username,'cuirushi.org')
+        ||strstr($username,'chacuo.net')
+        ||strstr($username,'027168.com')
+        ||strstr($username,'uzxia.com')
+        ||strstr($username,'10minutemail.info')
+        ||strstr($username,'emlhub.com')
+        ||strstr($username,'10mail.org')
+        ||strstr($username,'yomail.info')
+        ||strstr($username,'emltmp.com')
+        ||strstr($username,'emlpro.com')
+        ||strstr($username,'emlhub.com')
+        ||strstr($username,'10mail.org')
+        ||strstr($username,'10mail.org')
+        ||strstr($username,'lrc8.com')
+        ||strstr($username,'1otc.com')
+        ||strstr($username,'yopmail')
+        ||strstr($username,'cool.fr.nf')
+        ||strstr($username,'jetable.fr.nf')
+        ||strstr($username,'nospam.ze.tc')
+        ||strstr($username,'nomail.xl.cx')
+        ||strstr($username,'mega.zik.dj')
+        ||strstr($username,'speed.1s.fr')
+        ||strstr($username,'courriel.fr.nf')
+        ||strstr($username,'moncourrier.fr.nf')
+        ||strstr($username,'monemail.fr.nf')
+        ||strstr($username,'monmail.fr.nf')
+        ||strstr($username,'robo3.co')
+        ||strstr($username,'lgad.uu.me')
+        ||strstr($username,'kpooa.com')
+//        ||strstr($username,'1otc.com')
+//        ||strstr($username,'1otc.com')
+//        ||strstr($username,'1otc.com')
+//        ||strstr($username,'1otc.com')
+//        ||strstr($username,'1otc.com')
+//        ||strstr($username,'1otc.com')
+//        ||strstr($username,'1otc.com')
+
+    ){
+      return true;
+    }else{
+      return false;
+    }
   }
 
 }
