@@ -102,7 +102,7 @@ class FrontController extends Controller
   public function order()
   {
 
-    $goodsList = Goods::query()->where('is_del', 0)->orderBy('id', 'desc')->get();
+    $goodsList = Goods::query()->where('is_del', 0)->orderBy('id', 'ASC')->get();
     foreach ($goodsList as $goods) {
 //      $goods->price = $goods->price/100;
       if($goods->classify){
