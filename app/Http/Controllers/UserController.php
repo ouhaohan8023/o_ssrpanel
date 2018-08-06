@@ -1238,7 +1238,7 @@ class UserController extends Controller
         $view['link'] = self::$config['website_url'] . '/register?aff=' . $user['id'];
         $view['referralLogList'] = ReferralLog::query()->where('ref_user_id', $user['id'])->with('user')->paginate(10);
         $view['clickNums'] = $user['u_refer_link'];
-        $referUser = User::query()->select('username','status','created_at','id')->where('referral_uid',$user['id'])->paginate(15);
+        $referUser = User::query()->select('username','status','created_at','id')->where('referral_uid',$user['id'])->get();
         $view['payNum'] = 0;
         $view['allNum'] = 0;
         foreach ($referUser as $k => $v){
