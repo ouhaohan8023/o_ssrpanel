@@ -638,8 +638,8 @@ class RegisterController extends Controller
         ||strstr($username,'mt2015.com')
         ||strstr($username,'TempInbox.com')
         ||strstr($username,'TempEmail.net')
-//        ||strstr($username,'1otc.com')
-//        ||strstr($username,'1otc.com')
+        ||strstr($username,'yuoia.com')
+        ||strstr($username,'mt2015.com')
 
     ){
       return true;
