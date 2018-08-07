@@ -93,6 +93,8 @@
                             <div class="col-md-2 col-sm-2">
                                 <button type="button" class="btn btn-sm blue" onclick="doSearch();">查询</button>
                                 <button type="button" class="btn btn-sm grey" onclick="doReset();">重置</button>
+                                <button type="button" class="btn btn-sm blue" onclick="doExportExcel();">导出</button>
+
                             </div>
                         </div>
                         <div class="table-scrollable table-scrollable-borderless">
@@ -278,6 +280,10 @@
             });
         }
 
+        // 导出Excel
+        function doExportExcel() {
+            window.location.href = '{{url('wSifGFeO5mQoCWB4/exportUserList')}}';
+        }
         $(document).ready(function () {
             $('#dp1,#dp2').datepicker(
                 {
