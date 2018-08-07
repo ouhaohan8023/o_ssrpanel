@@ -303,3 +303,18 @@ ps ax | grep artisan
 解决：修改创建用户时候的默认协议，混淆参数，例如协议：auth_sha1_v4_compatible，混淆：tls1.2_ticket_auth_compatible；或者采用无协议：origin，无混淆：plain
 
 ```
+
+使用Laravel Excel
+```angular2html
+composer require maatwebsite/excel
+```
+
+
+## 重要记录
+### 因为服务商主机故障，导致后台主机重启
+### 重启之后，需要开启redis，并且开启laravel队列监听，命令如下
+```angular2html
+redis-server /root/redis-4.0.10/redis.conf
+#启动
+supervisord -c /etc/supervisord.conf
+```

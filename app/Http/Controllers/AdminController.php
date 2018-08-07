@@ -1915,6 +1915,84 @@ class AdminController extends Controller
         })->export('xls');
     }
 
+    /**
+     * 导出用户列表
+     */
+    public function exportUserList(){
+      $userList = User::query()->select(
+          [
+          'username',
+          'port',
+          'transfer_enable',
+          'u',
+          'd',
+          't',
+          'enable',
+          'method',
+          'enable_time',
+          'expire_time',
+          'ban_time',
+          'remark',
+          'reg_ip',
+          'last_login',
+          'status',
+          'u_refer_link',
+          'u_client_num'
+      ]
+      )->orderBy('id', 'DESC')->get();
+
+      foreach ($userList as $k => $v){
+        $userList[$k]['transfer_enable'] = flowAutoShow($v->transfer_enable);
+        $userList[$k]['u'] = flowAutoShow($v->u + $v->d);
+        unset($userList[$k]['d']);
+        if($v->enable){
+          $userList[$k]['enable'] = "正常";
+        }else{
+          $userList[$k]['enable'] = "禁用";
+        }
+        if($v['status'] == '-1'){
+          $userList[$k]['status'] = '已禁用';
+        }elseif($v['status'] = 0){
+          $userList[$k]['status'] = '未激活';
+        }elseif($v['status'] = 1){
+          $userList[$k]['status'] = '正常';
+        }else{
+          $userList[$k]['status'] = '未知';
+        }
+        $userList[$k]['t'] = $v->t!=0?date('Y-m-d H:i:s',$v->t):'';
+        $userList[$k]['last_login'] = $v->last_login!=0?date('Y-m-d H:i:s',$v->last_login):'';
+        $userList[$k]['ban_time'] = $v->ban_time!=0?date('Y-m-d H:i:s',$v->ban_time):'';
+      }
+      $filename = '用户列表' . date('Ymd');
+      Excel::create($filename, function ($excel) use ($userList) {
+        $excel->sheet('用户列表', function ($sheet) use ($userList) {
+          $sheet->row(1, [
+              '用户名', '端口','可用流量','已用流量',
+              '最后一次使用时间','SSR状态',
+              '加密方式','开通日期','过期日期',
+              '封禁时间','备注','注册ip',
+              '上次登录时间','账号状态',
+              '推广链接点击次数','可同时在线终端数'
+          ]);
+
+          if (!$userList->isEmpty()) {
+            foreach ($userList as $k => $vo) {
+              $sheet->row($k + 2, [
+                  $vo->username, $vo->port,
+                  $vo->transfer_enable, $vo->u,
+                  $vo->t, $vo->enable,
+                  $vo->method, $vo->enable_time,
+                  $vo->expire_time, $vo->ban_time,
+                  $vo->remark, $vo->reg_ip,
+                  $vo->last_login, $vo->status,
+                  $vo->u_refer_link, $vo->u_client_num,
+              ]);
+            }
+          }
+        });
+      })->export('xls');
+    }
+
     // 提现申请列表
     public function applyList(Request $request)
     {

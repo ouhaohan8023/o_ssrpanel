@@ -60,6 +60,7 @@ Route::group(['middleware' => ['forbidden', 'user', 'admin']], function () {
   Route::post('ticket/closeTicket', 'TicketController@closeTicket'); // 关闭工单
   Route::get('wSifGFeO5mQoCWB4/inviteList', 'AdminController@inviteList'); // 邀请码列表
   Route::post('wSifGFeO5mQoCWB4/makeInvite', 'AdminController@makeInvite'); // 生成邀请码
+  Route::get('wSifGFeO5mQoCWB4/exportUserList', 'AdminController@exportUserList'); // 导出用户列表
   Route::get('wSifGFeO5mQoCWB4/exportInvite', 'AdminController@exportInvite'); // 导出邀请码
   Route::get('wSifGFeO5mQoCWB4/applyList', 'AdminController@applyList'); // 提现申请管理
   Route::get('wSifGFeO5mQoCWB4/applyDetail', 'AdminController@applyDetail'); // 提现申请管理
