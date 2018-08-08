@@ -39,15 +39,15 @@ class PushApp implements ShouldQueue
         $content = $this->data['content'];
         $response = $this->sendMessageFilter($content,$user);
 
-//        $datas = json_decode($response, true);
-//        $data['p_o_id'] = $datas['id'];
-//        $data['p_nums'] = $datas['recipients'];
-//        $data['p_back'] = $response;
-//        $data['p_content'] = json_encode($this->data);
-//        AppPush::query()->create($data);
+        $datas = json_decode($response, true);
+        $data['p_o_id'] = $datas['id'];
+        $data['p_nums'] = $datas['recipients'];
+        $data['p_back'] = $response;
+        $data['p_content'] = json_encode($this->data);
+        AppPush::query()->create($data);
 
       Log::info($response);
-        Log::info('推播成功：'.$user['value']);
+        Log::info('推播成功：'.$user[0]['value']);
 //      }
     }
 
