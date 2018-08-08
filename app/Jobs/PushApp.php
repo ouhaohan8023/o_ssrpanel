@@ -45,7 +45,7 @@ class PushApp implements ShouldQueue
         $data['p_content'] = json_encode($this->data);
         AppPush::query()->create($data);
 //      Log::info($response);
-      if($data['p_nums']){
+      if($data['p_nums']==1){
         Log::info('推播成功：'.$user[0]['value']);
       }else{
         Log::info('推播失败：'.$user[0]['value']);
