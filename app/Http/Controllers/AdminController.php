@@ -2442,6 +2442,10 @@ class AdminController extends Controller
         $name = 'windows/'.env('DOWNLOADPATH_WINDOWS2');
         $d['d_id'] = 2;
         break;
+      case 'chuanyuntiA':
+        $name = 'android/'.env('DOWNLOADPATH_ANDROID_CH');
+        $d['d_id'] = 10;
+        break;
       default:
         return redirect('front/download');
     }
