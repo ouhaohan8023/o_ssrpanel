@@ -25,6 +25,7 @@ class PushApp implements ShouldQueue
     public function __construct($user)
     {
       $this->data = $user;
+      Log::info($this->data);
     }
 
     /**
@@ -35,20 +36,20 @@ class PushApp implements ShouldQueue
     public function handle()
     {
 //      foreach ($this->data as $v){
-        $user = $this->data['user'];
-        $content = $this->data['content'];
-        $response = $this->sendMessageFilter($content,$user);
-
-//        $datas = json_decode($response, true);
-//        $data['p_o_id'] = $datas['id'];
-//        $data['p_nums'] = $datas['recipients'];
-//        $data['p_back'] = $response;
-//        $data['p_content'] = json_encode($this->data);
-//        AppPush::query()->create($data);
-      Log::info(\GuzzleHttp\json_encode($this->data));
-
-      Log::info($response);
-        Log::info('推播成功：'.$user['value']);
+//        $user = $this->data['user'];
+//        $content = $this->data['content'];
+//        $response = $this->sendMessageFilter($content,$user);
+//
+////        $datas = json_decode($response, true);
+////        $data['p_o_id'] = $datas['id'];
+////        $data['p_nums'] = $datas['recipients'];
+////        $data['p_back'] = $response;
+////        $data['p_content'] = json_encode($this->data);
+////        AppPush::query()->create($data);
+//      Log::info(\GuzzleHttp\json_encode($this->data));
+//
+//      Log::info($response);
+//        Log::info('推播成功：'.$user['value']);
 //      }
     }
 
