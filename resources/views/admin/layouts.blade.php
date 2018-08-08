@@ -282,8 +282,8 @@
                                 <span class="title">有赞回调日志</span>
                             </a>
                         </li>
-                        <li class="nav-item {{in_array(Request::path(), ['payment/callbackList']) ? 'active open' : ''}}">
-                            <a href="{{url('payment/callbackList')}}" class="nav-link">
+                        <li class="nav-item {{in_array(Request::path(), ['wSifGFeO5mQoCWB4/appPush']) ? 'active open' : ''}}">
+                            <a href="{{url('payment/appPush')}}" class="nav-link">
                                 <i class="fa fa-th"></i>
                                 <span class="title">App推送</span>
                             </a>
