@@ -3,8 +3,6 @@
 namespace App\Jobs;
 
 use App\Http\Models\AppPush;
-use App\Http\Models\Config;
-use App\Mail\activeUser;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
