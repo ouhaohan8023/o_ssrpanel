@@ -66,7 +66,7 @@ return [
 
         'redis' => [
             'driver' => 'redis',
-            'connection' => 'default',
+            'connection' => '',
             'queue' => 'OneSignal',
             'retry_after' => 90,
         ],

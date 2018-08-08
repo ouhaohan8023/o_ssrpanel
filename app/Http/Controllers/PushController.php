@@ -42,9 +42,6 @@ class PushController extends Controller
     $config = $this->systemConfig();
     $userList = User::query()->where('transfer_enable', '>', 0)->whereIn('status', [0, 1])->where('enable', 1)->get();
     $u = [];
-//    $i = 0;
-//    echo "<pre>";
-//    var_dump($userList);die;
     foreach ($userList as $user) {
       $lastCanUseDays = ceil(round(strtotime($user->expire_time) - strtotime(date('Y-m-d H:i:s'))) / 3600 / 24);
       if ($lastCanUseDays > 0 && $lastCanUseDays <= $config['expire_days']) {
@@ -52,9 +49,6 @@ class PushController extends Controller
         $u['user'] = [["field" => "tag", "key" => "user", "relation" => "=", "value" => $user->username]];
         $u['content'] = $content;
 //        $this->sendMessageFilter($u['content'],$u['user']);
-//        $this->sendMessageFilter('English Message',[["field" => "tag", "key" => "user", "relation" => "=", "value" => "13303463126"]]);
-
-//        var_dump($u);continue;
         PushApp::dispatch($u)->onQueue('OneSignal');
         unset($u);
       }
