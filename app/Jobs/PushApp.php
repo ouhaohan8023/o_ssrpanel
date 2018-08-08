@@ -48,7 +48,7 @@ class PushApp implements ShouldQueue
       if($datas['recipients']==1){
         Log::info('推播成功：'.$user[0]['value']);
       }else{
-        Log::info('推播失败：'.$user[0]['value']);
+        Log::info('推播失败，搞鸡毛？：'.$user[0]['value']);
       }
     }
 
