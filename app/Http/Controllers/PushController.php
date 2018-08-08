@@ -48,10 +48,9 @@ class PushController extends Controller
     foreach ($userList as $user) {
       $lastCanUseDays = ceil(round(strtotime($user->expire_time) - strtotime(date('Y-m-d H:i:s'))) / 3600 / 24);
       if ($lastCanUseDays > 0 && $lastCanUseDays <= $config['expire_days']) {
-        $content = '账号还剩' . $lastCanUseDays . '天即将过期';
+        $content = '小主！您的账号还剩' . $lastCanUseDays . '天就要过期啦！';
         $u['user'] = [["field" => "tag", "key" => "user", "relation" => "=", "value" => $user->username]];
         $u['content'] = $content;
-//        dispatch(new PushApp($u)->onQueue('OneSignal'));
 //        $this->sendMessageFilter($u['content'],$u['user']);
 //        $this->sendMessageFilter('English Message',[["field" => "tag", "key" => "user", "relation" => "=", "value" => "13303463126"]]);
 
@@ -60,20 +59,6 @@ class PushController extends Controller
         unset($u);
       }
     }
-//    echo '<pre>';
-//    var_dump($u);die;
-//    $this->dispatch(new PushApp($u));
-//    PushApp::dispatch($u);
-
-//    $u = [
-////        ["field" => "tag", "key" => "user", "relation" => "=", "value" => "13303463126"],
-//        ["field" => "tag", "key" => "user", "relation" => "=", "value" => "13303463125"]
-//
-//    ];
-//    $ct = 'asdlklkdajslkd asd asd as dsa d';
-//    $data = $this->sendMessageFilter($ct,$u);
-//
-//    var_dump($data);
   }
   /**
    *

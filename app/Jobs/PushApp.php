@@ -34,7 +34,6 @@ class PushApp implements ShouldQueue
      */
     public function handle()
     {
-//      foreach ($this->data as $v){
         $user = $this->data['user'];
         $content = $this->data['content'];
         $response = $this->sendMessageFilter($content,$user);
@@ -45,10 +44,12 @@ class PushApp implements ShouldQueue
         $data['p_back'] = $response;
         $data['p_content'] = json_encode($this->data);
         AppPush::query()->create($data);
-
-      Log::info($response);
+//      Log::info($response);
+      if($data['p_nums']){
         Log::info('推播成功：'.$user[0]['value']);
-//      }
+      }else{
+        Log::info('推播失败：'.$user[0]['value']);
+      }
     }
 
   /**
