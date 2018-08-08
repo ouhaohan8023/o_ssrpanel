@@ -38,6 +38,7 @@ class PushApp implements ShouldQueue
         $user = $this->data['user'];
         $content = $this->data['content'];
         $response = $this->sendMessageFilter($content,$user);
+
         $datas = json_decode($response, true);
         $data['p_o_id'] = $datas['id'];
         $data['p_nums'] = $datas['recipients'];
