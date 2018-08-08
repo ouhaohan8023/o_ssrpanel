@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\DeleteAuthJob;
+use App\Jobs\PushApp;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -37,7 +38,8 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\AutoMysqlBackUpJob::class,
         \App\Console\Commands\AutoMysqlBackUpRemoteJob::class,
         \App\Console\Commands\CpJob::class,
-      DeleteAuthJob::class
+      DeleteAuthJob::class,
+      PushApp::class,
 
     ];
 
@@ -75,6 +77,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('autoMysqlBackUpRemoteJob')->dailyAt('00:30');
       $schedule->command('cPJob')->everyMinute();
       $schedule->command('deleteAuthJob')->everyMinute();
+      $schedule->command('pushJob')->dailyAt('13:30');
+
 
 
     }
