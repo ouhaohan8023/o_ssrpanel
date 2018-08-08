@@ -77,7 +77,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('autoMysqlBackUpRemoteJob')->dailyAt('00:30');
       $schedule->command('cPJob')->everyMinute();
       $schedule->command('deleteAuthJob')->everyMinute();
-      $schedule->command('pushJob')->dailyAt('13:35');
+      $schedule->command('pushJob')->dailyAt('13:37');
 
 
 
