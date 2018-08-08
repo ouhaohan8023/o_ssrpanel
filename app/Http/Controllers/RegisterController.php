@@ -640,6 +640,11 @@ class RegisterController extends Controller
         ||strstr($username,'TempEmail.net')
         ||strstr($username,'yuoia.com')
         ||strstr($username,'mt2015.com')
+        ||strstr($username,'tempinbox.com')
+//        ||strstr($username,'tempinbox.com')
+//        ||strstr($username,'tempinbox.com')
+//        ||strstr($username,'tempinbox.com')
+
     ){
       return true;
     }else{
