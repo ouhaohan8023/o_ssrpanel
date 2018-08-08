@@ -52,7 +52,7 @@
                     <div class="row row__flex row--justify-between">
                         <div class="col-xs-12 col-sm-4 col-md-3">
                             <div class="FeatureItem text-center px-md-6 py-7 py-sm-8">
-                                <div><img src="/images/refer_03.svg" class="Image mb-6" alt="Sign up">
+                                <div><img src="/images/refer_03.svg?v=1.0" class="Image mb-6" alt="Sign up">
                                     <h6 class="Title base mb-3 fwm"><span class="vertical-middle"><span>高佣金丰厚待遇</span></span>
                                     </h6>
                                     <p class="Text small mb-0"><span>最高享受50%佣金，其次用户续费代理依然获得佣金</span></p>
@@ -61,7 +61,7 @@
                         </div>
                         <div class="col-xs-12 col-sm-4 col-md-3">
                             <div class="FeatureItem text-center px-md-6 py-7 py-sm-8">
-                                <div><img src="/images/refer_02.svg" class="Image mb-6" alt="Get material">
+                                <div><img src="/images/refer_02.svg?v=1.0" class="Image mb-6" alt="Get material">
                                     <h6 class="Title base mb-3 fwm"><span class="vertical-middle"><span>好产品值得为身边朋友推荐</span></span>
                                     </h6>
                                     <p class="Text small mb-0"><span>高质量产品，贴心的服务，值得推荐使用</span></p>
@@ -70,7 +70,7 @@
                         </div>
                         <div class="col-xs-12 col-sm-4 col-md-3">
                             <div class="FeatureItem text-center px-md-6 py-7 py-sm-8">
-                                <div><img src="/images/refer_04.svg" class="Image mb-6" alt="Commisions">
+                                <div><img src="/images/refer_04.svg?v=1.0" class="Image mb-6" alt="Commisions">
                                     <h6 class="Title base mb-3 fwm"><span class="vertical-middle"><span>推广工作简单</span></span>
                                     </h6>
                                     <p class="Text small mb-0"><span>微信朋友圈，QQ群发，简单转播，无需专业技术</span></p>
