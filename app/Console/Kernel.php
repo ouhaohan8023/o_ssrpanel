@@ -3,7 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\DeleteAuthJob;
-use App\Jobs\PushApp;
+use App\Console\Commands\PushJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -39,7 +39,7 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\AutoMysqlBackUpRemoteJob::class,
         \App\Console\Commands\CpJob::class,
       DeleteAuthJob::class,
-      PushApp::class,
+      PushJob::class,
 
     ];
 
