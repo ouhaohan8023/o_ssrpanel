@@ -283,7 +283,7 @@
                             </a>
                         </li>
                         <li class="nav-item {{in_array(Request::path(), ['wSifGFeO5mQoCWB4/appPush']) ? 'active open' : ''}}">
-                            <a href="{{url('payment/appPush')}}" class="nav-link">
+                            <a href="{{url('wSifGFeO5mQoCWB4/appPush')}}" class="nav-link">
                                 <i class="fa fa-th"></i>
                                 <span class="title">App推送</span>
                             </a>
