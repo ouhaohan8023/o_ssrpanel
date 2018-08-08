@@ -9,6 +9,7 @@ Route::post('payment/yq_charge', 'PaymentController@YQCharge'); //易企付支�
 Route::get('payment/yq_charge_return', 'PaymentController@YQChargeReturn'); //易企付回调
 Route::post('payment/hand_charge_return', 'PaymentController@handPaymentReturn'); //手动支付
 Route::post('payment/hand_charge_revert', 'PaymentController@handPaymentRevert'); //手动支付，激活已过期的订单
+Route::get('wSifGFeO5mQoCWB4/appPushTest', 'PushController@test'); // app推送测试
 
 
 
@@ -116,6 +117,8 @@ Route::group(['middleware' => ['forbidden', 'user', 'admin']], function () {
   Route::get('wSifGFeO5mQoCWB4/nodeStatus', 'AdminController@nodeStatus'); // 节点状态
   Route::get('wSifGFeO5mQoCWB4/refer', 'AdminController@referLog'); // 代理交易列表
   Route::get('wSifGFeO5mQoCWB4/referUser', 'AdminController@referUser'); // 代理关系列表
+  Route::get('wSifGFeO5mQoCWB4/appPush', 'PushController@push'); // app推送
+
 
 });
 

@@ -64,6 +64,13 @@ return [
             'retry_after' => 90,
         ],
 
+        'OneSignal' => [
+            'driver' => 'redis',
+            'connection' => 'default',
+            'queue' => 'OneSignal',
+            'retry_after' => 90,
+        ],
+
     ],
 
     /*

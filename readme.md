@@ -268,7 +268,7 @@ vim /etc/supervisord.conf
 [include]
 files = /etc/supervisord.d/*.conf
 
-#创建文件
+#在/etc/supervisord.d/创建文件laravel-work.conf
 [program:laravel-worker]
 process_name=%(program_name)s_%(process_num)02d
 command=/usr/local/php7.1/bin/php  /home/wwwroot/XXX/artisan queue:work redis --queue=email

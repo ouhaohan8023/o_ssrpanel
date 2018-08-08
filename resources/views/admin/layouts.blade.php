@@ -282,6 +282,12 @@
                                 <span class="title">有赞回调日志</span>
                             </a>
                         </li>
+                        <li class="nav-item {{in_array(Request::path(), ['payment/callbackList']) ? 'active open' : ''}}">
+                            <a href="{{url('payment/callbackList')}}" class="nav-link">
+                                <i class="fa fa-th"></i>
+                                <span class="title">App推送</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item {{in_array(Request::path(), ['wSifGFeO5mQoCWB4/config', 'wSifGFeO5mQoCWB4/addConfig', 'wSifGFeO5mQoCWB4/system']) ? 'active open' : ''}}">
