@@ -55,7 +55,7 @@
                                 <div><img src="/images/refer_03.svg?v=1.0" class="Image mb-6" alt="Sign up">
                                     <h6 class="Title base mb-3 fwm"><span class="vertical-middle"><span>高佣金丰厚待遇</span></span>
                                     </h6>
-                                    <p class="Text small mb-0"><span>最高享受50%佣金，其次用户续费代理依然获得佣金</span></p>
+                                    <p class="Text small mb-0"><span>最高享受50%佣金，用户续费代理依然获得佣金</span></p>
                                 </div>
                             </div>
                         </div>
