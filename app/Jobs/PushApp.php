@@ -45,6 +45,8 @@ class PushApp implements ShouldQueue
 //        $data['p_back'] = $response;
 //        $data['p_content'] = json_encode($this->data);
 //        AppPush::query()->create($data);
+      Log::info(\GuzzleHttp\json_encode($this->data));
+
       Log::info($response);
         Log::info('推播成功：'.$user['value']);
 //      }
