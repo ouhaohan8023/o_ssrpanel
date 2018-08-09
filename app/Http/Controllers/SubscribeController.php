@@ -150,6 +150,6 @@ class SubscribeController extends Controller
     // 抛出无可用的节点信息，用于兼容防止客户端订阅失败
     private function noneNode()
     {
-        return base64url_encode('ssr://' . base64url_encode('8.8.8.8:8888:origin:none:plain:' . base64url_encode('0000') . '/?obfsparam=&protoparam=&remarks=' . base64url_encode('无可用节点或账号被封禁或订阅被封禁') . '&group=' . base64url_encode('VPN') . '&udpport=0&uot=0') . "\n");
+        return base64url_encode('ssr://' . base64url_encode('8.8.8.8:8888:origin:none:plain:' . base64url_encode('0000') . '/?obfsparam=&protoparam=&remarks=' . base64url_encode('无可用节点或账号被封禁或订阅被封禁，穿云梯官网（https://www.chuanyunti.com）') . '&group=' . base64url_encode('VPN') . '&udpport=0&uot=0') . "\n");
     }
 }
