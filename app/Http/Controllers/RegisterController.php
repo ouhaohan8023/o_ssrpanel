@@ -641,7 +641,7 @@ class RegisterController extends Controller
         ||strstr($username,'yuoia.com')
         ||strstr($username,'mt2015.com')
         ||strstr($username,'tempinbox.com')
-//        ||strstr($username,'tempinbox.com')
+        ||strstr($username,'hubii-network')
 //        ||strstr($username,'tempinbox.com')
 //        ||strstr($username,'tempinbox.com')
 
