@@ -113,7 +113,7 @@ class SubscribeController extends Controller
             $ssr_str .= '/?obfsparam=' . base64url_encode($obfs_param);
             $ssr_str .= '&protoparam=' . ($node['single'] ? base64url_encode($user->port . ':' . $user->passwd) : base64url_encode($protocol_param));
             $ssr_str .= '&remarks=' . base64url_encode($node['name']);
-            $ssr_str .= '&group=' . base64url_encode(empty($group) ? '' : $group->name);
+            $ssr_str .= '&group=' . base64url_encode(empty($group) ? '穿云梯（https://www.chuanyunti.com）' : $group->name);
             $ssr_str .= '&udpport=0';
             $ssr_str .= '&uot=0';
             $ssr_str = base64url_encode($ssr_str);
@@ -150,6 +150,6 @@ class SubscribeController extends Controller
     // 抛出无可用的节点信息，用于兼容防止客户端订阅失败
     private function noneNode()
     {
-        return base64url_encode('ssr://' . base64url_encode('8.8.8.8:8888:origin:none:plain:' . base64url_encode('0000') . '/?obfsparam=&protoparam=&remarks=' . base64url_encode('无可用节点或账号被封禁或订阅被封禁，穿云梯官网（https://www.chuanyunti.com）') . '&group=' . base64url_encode('VPN') . '&udpport=0&uot=0') . "\n");
+        return base64url_encode('ssr://' . base64url_encode('8.8.8.8:8888:origin:none:plain:' . base64url_encode('0000') . '/?obfsparam=&protoparam=&remarks=' . base64url_encode('无可用节点或账号被封禁或订阅被封禁，穿云梯官网（https://www.chuanyunti.com）') . '&group=' . base64url_encode('穿云梯') . '&udpport=0&uot=0') . "\n");
     }
 }
