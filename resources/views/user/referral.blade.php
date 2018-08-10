@@ -135,7 +135,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @if($referralLogList->isEmpty())
+                                @if($refer->isEmpty())
                                     <tr>
                                         <td colspan="6" style="text-align: center;"> {{trans('home.referral_table_none')}} </td>
                                     </tr>
