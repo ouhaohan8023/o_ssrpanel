@@ -86,8 +86,8 @@
                                             <tr>
                                                 <td> {{$order->oid}} </td>
                                                 <td> {{$order->order_sn}} </td>
-                                                <td> {{$order->user->username}} </td>
-                                                <td> {{$order->goods->name}} </td>
+                                                <td> {{$order->user?$order->user->username:'【已删除】'}} </td>
+                                                <td> {{$order->goods?$order->goods->name:'【已删除】'}} </td>
                                                 <td> {{$order->is_expire ? '已过期' : $order->expire_at}} </td>
                                                 <td> {{$order->coupon ? $order->coupon->name . ' - ' . $order->coupon->sn : ''}} </td>
                                                 <td> ￥{{$order->origin_amount}} </td>
