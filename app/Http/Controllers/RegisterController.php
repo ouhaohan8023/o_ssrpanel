@@ -157,7 +157,7 @@ class RegisterController extends Controller
 
             // 创建新用户
           if(self::$config['email_register_no_transfer_enable']){
-            $transfer_enable = 0;
+            $transfer_enable = 1*1048576;
           }else{
             $transfer_enable = $referral_uid ? (self::$config['default_traffic'] + self::$config['referral_traffic']) * 1048576 : self::$config['default_traffic'] * 1048576;
           }
@@ -431,6 +431,14 @@ class RegisterController extends Controller
         // 更新邀请码
         if (self::$config['is_invite_register'] && $user->id) {
           Invite::query()->where('id', $code->id)->update(['fuid' => $user->id, 'status' => 1]);
+        }
+
+        // 如果不需要激活，则直接给推荐人加流量
+        if ($referral_uid) {
+          $transfer_enable = self::$config['referral_traffic'] * 1048576;
+
+          User::query()->where('id', $referral_uid)->increment('transfer_enable', $transfer_enable);
+          User::query()->where('id', $referral_uid)->update(['enable' => 1]);
         }
 
         $request->session()->flash('regSuccessMsg', '注册成功，请在下方登陆');
