@@ -73,7 +73,7 @@
                                                     <input type="text" class="form-control" name="username" value="{{$info->username}}" id="username" required disabled="disabled"/>
                                                     <input type="hidden" name="_token" value="{{csrf_token()}}" />
                                                 </div>
-                                                @if($info->u_phone_status == 1)
+                                                @if($info->u_phone_status == 1 && empty($info->u_contract_1))
                                                     <div class="form-group">
                                                         <label class="control-label">邮箱</label>
                                                         <input type="text" class="form-control" name="u_contract_1" value="{{$info->u_contract_1}}" id="u_contract_1" required/>
@@ -93,19 +93,19 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="control-label">验证码</label>
-                                                        <input type="text" class="form-control" name="smscode" value="" id="smscode" required />
+                                                        <input type="text" class="form-control" name="smscode" value="" id="smscode" />
                                                         <input type="hidden" name="_token" value="{{csrf_token()}}" />
                                                     </div>
                                                 @endif
 
                                                 <div class="form-group">
                                                     <label class="control-label">{{trans('home.wechat')}}</label>
-                                                    <input type="text" class="form-control" name="wechat" value="{{$info->wechat}}" id="wechat" required />
+                                                    <input type="text" class="form-control" name="wechat" value="{{$info->wechat}}" id="wechat" />
                                                     <input type="hidden" name="_token" value="{{csrf_token()}}" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label"> QQ </label>
-                                                    <input type="text" class="form-control" name="qq" value="{{$info->qq}}" id="qq" required />
+                                                    <input type="text" class="form-control" name="qq" value="{{$info->qq}}" id="qq" />
                                                 </div>
                                                 <div class="form-actions">
                                                     <div class="row">

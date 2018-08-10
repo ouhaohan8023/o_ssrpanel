@@ -219,22 +219,40 @@ class UserController extends Controller
                     return Redirect::to('user/profile#tab_2');
                 }
                 //手机号
-                if($u_contract_0){
+                if($u_contract_0&&$smscode){
                   $codeData = DB::table('smscode')->select('c_code')->where('c_phone','=',$u_contract_0)->orderBy('c_id','DESC')->first();
                   $mysqlCode = $codeData->c_code;
                   if($mysqlCode != $smscode){
                     $request->session()->flash('errorMsg', '手机验证码错误');
                     return Redirect::to('user/profile#tab_2');
                   }else{
-                    $ret = User::query()->where('id', $user['id'])->update(['u_contract_0' => $u_contract_0]);
-                    if(!$ret){
-                      $request->session()->flash('errorMsg', '修改失败');
+                    $phoneIsSet = User::query()->where('username',$u_contract_0)->orWhere('u_contract_0',$u_contract_0)->first();
+//                    var_dump($phoneIsSet);die;
+                    if(!$phoneIsSet){
+                      $user_u = User::query()->where('id',$user['id'])->first();
+                      $ret = User::query()->where('id', $user['id'])->update(['u_contract_0' => $u_contract_0,'u_phone_status'=>1]);
+                      if($ret){
+                        if($user_u->u_phone_status==0){
+                          $transfer_enable = self::$config['default_traffic'] * 1048576;
+                          User::query()->where('id', $user['id'])->increment('transfer_enable', $transfer_enable);
+                          User::query()->where('id', $user['id'])->update(['enable' => 1]);
+                        }
+                        $request->session()->flash('successMsg', '修改成功');
+                        return Redirect::to('user/profile#tab_2');
+                      }else{
+                        $request->session()->flash('errorMsg', '修改失敗');
+                        return Redirect::to('user/profile#tab_2');
+                      }
+                    }else{
+                      $request->session()->flash('errorMsg', '此手机号已被绑定，请更换手机号');
                       return Redirect::to('user/profile#tab_2');
                     }
+
                   }
                 }
 
                 //邮箱
+              $haveEmail = 0;
                 if($u_contract_1){
                   // 生成激活账号的地址
                   $token = md5(self::$config['website_name'] . $u_contract_1 . microtime());

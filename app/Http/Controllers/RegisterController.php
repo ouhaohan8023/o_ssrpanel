@@ -364,7 +364,7 @@ class RegisterController extends Controller
         }
 
         // 校验用户名是否已存在
-        $exists = User::query()->where('username', $username)->first();
+        $exists = User::query()->where('username', $username)->orWhere('u_contract_0',$username)->first();
         if ($exists) {
           $request->session()->flash('errorMsg', '用户名已存在，请更换用户名');
 

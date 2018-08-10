@@ -309,7 +309,6 @@ ps ax | grep artisan
 composer require maatwebsite/excel
 ```
 
-
 ## 重要记录
 ### 因为服务商主机故障，导致后台主机重启
 ### 重启之后，需要开启redis，并且开启laravel队列监听，命令如下
@@ -318,3 +317,5 @@ redis-server /root/redis-4.0.10/redis.conf
 #启动
 supervisord -c /etc/supervisord.conf
 ```
+
+#### 新增限制邮箱注册赠送流量功能，config表中的email_register_no_transfer_enable记录，0为赠送，1为不赠送
