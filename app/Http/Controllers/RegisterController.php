@@ -156,7 +156,11 @@ class RegisterController extends Controller
             $obfs = SsConfig::query()->where('type', 3)->where('is_default', 1)->first();
 
             // 创建新用户
+          if(self::$config['email_register_no_transfer_enable']){
+            $transfer_enable = 0;
+          }else{
             $transfer_enable = $referral_uid ? (self::$config['default_traffic'] + self::$config['referral_traffic']) * 1048576 : self::$config['default_traffic'] * 1048576;
+          }
             $user = new User();
             $user->username = $username;
             $user->password = md5($password);
