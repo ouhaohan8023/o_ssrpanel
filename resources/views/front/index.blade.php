@@ -32,6 +32,7 @@
                         <h1 class="c-bw-1 mb-5 mb-sm-6"><span>突破限制，从我出发!</span></h1>
                         <p class="c-bw-1 fwm mb-5 mb-sm-6"><span>任何的限制，都是从自己的内心开始的</span></p>
                         <p class="c-bw-1 fwm mb-5 mb-sm-6">试运营免费试用时间：2018/6/25-2018/7/25</p>
+                        <a href="https://t.me/joinchat/IpRrJA-d_ZkGbY5S7Oiyrg" target="_blank"><p class="c-bw-1 fwm mb-5 mb-sm-6">电报群：https://t.me/joinchat/IpRrJA-d_ZkGbY5S7Oiyrg</p></a>
                         <p class="c-bw-1 fwm mb-5 mb-sm-6">QQ：2747305744 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;微信：chuanyunti</p>
 
                         <a class="Button Button--primary Button--large mb-6 mb-sm-7 mb-md-6 mt-3 mt-md-0"
