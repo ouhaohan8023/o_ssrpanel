@@ -90,7 +90,7 @@
                                         <span>首页</span>
                                     </a>
                                 </li>
-                                <li style="display: none">
+                                <li>
                                     <a
                                             href="/front/order"
                                             role="menuitem"
@@ -180,7 +180,7 @@
                             <li>
                                 <a href="/front">首页</a>
                             </li>
-                            <li style="">
+                            <li>
                                 <a href="/front/order">购买中心</a>
                             </li>
                             {{--<li>--}}
