@@ -25,13 +25,13 @@
 <div class="BaseTemplate HolidayDeal">
     <div class="Hero">
         <div class="Background"
-             style="background-image:url(/images/index_banner5.jpg);background-repeat:no-repeat;background-position:left top;background-size:cover">
+             style="background-image:url(/images/index_banner7.jpg);background-repeat:no-repeat;background-position:left top;background-size:cover">
             <div class="container pt-9 pt-sm-10 Hero__container d-flex">
                 <div class="row py-9 py-sm-12 py-lg-13 d-md-flex">
                     <div class="col-xs-12 col-md-12 col-lg-12 text-sm-center text-xs-center">
                         <h1 class="c-bw-1 mb-5 mb-sm-6"><span>突破限制，从我出发!</span></h1>
                         <p class="c-bw-1 fwm mb-5 mb-sm-6"><span>任何的限制，都是从自己的内心开始的</span></p>
-                        <p class="c-bw-1 fwm mb-5 mb-sm-6">试运营免费试用时间：2018/6/25-2018/7/25</p>
+                        <p class="c-bw-1 fwm mb-5 mb-sm-6"><b>手机号注册免费赠送10G流量~~~</b></p>
                         <a href="https://t.me/joinchat/IpRrJA-d_ZkGbY5S7Oiyrg" target="_blank"><p class="c-bw-1 fwm mb-5 mb-sm-6">电报群：https://t.me/chuanyunti</p></a>
                         <p class="c-bw-1 fwm mb-5 mb-sm-6">QQ：2747305744 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;微信：chuanyunti</p>
 
