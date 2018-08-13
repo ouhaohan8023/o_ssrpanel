@@ -294,6 +294,21 @@
                     </div>
                 </div>
             </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="dashboard-stat2 bordered" onclick="skip('wSifGFeO5mQoCWB4/refer?status=1');">
+                    <div class="display">
+                        <div class="number">
+                            <h3 class="font-red">
+                                <span data-counter="counterup" data-value="{{$flowCountLastDay}}">0</span>
+                            </h3>
+                            <small>昨日消耗流量</small>
+                        </div>
+                        <div class="icon">
+                            <i class="icon-user-unfollow"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- END PAGE BASE CONTENT -->
     </div>

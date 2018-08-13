@@ -70,6 +70,8 @@ class AdminController extends Controller
       $view['todayInCome'] = Order::query()->where('created_at','>=',date('Y-m-d',time()))->where('status','=',2)->sum('amount') /100;//今日收入
       $flowCount = SsNodeTrafficDaily::query()->where('created_at', '>=', date('Y-m-d 00:00:00', strtotime("-30 days")))->sum('total');
       $view['flowCount'] = flowAutoShow($flowCount);//30日内消耗流量
+      $flowCount = SsNodeTrafficDaily::query()->where('created_at', '>=', date('Y-m-d 00:00:00', strtotime("-1 days")))->sum('total');
+      $view['flowCountLastDay'] = flowAutoShow($flowCount);//昨日消耗流量
       $totalFlowCount = SsNodeTrafficDaily::query()->sum('total');
       $view['totalFlowCount'] = flowAutoShow($totalFlowCount);
       $view['totalBalance'] = User::query()->sum('balance') / 100;//总余额，指的是用户充值余额，未消费
