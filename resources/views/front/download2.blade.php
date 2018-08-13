@@ -59,6 +59,8 @@
                         </div>
                         <div class="PlanCard__description">
                             <a class="Button Button--primary" href="itms-services://?action=download-manifest&url=https://chuanyunti.com/c1JiPewhyb/iOS/chuanyunti.plist"> 请在手机端下载 </a>
+                            <img src="/images/qcode.svg" width="40px" onclick="IOS()">
+
                             {{--<a class="Button Button--primary" target="_blank" class="btn btn-lg red dow" href="/download_vpn/iOS/ios.pdf?v=1.0">查看教程</a>--}}
                         </div>
                     </div>
@@ -80,6 +82,7 @@
                         </div>
                         <div class="PlanCard__description">
                             <a class="Button Button--primary" href="{{url('downloadApp/chuanyuntiA')}}"> 请在手机端下载 </a>
+                            <img src="/images/qcode.svg" width="40px" onclick="ANDROID()">
                             {{--<a target="_blank" href="/download_vpn/android/android.pdf"  class="Button" style="background-color: #ffffff;color: #f64f64;font-size: 14px"> 查看教程 </a>--}}
                         </div>
                     </div>
@@ -135,8 +138,28 @@
     <div style="margin-bottom: 200px">
 
     </div>
+    <script src="/layer/layer.js"></script>
+    <script>
+        function IOS() {
+            layer.open({
+                type: 1,
+                skin: 'layui-layer-rim', //加上边框
+                area: ['400px', '450px'], //宽高
+                content: '<div  style="text-align: center;width: 100%;"><img src="/images/ios_qcode.jpg" width="100%"></div>'
+            });
+        }
+        function ANDROID() {
+            layer.open({
+                type: 1,
+                skin: 'layui-layer-rim', //加上边框
+                area: ['400px', '450px'], //宽高
+                content: '<div  style="text-align: center;width: 100%;"><img src="/images/android_qcode.jpg" width="100%"></div>'
+            });
+        }
+    </script>
 @endsection
 
 @section('script')
+
 
 @endsection
