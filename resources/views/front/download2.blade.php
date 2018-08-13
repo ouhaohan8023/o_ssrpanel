@@ -58,8 +58,8 @@
                             </p>
                         </div>
                         <div class="PlanCard__description">
-                            <a class="Button Button--primary" target="_blank" class="btn btn-lg red dow" href="/download_vpn/iOS/ios.pdf?v=1.0">查看教程</a>
-                            <a target="_blank" href="/download_vpn/android/android.pdf"  class="Button" style="background-color: #ffffff;color: #f64f64;font-size: 14px"> &nbsp;&nbsp; </a>
+                            <a class="Button Button--primary" href="{{url('downloadApp/chuanyuntiIOS')}}"> 下载 </a>
+                            {{--<a class="Button Button--primary" target="_blank" class="btn btn-lg red dow" href="/download_vpn/iOS/ios.pdf?v=1.0">查看教程</a>--}}
                         </div>
                     </div>
                 </div>
@@ -79,8 +79,8 @@
                             </p>
                         </div>
                         <div class="PlanCard__description">
-                            <a class="Button Button--primary" href="{{url('downloadApp/android')}}"> 下载 </a>
-                            <a target="_blank" href="/download_vpn/android/android.pdf"  class="Button" style="background-color: #ffffff;color: #f64f64;font-size: 14px"> 查看教程 </a>
+                            <a class="Button Button--primary" href="{{url('downloadApp/chuanyuntiA')}}"> 下载 </a>
+                            {{--<a target="_blank" href="/download_vpn/android/android.pdf"  class="Button" style="background-color: #ffffff;color: #f64f64;font-size: 14px"> 查看教程 </a>--}}
                         </div>
                     </div>
                 </div>

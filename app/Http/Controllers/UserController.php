@@ -80,6 +80,7 @@ class UserController extends Controller
             return Response::view('user/index', $view);
         }
 
+//        var_dump($userLabelIds);die;
         $nodeList = DB::table('ss_node')
             ->leftJoin('ss_node_label', 'ss_node.id', '=', 'ss_node_label.node_id')
             ->whereIn('ss_node_label.label_id', $userLabelIds)
@@ -88,6 +89,7 @@ class UserController extends Controller
             ->orderBy('sort','DESC')
             ->get();
 
+//        echo "<pre>";
 //        var_dump($nodeList);die;
         foreach ($nodeList as &$node) {
             // 获取分组名称
