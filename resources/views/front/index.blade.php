@@ -15,6 +15,11 @@
         .base{
             font-size: 20px;
         }
+        @media screen and (max-width: 700px) {
+            .hidden_in_small {
+                display: none;
+            }
+        }
     </style>
     <link rel="stylesheet" href="/css/front/base2.css" onload="this.rel='stylesheet'"
           as="style">
@@ -25,7 +30,7 @@
 <div class="BaseTemplate HolidayDeal">
     <div class="Hero">
         <div class="Background"
-             style="background-image:url(/images/index_banner9.jpg);background-repeat:no-repeat;background-position:left top;background-size:cover">
+             style="background-image:url(/images/index_banner1.jpg);background-repeat:no-repeat;background-position:left top;background-size:cover">
             <div class="container pt-9 pt-sm-10 Hero__container d-flex">
                 <div class="row py-9 py-sm-12 py-lg-13 d-md-flex">
                     <div class="col-xs-12 col-md-12 col-lg-12 text-sm-center text-xs-center">
@@ -44,6 +49,16 @@
                             <span>点击联系客服</span>
                         </a>
                         <div class="visible-xs clearfix mb-5"></div>
+                    </div>
+                </div>
+                <div class="hidden_in_small row py-9 py-sm-12 py-lg-13 d-md-flex">
+                    <div class="col-xs-12 col-md-12 col-lg-12 text-sm-center text-xs-center">
+                        <div class="col-md-6">
+                            <img src="/images/index_banner2.png" width="80%"/>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="/images/index_banner3.png" width="80%">
+                        </div>
                     </div>
                 </div>
             </div>
