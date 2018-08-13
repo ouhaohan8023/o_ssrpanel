@@ -2447,7 +2447,7 @@ class AdminController extends Controller
         $d['d_id'] = 6;
         break;
       case 'chuanyuntiIOS':
-        $name = 'IOS/'.env('DOWNLOADPATH_IOS_CH');
+        $name = 'iOS/'.env('DOWNLOADPATH_IOS_CH');
         $d['d_id'] = 7;
         break;
       default:
