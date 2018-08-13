@@ -180,7 +180,7 @@
                             <li>
                                 <a href="/front">首页</a>
                             </li>
-                            <li style="display: none">
+                            <li style="">
                                 <a href="/front/order">购买中心</a>
                             </li>
                             {{--<li>--}}

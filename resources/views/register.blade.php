@@ -48,7 +48,7 @@
 <!-- BEGIN LOGIN -->
 <div class="content">
     <nav style="padding-bottom: 20px;text-align: center;">
-        <a href="{{url('register2')}}">手机号注册请点击</a>
+        <a href="{{url('register2')}}">通过手机号注册即送10G免费流量！快戳我！</a>
     </nav>
     <!-- BEGIN REGISTRATION FORM -->
     <form class="register-form" action="{{url('register')}}" method="post" style="display: block;">
