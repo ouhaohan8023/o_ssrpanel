@@ -81,7 +81,7 @@
                             </p>
                         </div>
                         <div class="PlanCard__description">
-                            <a class="Button Button--primary" href="{{url('downloadApp/chuanyuntiA')}}" onclick="ANDROID()"> 显示二维码 </a>
+                            <a class="Button Button--primary" href="{{url('downloadApp/chuanyuntiA')}}" onclick="ANDROID()"> 下载 </a>
                             <img src="/images/qcode.svg" width="40px" onclick="ANDROID()">
                             {{--<a target="_blank" href="/download_vpn/android/android.pdf"  class="Button" style="background-color: #ffffff;color: #f64f64;font-size: 14px"> 查看教程 </a>--}}
                         </div>
