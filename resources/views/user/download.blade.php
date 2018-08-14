@@ -54,7 +54,7 @@
                     <div class="panel-body">
                         <img src="/images/ios.svg" width="50px" height="50px">
                         <p class="t2">IOS客户端</p>
-                        <a target="_blank" class="btn btn-lg red dow" href="/download_vpn/iOS/ios.pdf?v=1.0">查看教程</a>
+                        <a target="_blank" class="btn btn-lg red dow" onclick="IOS()">显示二维码</a>
                     </div>
                 </div>
             </div>
@@ -63,8 +63,7 @@
                     <div class="panel-body">
                         <img src="/images/Android.svg" width="50px" height="50px">
                         <p class="t2">Android客户端</p>
-                        <a class="btn btn-lg red dow" href="{{url('downloadApp/android')}}">下载</a>
-                        <a target="_blank"  class="btn btn-lg blue dow" href="/download_vpn/android/android.pdf">教程</a>
+                        <a class="btn btn-lg red dow" onclick="ANDROID()">显示二维码</a>
                     </div>
                 </div>
             </div>
@@ -96,4 +95,22 @@
     <script src="/assets/global/plugins/jquery-qrcode/jquery.qrcode.min.js" type="text/javascript"></script>
     <script src="/assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
     <script src="/js/layer/layer.js" type="text/javascript"></script>
+    <script>
+        function IOS() {
+            layer.open({
+                type: 1,
+                skin: 'layui-layer-rim', //加上边框
+                area: ['400px', '450px'], //宽高
+                content: '<div  style="text-align: center;width: 100%;"><img src="/images/ios_qcode.jpg" width="100%"></div>'
+            });
+        }
+        function ANDROID() {
+            layer.open({
+                type: 1,
+                skin: 'layui-layer-rim', //加上边框
+                area: ['400px', '450px'], //宽高
+                content: '<div  style="text-align: center;width: 100%;"><img src="/images/android_qcode.jpg" width="100%"></div>'
+            });
+        }
+    </script>
 @endsection
