@@ -58,23 +58,23 @@
         @endif
         <div class="row">
             <div class="col-md-8">
-                <div class="row ohh-row">
-                    <div class="col-md-2 ">
-                        <a target="_blank" href="https://www.chuanyunti.com/download_vpn/windows/ssr.pdf"><img src="{{url('/images/jiaocheng_01.png')}}"></a>
-                    </div>
-                    <div class="col-md-2">
-                        <a target="_blank" href="https://www.chuanyunti.com/download_vpn/windows/sstap.pdf"><img src="{{url('/images/jiaocheng_02.png')}}"></a>
-                    </div>
+                {{--<div class="row ohh-row">--}}
+                    {{--<div class="col-md-2 ">--}}
+                        {{--<a target="_blank" href="https://www.chuanyunti.com/download_vpn/windows/ssr.pdf"><img src="{{url('/images/jiaocheng_01.png')}}"></a>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-2">--}}
+                        {{--<a target="_blank" href="https://www.chuanyunti.com/download_vpn/windows/sstap.pdf"><img src="{{url('/images/jiaocheng_02.png')}}"></a>--}}
+                    {{--</div>--}}
                     {{--<div class="col-md-2">--}}
                         {{--<a target="_blank" href="https://www.chuanyunti.com/download_vpn/android/android.pdf"><img src="{{url('/images/jiaocheng_03.png')}}"></a>--}}
                     {{--</div>--}}
                     {{--<div class="col-md-2">--}}
                         {{--<a target="_blank" href="https://www.chuanyunti.com/download_vpn/iOS/ios.pdf?v=1.0"><img src="{{url('/images/jiaocheng_04.png')}}"></a>--}}
                     {{--</div>--}}
-                    <div class="col-md-2">
-                        <a target="_blank" href="https://www.chuanyunti.com/download_vpn/macOs/mac.pdf"><img src="{{url('/images/jiaocheng_05.png')}}"></a>
-                    </div>
-                </div>
+                    {{--<div class="col-md-2">--}}
+                        {{--<a target="_blank" href="https://www.chuanyunti.com/download_vpn/macOs/mac.pdf"><img src="{{url('/images/jiaocheng_05.png')}}"></a>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
                 <div class="well ohh-well" style="background-color: #FFF;">
                     <b><a href="{{url('/user/download')}}">点击下载客户端和查看详细使用方法</a></b>
                 </div>
