@@ -65,12 +65,12 @@
                     <div class="col-md-2">
                         <a target="_blank" href="https://www.chuanyunti.com/download_vpn/windows/sstap.pdf"><img src="{{url('/images/jiaocheng_02.png')}}"></a>
                     </div>
-                    <div class="col-md-2">
-                        <a target="_blank" href="https://www.chuanyunti.com/download_vpn/android/android.pdf"><img src="{{url('/images/jiaocheng_03.png')}}"></a>
-                    </div>
-                    <div class="col-md-2">
-                        <a target="_blank" href="https://www.chuanyunti.com/download_vpn/iOS/ios.pdf?v=1.0"><img src="{{url('/images/jiaocheng_04.png')}}"></a>
-                    </div>
+                    {{--<div class="col-md-2">--}}
+                        {{--<a target="_blank" href="https://www.chuanyunti.com/download_vpn/android/android.pdf"><img src="{{url('/images/jiaocheng_03.png')}}"></a>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-2">--}}
+                        {{--<a target="_blank" href="https://www.chuanyunti.com/download_vpn/iOS/ios.pdf?v=1.0"><img src="{{url('/images/jiaocheng_04.png')}}"></a>--}}
+                    {{--</div>--}}
                     <div class="col-md-2">
                         <a target="_blank" href="https://www.chuanyunti.com/download_vpn/macOs/mac.pdf"><img src="{{url('/images/jiaocheng_05.png')}}"></a>
                     </div>
