@@ -136,7 +136,8 @@
                     <li class="list-group-item">
                         {{trans('home.account_balance')}}：{{$info['balance']}}
                         <span class="badge badge-danger">
-                            <a href="javascript:;" data-toggle="modal" data-target="#charge_modal" style="color:#FFF;">{{trans('home.recharge')}}</a>
+                            <a href="/user/goodsList" style="color:#FFF;">{{trans('home.recharge')}}</a>
+                            {{--<a href="javascript:;" data-toggle="modal" data-target="#charge_modal" style="color:#FFF;">{{trans('home.recharge')}}</a>--}}
                         </span>
                     </li>
                     <li class="list-group-item">
