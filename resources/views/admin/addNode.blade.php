@@ -391,6 +391,8 @@
             var root = $('#root').val();
             var pwd = $('#pwd').val();
             var serverport = $('#serverport').val();
+            var client_name = $('#client_name').val();
+
 
             $.ajax({
                 type: "POST",
@@ -428,7 +430,8 @@
                     status:status,
                     root:root,
                     pwd:pwd,
-                    serverport:serverport
+                    serverport:serverport,
+                    client_name:client_name
                 },
                 dataType: 'json',
                 success: function (ret) {
