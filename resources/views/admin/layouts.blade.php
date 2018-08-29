@@ -225,6 +225,12 @@
                                 <span class="title">节点状态</span>
                             </a>
                         </li>
+                        <li class="nav-item {{in_array(Request::path(), ['wSifGFeO5mQoCWB4/nodeTCP']) ? 'active open' : ''}}">
+                            <a href="{{url('wSifGFeO5mQoCWB4/nodeTCP')}}" class="nav-link ">
+                                <i class="fa fa-list-ul"></i>
+                                <span class="title">节点TCP/ICMP分析</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item {{in_array(Request::path(), ['wSifGFeO5mQoCWB4/decompile', 'wSifGFeO5mQoCWB4/convert', 'wSifGFeO5mQoCWB4/import', 'wSifGFeO5mQoCWB4/trafficLog', 'wSifGFeO5mQoCWB4/analysis', 'wSifGFeO5mQoCWB4/subscribeLog', 'emailLog/logList', 'payment/callbackList']) ? 'active open' : ''}}">

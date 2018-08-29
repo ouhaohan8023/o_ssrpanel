@@ -20,6 +20,7 @@ use App\Http\Models\SsNode;
 use App\Http\Models\SsNodeInfo;
 use App\Http\Models\SsNodeLabel;
 use App\Http\Models\SsNodeOnlineLog;
+use App\Http\Models\SsNodeTcpIcmp;
 use App\Http\Models\SsNodeTrafficDaily;
 use App\Http\Models\SsNodeTrafficHourly;
 use App\Http\Models\User;
@@ -2485,6 +2486,14 @@ class AdminController extends Controller
 //    print_r($view);die;
     return Response::view('admin/nodeStatus', ['datas'=>$view,'time'=>$time]);
 
+  }
+
+  // TCP/ICMP监测
+  public function nodeTCP()
+  {
+    $data = SsNodeTcpIcmp::query()->with(["SS"])->paginate(15);
+//    var_dump($data);
+    return view('admin/nodeListTcp',['nodeList'=>$data]);
   }
 
 }

@@ -118,6 +118,7 @@ Route::group(['middleware' => ['forbidden', 'user', 'admin']], function () {
   Route::get('wSifGFeO5mQoCWB4/refer', 'AdminController@referLog'); // 代理交易列表
   Route::get('wSifGFeO5mQoCWB4/referUser', 'AdminController@referUser'); // 代理关系列表
   Route::get('wSifGFeO5mQoCWB4/appPush', 'PushController@push'); // app推送
+  Route::get('wSifGFeO5mQoCWB4/nodeTCP', 'AdminController@nodeTCP'); // 节点TCP/ICMP
 
 
 });
