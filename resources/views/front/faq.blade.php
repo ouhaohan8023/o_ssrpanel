@@ -230,36 +230,36 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="wp-AccordionCardItem js-AccordionCardItem panel py-3">
-                                    <div class="wp-AccordionCardItem__wrapper p-5 py-sm-6 px-sm-7 sha-1 sha-2-hover d-block"
-                                         role="button" data-toggle="collapse" data-parent="#general"
-                                         href="#collapse-general-7" aria-expanded="false"
-                                         aria-controls="collapse-general-7">
-                                        <div role="tab" id="heading-7">
-                                            <div class="wp-AccordionCardItem__title">
-                                                <div class="c-bw-12 d-flex">
-                                                    <h3 class="Title base fwm c-bw-12 pr-4">
-                                                        苹果客户端除了美服能够下载Potatso以外，还有其他方法能够下载或者使用你们的节点吗？
-                                                    </h3>
-                                                    <span class="SVG-wrapper">
-                                                        <img
-                                                                src="/images/chevrons-down.svg"
-                                                                alt="chevrons up"
-                                                                class="SVG scale-16 js-SVG--with-scale">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div id="collapse-general-7" class="wp-AccordionCardItem__content collapse"
-                                             role="tabpanel" aria-labelledby="heading-7">
-                                            <div class="pt-3 pt-sm-5 c-bw-9 small">
-                                                <span>
-                                                    穿云梯已经推出自己的IOS及Android App客户端啦！具体请查看【教程中心】
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                {{--<div class="wp-AccordionCardItem js-AccordionCardItem panel py-3">--}}
+                                    {{--<div class="wp-AccordionCardItem__wrapper p-5 py-sm-6 px-sm-7 sha-1 sha-2-hover d-block"--}}
+                                         {{--role="button" data-toggle="collapse" data-parent="#general"--}}
+                                         {{--href="#collapse-general-7" aria-expanded="false"--}}
+                                         {{--aria-controls="collapse-general-7">--}}
+                                        {{--<div role="tab" id="heading-7">--}}
+                                            {{--<div class="wp-AccordionCardItem__title">--}}
+                                                {{--<div class="c-bw-12 d-flex">--}}
+                                                    {{--<h3 class="Title base fwm c-bw-12 pr-4">--}}
+                                                        {{--苹果客户端除了美服能够下载Potatso以外，还有其他方法能够下载或者使用你们的节点吗？--}}
+                                                    {{--</h3>--}}
+                                                    {{--<span class="SVG-wrapper">--}}
+                                                        {{--<img--}}
+                                                                {{--src="/images/chevrons-down.svg"--}}
+                                                                {{--alt="chevrons up"--}}
+                                                                {{--class="SVG scale-16 js-SVG--with-scale">--}}
+                                                    {{--</span>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<div id="collapse-general-7" class="wp-AccordionCardItem__content collapse"--}}
+                                             {{--role="tabpanel" aria-labelledby="heading-7">--}}
+                                            {{--<div class="pt-3 pt-sm-5 c-bw-9 small">--}}
+                                                {{--<span>--}}
+                                                    {{--穿云梯已经推出自己的IOS及Android App客户端啦！具体请查看【教程中心】--}}
+                                                {{--</span>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
                                 <div class="wp-AccordionCardItem js-AccordionCardItem panel py-3">
                                     <div class="wp-AccordionCardItem__wrapper p-5 py-sm-6 px-sm-7 sha-1 sha-2-hover d-block"
                                          role="button" data-toggle="collapse" data-parent="#general"
