@@ -64,7 +64,7 @@
                             </div>
                             <div class="col-md-8 col-sm-8">
                                 <div class="dataTables_paginate paging_bootstrap_full_number pull-right">
-                                    {{ $list->links() }}
+                                    {{ $list->appends(['username' => request('username')])->links() }}
                                 </div>
                             </div>
                         </div>

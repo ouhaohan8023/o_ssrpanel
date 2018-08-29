@@ -176,7 +176,7 @@
                             </div>
                             <div class="col-md-8 col-sm-8">
                                 <div class="dataTables_paginate paging_bootstrap_full_number pull-right">
-                                    {{ $userList->links() }}
+                                    {{ $userList->appends(['username' => request('username'),'wechat' => request('wechat'),'qq'=>request('qq'),'port'=>request('port'),'pay_way'=>request('pay_way'),'status'=>request('status'),'enable'=>request('enable'),'label'=>request('label'),'start_time'=>request('start_time'),'end_time'=>request('end_time'),'last_time'=>request('last_time')])->links() }}
                                 </div>
                             </div>
                         </div>

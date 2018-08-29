@@ -590,7 +590,6 @@ class AdminController extends Controller
                 $ssNode->serverport = $request->get('serverport', '22');
                 $ssNode->client_name = $request->get('client_name');
 
-
               $ssNode->save();
 
                 // 建立分组关联
