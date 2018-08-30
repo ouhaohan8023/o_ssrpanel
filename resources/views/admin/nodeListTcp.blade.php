@@ -64,7 +64,7 @@
                                                     @if(!$node->t_icmp_status) <span class="label label-danger">异常</span> @endif
                                                 </td>
                                                 <td>{{$node->updated_at}}</td>
-                                                <td><button type="button" class="btn btn-sm red btn-outline" onclick="delNode('{{$node->id}}')">
+                                                <td><button type="button" class="btn btn-sm red btn-outline" onclick="delNode('{{$node->t_id}}')">
                                                         <i class="fa fa-trash"></i>
                                                     </button></td>
                                             </tr>
@@ -94,4 +94,16 @@
 @endsection
 @section('script')
     <script src="/js/layer/layer.js" type="text/javascript"></script>
+    <script>
+        // 删除节点
+        function delNode(id) {
+            $.post("{{url('wSifGFeO5mQoCWB4/delNodeTcp')}}", {id:id, _token:'{{csrf_token()}}'}, function(ret) {
+                layer.msg(ret.message, {time:1000}, function() {
+                    if (ret.status == 'success') {
+                        window.location.reload();
+                    }
+                });
+            });
+        }
+    </script>
 @endsection

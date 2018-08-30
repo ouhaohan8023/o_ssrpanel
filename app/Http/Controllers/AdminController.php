@@ -2503,4 +2503,12 @@ class AdminController extends Controller
     }
   }
 
+  public function delNodeTcp(Request $request)
+  {
+    if($request->method() == 'POST'){
+      SsNodeTcpIcmp::query()->where('t_id',$request->get('id'))->delete();
+      return Response::json(['status' => 'success', 'data' => '', 'message' => '删除成功']);
+    }
+  }
+
 }
