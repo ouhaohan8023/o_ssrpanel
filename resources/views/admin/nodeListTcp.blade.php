@@ -18,7 +18,7 @@
                         </div>
                         <div class="actions">
                             <div class="btn-group">
-                                {{--<button class="btn sbold blue" onclick="addNode()"> 添加节点 </button>--}}
+                                {{--<button class="btn sbold blue" onclick="checkNow()"> 立即监测 </button>--}}
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,9 @@
                                                     @if(!$node->t_icmp_status) <span class="label label-danger">异常</span> @endif
                                                 </td>
                                                 <td>{{$node->updated_at}}</td>
-                                                <td>{{$node->end_at!=''?$node->end_at:'无'}}</td>
+                                                <td><button type="button" class="btn btn-sm red btn-outline" onclick="delNode('{{$node->id}}')">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button></td>
                                             </tr>
                                         @endforeach
                                     @endif

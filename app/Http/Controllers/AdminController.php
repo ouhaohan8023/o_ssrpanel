@@ -2489,11 +2489,18 @@ class AdminController extends Controller
   }
 
   // TCP/ICMP监测
-  public function nodeTCP()
+  public function nodeTCP(Request $request)
   {
-    $data = SsNodeTcpIcmp::query()->with(["SS"])->paginate(15);
-//    var_dump($data);
-    return view('admin/nodeListTcp',['nodeList'=>$data]);
+    if($request->method() == 'POST'){
+    }else{
+      $data = SsNodeTcpIcmp::query()->with(["SS"])->paginate(15);
+      foreach ($data as $k => $v){
+        if(empty($v->SS)){
+          unset($data[$k]);
+        }
+      }
+      return view('admin/nodeListTcp',['nodeList'=>$data]);
+    }
   }
 
 }
