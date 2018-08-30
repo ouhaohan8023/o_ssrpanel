@@ -33,7 +33,8 @@
                                     <th> IP </th>
                                     <th> TCP状态 </th>
                                     <th> PING状态 </th>
-
+                                    <th> 最后一次更新 </th>
+                                    <th> 异常时间 </th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -53,7 +54,7 @@
                                                     @endif
                                                 </td>
                                                 <td> <span class="label label-info">{{$node->SS->server}}</span> </td>
-                                                <td> <span class="label label-danger">{{$node->SS->ip}}</span> </td>
+                                                <td> <span class="label label-info">{{$node->SS->ip}}</span> </td>
                                                 <td>
                                                     @if($node->t_tcp_status) <span class="label label-info">正常</span> @endif
                                                     @if(!$node->t_tcp_status) <span class="label label-danger">异常</span> @endif
@@ -62,6 +63,8 @@
                                                     @if($node->t_icmp_status) <span class="label label-info">正常</span> @endif
                                                     @if(!$node->t_icmp_status) <span class="label label-danger">异常</span> @endif
                                                 </td>
+                                                <td>{{$node->updated_at}}</td>
+                                                <td>{{$node->end_at!=''?$node->end_at:'无'}}</td>
                                             </tr>
                                         @endforeach
                                     @endif

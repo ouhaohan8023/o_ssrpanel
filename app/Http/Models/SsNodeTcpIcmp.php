@@ -19,4 +19,12 @@ class SsNodeTcpIcmp extends Model
   {
     return $this->hasOne(SsNode::class, 'id', 't_s_id');
   }
+
+//  function getUpdateAtAttritube($v){
+////    return date("y-m-d H:i:s",$v);
+//  }
+
+  function getEndAtAttritube($v){
+    return date("y-m-d H:i:s",$v);
+  }
 }
