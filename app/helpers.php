@@ -155,3 +155,13 @@ if(!function_exists('curlGet')){
     return $output;
   }
 }
+
+function telegramFunction($method,$data)
+{
+  $tg = env('TELEGRAM_URL');
+  $token = env('TELEGRAM_TOKEN');
+  $url = $tg.$token.'/'.$method;
+//    var_dump($url);die;
+  $ret = curlGet($url,'post',$data);
+  return $ret;
+}

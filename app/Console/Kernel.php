@@ -4,6 +4,7 @@ namespace App\Console;
 
 use App\Console\Commands\DeleteAuthJob;
 use App\Console\Commands\PushJob;
+use App\Console\Commands\TelegramJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -40,6 +41,7 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\CpJob::class,
       DeleteAuthJob::class,
       PushJob::class,
+        TelegramJob::class,
 
     ];
 
@@ -78,7 +80,7 @@ class Kernel extends ConsoleKernel
       $schedule->command('cPJob')->everyMinute();
       $schedule->command('deleteAuthJob')->everyMinute();
       $schedule->command('pushJob')->dailyAt('13:37');
-
+      $schedule->command('telegramJob')->everyMinute();
 
 
     }
