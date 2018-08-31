@@ -34,7 +34,9 @@ class TelegramJob extends Command
         $backMsg['text'] = $msg;
         $backMsg['parse_mode'] = 'Markdown';
         telegramFunction($method,$backMsg);
+        SsNodeTcpIcmp::query()->where('t_id',$v['t_id'])->update(['tg',1]);//失败的，通知过一次，就不通知了
       }
+      SsNodeTcpIcmp::query()->where('t_tcp_status',1)->where('tg',1)->update(['tg',0]);//由异常变为正常，重置通知状态
       Log::info('定时任务：' . $this->description);
     }
 }
