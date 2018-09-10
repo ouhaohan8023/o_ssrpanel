@@ -45,7 +45,7 @@
                         <img class="img" src="/images/window.svg" width="50px" height="50px">
                         <p class="t2">Windows客户端1</p>
                         <a class="btn btn-lg red dow" href="{{url('downloadApp/windowstap')}}">下载</a>
-                        <a target="_blank" class="btn btn-lg blue dow" href="/download_vpn/windows/sstap.pdf">教程</a>
+                        <a target="_blank" class="btn btn-lg blue dow" href="/download_vpn/windows/sstap.pdf?v=1">教程</a>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                         <img src="/images/Mac.svg" width="50px" height="50px">
                         <p class="t2">Mac客户端</p>
                         <a class="btn btn-lg red dow" href="{{url('downloadApp/mac')}}">下载</a>
-                        <a target="_blank"  class="btn btn-lg blue dow" href="/download_vpn/macOs/mac.pdf">教程</a>
+                        <a target="_blank"  class="btn btn-lg blue dow" href="/download_vpn/macOs/mac.pdf?v=1">教程</a>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                         <img class="img" src="/images/window.svg" width="50px" height="50px">
                         <p class="t2">Windows客户端2</p>
                         <a class="btn btn-lg red dow" href="{{url('downloadApp/windows')}}">下载</a>
-                        <a target="_blank"  class="btn btn-lg blue dow" href="/download_vpn/windows/ssr.pdf">教程</a>
+                        <a target="_blank"  class="btn btn-lg blue dow" href="/download_vpn/windows/ssr.pdf?v=1">教程</a>
                     </div>
                 </div>
             </div>
