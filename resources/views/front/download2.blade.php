@@ -104,7 +104,7 @@
                         </div>
                         <div class="PlanCard__description">
                             <a class="Button Button--primary" href="{{url('downloadApp/mac')}}"> 下载 </a>
-                            <a target="_blank" href="/download_vpn/macOs/mac.pdf" class="Button" style="color: #f64f64;font-size: 14px"> 查看教程 </a>
+                            <a target="_blank" href="/download_vpn/macOs/mac.pdf?v=1" class="Button" style="color: #f64f64;font-size: 14px"> 查看教程 </a>
 
                         </div>
                     </div>
@@ -128,7 +128,7 @@
                     </div>
                     <div class="PlanCard__description">
                         <a class="Button Button--primary" href="{{url('downloadApp/windowstap')}}"> 下载 </a>
-                        <a href="/download_vpn/windows/sstap.pdf" target="_blank" class="Button" style="color: #f64f64;font-size: 14px"> 查看教程 </a>
+                        <a href="/download_vpn/windows/sstap.pdf?v=1" target="_blank" class="Button" style="color: #f64f64;font-size: 14px"> 查看教程 </a>
                     </div>
                 </div>
             </div>
