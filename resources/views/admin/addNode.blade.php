@@ -53,7 +53,7 @@
                                                     <div class="form-group">
                                                         <label for="ip" class="col-md-3 control-label"> IPV4地址 </label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control" name="ip" id="ip" placeholder="服务器IPV4地址" required>
+                                                            <input type="text" class="form-control" name="ip" id="ip" placeholder="服务器IPV4地址">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
