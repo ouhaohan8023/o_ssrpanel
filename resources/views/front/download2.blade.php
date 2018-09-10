@@ -37,8 +37,8 @@
                             </p>
                         </div>
                         <div class="PlanCard__description">
-                            <a class="Button Button--primary" href="{{url('downloadApp/windows')}}"> 下载 </a>
-                            <a href="/download_vpn/windows/ssr.pdf" target="_blank" class="Button" style="color: #f64f64;font-size: 14px"> 查看教程 </a>
+                            <a class="Button Button--primary" href="{{url('downloadApp/windowstap')}}"> 下载 </a>
+                            <a href="/download_vpn/windows/sstap.pdf?v=1" target="_blank" class="Button" style="color: #f64f64;font-size: 14px"> 查看教程 </a>
                         </div>
                     </div>
                 </div>
@@ -122,7 +122,7 @@
                         {{--<i class="icon fab fa-android" style="color: #424242"></i>--}}
                         <p class="Text fwb c-bw-12 oh-t2">
                                 <span>
-                                    Windows客户端2
+                                    Windows客户端1
                                 </span>
                         </p>
                     </div>
@@ -136,7 +136,27 @@
     </div>
     </div>
     <div style="margin-bottom: 200px">
-
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+            <div>
+                <div class="Paper bg-bw-1 PlanCard text-center PlanCard--type-special sha-1 sha-3-hover">
+                    <div class="PlanCard__body p-5">
+                        <div class="PlanCard__name pb-3 pt-5 pt-sm-7 pt-md-5">
+                            <img src="/images/window.svg" width="50px" height="50px">
+                            {{--<i class="icon fab fa-android" style="color: #424242"></i>--}}
+                            <p class="Text fwb c-bw-12 oh-t2">
+                                <span>
+                                    Windows客户端2
+                                </span>
+                            </p>
+                        </div>
+                        <div class="PlanCard__description">
+                            <a class="Button Button--primary" href="{{url('downloadApp/windows')}}"> 下载 </a>
+                            <a href="/download_vpn/windows/ssr.pdf" target="_blank" class="Button" style="color: #f64f64;font-size: 14px"> 查看教程 </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="/layer/layer.js"></script>
     <script>
