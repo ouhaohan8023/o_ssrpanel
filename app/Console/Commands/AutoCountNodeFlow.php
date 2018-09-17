@@ -4,8 +4,6 @@ namespace App\Console\Commands;
 
 use App\Http\Models\SsNodeTrafficDaily;
 use Illuminate\Console\Command;
-use App\Http\Models\Invite;
-use Log;
 
 class AutoCountNodeFlow extends Command
 {
@@ -27,5 +25,6 @@ class AutoCountNodeFlow extends Command
       $add['flow_read'] = flowAutoShow($flowCount);
 //        $sql = "INSERT ss_node_flow_log('s_flow,s_flow_read,created_at') VALUE (".$add['flow']." ".$add['flow_read']." ".$add['created_at'].")";
       \DB::insert("insert into ss_node_flow_log (s_flow,s_flow_read,created_at) values (?,?,?)",[$add['flow'] ,$add['flow_read'],$add['created_at']]);
+      \Log::info('定时任务：' . $this->description);
     }
 }

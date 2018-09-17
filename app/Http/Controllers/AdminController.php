@@ -17,6 +17,7 @@ use App\Http\Models\SsConfig;
 use App\Http\Models\SsGroup;
 use App\Http\Models\SsGroupNode;
 use App\Http\Models\SsNode;
+use App\Http\Models\SsNodeFlowLog;
 use App\Http\Models\SsNodeInfo;
 use App\Http\Models\SsNodeLabel;
 use App\Http\Models\SsNodeOnlineLog;
@@ -834,6 +835,8 @@ class AdminController extends Controller
 
         $view['nodeName'] = $node->name;
         $view['nodeServer'] = $node->server;
+
+//        dd($view);die;
 
         return Response::view('admin/nodeMonitor', $view);
     }
@@ -2512,19 +2515,36 @@ class AdminController extends Controller
   }
 
   public function flowLog(){
-      for($i=1;$i<=100;$i++)
-      {
-        echo $i;
-        $s = "-".$i.' days';
-        $data = date('Y-m-d', strtotime($s));
-        $flowCount = SsNodeTrafficDaily::query()->where('created_at', '>=', $data)->sum('total');
-        $add['flow'] = $flowCount;
-        $add['created_at'] = $data;
-        $add['flow_read'] = flowAutoShow($flowCount);
-//        $sql = "INSERT ss_node_flow_log('s_flow,s_flow_read,created_at') VALUE (".$add['flow']." ".$add['flow_read']." ".$add['created_at'].")";
-        DB::insert("insert into ss_node_flow_log (s_flow,s_flow_read,created_at) values (?,?,?)",[$add['flow'] ,$add['flow_read'],$add['created_at']]);
-      }
+      //  插入数据库代码
+//      for($i=1;$i<=100;$i++)
+//      {
+//        echo $i;
+//        $s = "-".$i.' days';
+//        $data = date('Y-m-d', strtotime($s));
+//        $flowCount = SsNodeTrafficDaily::query()->where('created_at', '>=', $data)->sum('total');
+//        $add['flow'] = $flowCount;
+//        $add['created_at'] = $data;
+//        $add['flow_read'] = flowAutoShow($flowCount);
+////        $sql = "INSERT ss_node_flow_log('s_flow,s_flow_read,created_at') VALUE (".$add['flow']." ".$add['flow_read']." ".$add['created_at'].")";
+//        DB::insert("insert into ss_node_flow_log (s_flow,s_flow_read,created_at) values (?,?,?)",[$add['flow'] ,$add['flow_read'],$add['created_at']]);
+//      }
 
+    //   读取数据，进行展示
+    $s = '-30 days';
+    $data = date('Y-m-d', strtotime($s));
+    $sData = SsNodeFlowLog::query()->where('created_at', '>=', $data)->orderBy('created_at','DESC')->get();
+//    dd($sData[0]['s_flow']);die;
+    $dailyData = [];
+    foreach ($sData as $k => $v)
+    {
+      $dailyData[] = round($v['s_flow'] / (1024 * 1024), 2);
+    }
+
+    $view['trafficDaily'] = [
+        'nodeName'  => '全部',
+        'dailyData' => "'" . implode("','", $dailyData) . "'"
+    ];
+    return Response::view('admin/flowLog', $view);
 
   }
 
