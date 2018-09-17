@@ -295,7 +295,7 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="dashboard-stat2 bordered" onclick="skip('wSifGFeO5mQoCWB4/refer?status=1');">
+                <div class="dashboard-stat2 bordered" onclick="skip('wSifGFeO5mQoCWB4/flow');">
                     <div class="display">
                         <div class="number">
                             <h3 class="font-red">

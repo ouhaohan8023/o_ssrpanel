@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\AutoCountNodeFlow;
 use App\Console\Commands\DeleteAuthJob;
 use App\Console\Commands\PushJob;
 use App\Console\Commands\TelegramJob;
@@ -42,6 +43,7 @@ class Kernel extends ConsoleKernel
       DeleteAuthJob::class,
       PushJob::class,
         TelegramJob::class,
+      AutoCountNodeFlow::class,
 
     ];
 
@@ -81,6 +83,8 @@ class Kernel extends ConsoleKernel
       $schedule->command('deleteAuthJob')->everyMinute();
       $schedule->command('pushJob')->dailyAt('13:37');
       $schedule->command('telegramJob')->everyMinute();
+      $schedule->command('autoCountNodeFlow')->everyMinute();
+
 
 
     }
